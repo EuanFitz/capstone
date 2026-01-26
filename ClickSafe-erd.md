@@ -1,59 +1,63 @@
 admin
 -
-admin_id
-username
-password
-admin_email
-admin_phone
-company_id FK >- company.company_id
+admin_id SMALLINT
+username VARCHAR(100)
+password VARCHAR(50)
+admin_email VARCHAR(150)
+admin_phone VARCHAR(15)
+company_id SMALLINT FK >- company.company_id
 
 company
 -
-company_id
-company_name
-company_location
+company_id SMALLINT
+company_name VARCHAR(150)
+company_location VARCHAR(56)
 
 employee
 -
-employee_id
-employee_name
-employee_email
-employee_phone
-department_id FK >- department.department_id
-company_id FK >- company.company_id
+employee_id INT
+employee_name VARCHAR(95)
+employee_email VARCHAR(150)
+employee_phone VARCHAR(15)
+department_id SMALLINT FK >- department.department_id
+company_id SMALLINT FK >- company.company_id
 
 department
 -
-department_id
-department_name
+department_id SMALLINT
+department_name VARCHAR(50)
 
 company_department
 -
-department_id FK >- department.department_id
-company_id FK >- company.company_id
+department_id SMALLINT FK >- department.department_id
+company_id SMALLINT FK >- company.company_id
 
 campaign
 -
-campaign_id
-admin_id FK >- admin.admin_id
-campaign_name
-category_id FK >- category.category_id
-department_id FK >- department.department_id
-template_id FK >- template.template_id
+campaign_id INT
+admin_id SMALLINT FK >- admin.admin_id
+campaign_name VARCHAR(100)
+start_date DATETIME
+end_date DATETIME
+category_id TINYINT FK >- category.category_id
+department_id SMALLINT FK >- department.department_id
+template_id SMALLINT FK >- template.template_id
+status VARCHAR(20)
 
 category
 -
-category_id
-category_name
-method
+category_id TINYINT
+category_name VARCHAR(50)
+method VARCHAR(200)
 
 results
 -
-campaign_id FK >- campaign.campaign_id
-employee_id FK >- employee.employee_id
-activity
+campaign_id SMALLINT FK >- campaign.campaign_id
+employee_id INT FK >- employee.employee_id
+activity BOOLEAN
 
 template
 -
-template_id
-template_name
+template_id SMALLINT 
+template_name VARCHAR(100)
+template_filename VARCHAR(100)
