@@ -19,8 +19,10 @@ employee_id INT
 employee_name VARCHAR(95)
 employee_email VARCHAR(150)
 employee_phone VARCHAR(15)
+date_added DATETIME
 department_id SMALLINT FK >- department.department_id
 company_id SMALLINT FK >- company.company_id
+active BOOLEAN
 
 department
 -
