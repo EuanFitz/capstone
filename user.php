@@ -1,25 +1,37 @@
 <?php
-//Variables
-    $company = $_GET['company'];
+    require('global/connection.php');
 
-    if(isset($_POST['name'])){
-        $emp_name = mysqli_real_escape_string($connection,$_POST['name']);
+//Variables
+if(isset($_GET['company'])){
+    $company = $_GET['company'];
     };
-    if(isset($_POST['email'])){
-        $emp_email = mysqli_real_escape_string($connection,$_POST['email']);
-    };
-    if(isset($_POST['phone'])){
-        $emp_phone = mysqli_real_escape_string($connection,$_POST['phone']);
-    };
-    if(isset($_POST['company'])){
-        $emp_company = mysqli_real_escape_string($connection,$_POST['company']);
-    };
-    if(isset($_POST['department'])){
-        $emp_department = mysqli_real_escape_string($connection,$_POST['department']);
-    };
+
+    if(isset($_POST['submit'])){
+        if(isset($_POST['first']) && ($_POST['first'] !== '')){
+            $emp_first = mysqli_real_escape_string($connection,$_POST['first']);
+        }
+
+        if(isset($_POST['last']) && ($_POST['last'] !== '')){
+            $emp_last = mysqli_real_escape_string($connection,$_POST['last']);
+        }
+
+        if(isset($_POST['email']) && ($_POST['email'] !== '')){
+            $emp_email = mysqli_real_escape_string($connection,$_POST['email']);
+        }
+
+        if(isset($_POST['phone'])){
+            $emp_phone = mysqli_real_escape_string($connection,$_POST['phone']);
+        }
+
+        // if(isset($_POST['department'])){
+        //     $emp_department = mysqli_real_escape_string($connection,$_POST['department']);
+        // }
 
 //Queries
-    $newemployeequery= "INSERT INTO `employee` (`employee_id`, `employee_name`, `employee_email`, `employee_phone`) VALUES (NULL, $emp_name, $emp_email, NULLIF($emp_phone,0), $emp_company, $emp_department)";
+    $newemployeequery= "INSERT INTO `employee` (`employee_id`, `employee_first`,`employee_last`, `employee_email`, `employee_phone`, `company_id`, `department_id`) VALUES (NULL, '$emp_first', '$emp_last', '$emp_email', NULLIF($emp_phone,0), '2', '2')";
+
+    print_r($newemployeequery);
+    }
 
     $companyquery = "SELECT * FROM company c 
     JOIN company_department cd ON c.company_id = cd.company_id
@@ -33,33 +45,65 @@
     <title>User intake || ClickSafe.com</title>
 </head>
 <body>
-    <form action="user.html" method="post"> 
-        <div>
-            <label for="name">First & Last name</label>
-            <input type="text" name="name" id="name" placeholder="First & Last name" required>
-        </div>
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email" required>
-        </div>
-        <div>
-            <label for="phone">Phone</label>
-            <input type="tel" name="phone" id="phone" required placeholder="Phone" value="0">
-        </div>
-        <div>
+    <?php
+        if(isset($_POST['submit'])){
+            mysqli_query($connection, $newemployeequery);
+        ?>
+        <section>
+            <h3>Completed!</h3>
+            <p>Thankyou for filling out the form.</p>
+            <p>You will receive a confirmation email, with a link to confirm your account.</p>
+        </section>
+        <section>
+            <img src="logo" alt="ClickSafe">
+            <h1>ClickSafe</h1>
+        </section>
+        <?php
+        }else{
+    ?>
+    <section>
+            <form action="user.php" method="post"> 
+                <div>
+                    <label for="first">First name</label>
+                    <input type="text" name="first" id="first" placeholder="First name" required>
+                </div>
+                <div>
+                    <label for="last">Last name</label>
+                    <input type="text" name="last" id="last" placeholder="Last name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Phone">
+                </div>
+                <div>
 
-            <!-- This will be based on companies selected departments -->
-            <label for="department">Department</label>
-            <select name="department" id="department" required>
-                <option value="">Select Department</option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-            </select>
+                    <!-- This will be based on companies selected departments -->
+                    <label for="department">Department</label>
+                    <select name="department" id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
 
-            <input type="submit" value="Sign up">
-        </div>
-    </form>
+                    <button type="submit" name="submit">Sign up</button>
+                </div>
+            </form>
+    </section>
+    <section>
+        <img src="logo" alt="ClickSafe logo">
+        <h2>Welcome to ClickSafe</h2>
+        <p>This form will link your email and work numbers to your Admin or IT team. This will allow them to send phishing simulations and training information to you throughout the year. Please ensure all your details are correct before submitting. Afterwards, you will not be required to go back to this site.</p>
+
+        <p>Thank you for using ClickSafe!</p>
+    </section>
+    <?php
+        }
+    ?>
 </body>
 </html>
