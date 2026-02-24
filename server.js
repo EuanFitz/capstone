@@ -2,7 +2,8 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const http = require('http');
-const hsts = require('hsts'); 
+
+const helmet = require('helmet');
 const path = require('path');
 
 const app = express();
@@ -14,7 +15,7 @@ const PORT_HTTPS = 3443;
 //     res.send('Hello from HTTP!');
 // });
 
-
+app.use(helmet());
 
 // Serve static files (images, CSS, JS) with caching
 app.use('/static', express.static('public', {
@@ -36,12 +37,12 @@ res.sendFile(path.join(__dirname, 'pages', 'faq.html'));
 
 
 
-// Apply HSTS middleware to the HTTPS server
-const hstsOptions = {
-    maxAge: 31536000, 
-    includeSubDomains: true,
-    preload: true 
-};
+// // Apply HSTS middleware to the HTTPS server
+// const hstsOptions = {
+//     maxAge: 31536000, 
+//     includeSubDomains: true,
+//     preload: true 
+// };  
 
 // // Create HTTP server
 // http.createServer(app).listen(PORT_HTTP, () => {

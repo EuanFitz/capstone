@@ -21,7 +21,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "fs": "^0.0.1-security",
-    "hsts": "^2.2.0",
+    "helmet": "^8.1.0",
     "https": "^1.0.0"
   }
 }
