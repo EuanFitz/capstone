@@ -38,11 +38,11 @@ res.sendFile(path.join(__dirname, 'pages', 'faq.html'));
 
 
 // // Apply HSTS middleware to the HTTPS server
-// const hstsOptions = {
-//     maxAge: 31536000, 
-//     includeSubDomains: true,
-//     preload: true 
-// };  
+const hstsOptions = {
+    maxAge: 31536000, 
+    includeSubDomains: true,
+    preload: true 
+};  
 
 // // Create HTTP server
 // http.createServer(app).listen(PORT_HTTP, () => {
@@ -58,7 +58,7 @@ const options = {
 // Create HTTPS server
 const httpsServer = https.createServer(options, (req, res) => {
 
-    hsts(hstsOptions)(req, res, () => {
+    helmet(hstsOptions)(req, res, () => {
         app(req, res);
     });
 });
