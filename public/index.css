@@ -37,7 +37,7 @@ h2 {
 #landing-links a {
     text-decoration: none;
     color: #F9FAFB;
-    background-color: #486284;
+    background-color: #545779;
     padding: 0.75rem 1.5rem;
     border-radius: 10px;
     font-size: 1.25rem;
@@ -45,7 +45,7 @@ h2 {
 }
 
 #landing-links a:hover {
-    background-color: #36506a;
+    background-color: #2F3252;
     transition: background-color 0.3s ease;
 }
 
