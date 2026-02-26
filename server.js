@@ -46,17 +46,22 @@ app.use(helmet({
 // res.sendFile(path.join(__dirname, 'pages', 'index.html'));
 // });
 
-app.use(express.static(path.join(__dirname, 'pages')));
-app.use(express.static(path.join(__dirname, 'public', {
+app.use(express.static(
+    path.join(__dirname, 'pages')));
+
+app.use(express.static(
+    path.join(__dirname, 'public'), {
+
     setHeaders: (res, path) => {
         if (path.endsWith('.css')) {
             res.set('Cache-Control', 'public, max-age=86400, immutable'); // Cache for 24 hours
         }
+
         if (path.endsWith('.jpg') || path.endsWith('.png')) {
             res.set('Cache-Control', 'public, max-age=2592000, immutable'); // Cache images for 30 days
         }
     }
-})));
+}));
 
 
 
