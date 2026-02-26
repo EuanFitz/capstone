@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const path = require('path');
 const app = express();
 const PORT_HTTPS = 3443; 
+let ejs = require('ejs');
 
 //--------------Helmet setup and stipulations-----------
 
@@ -26,7 +27,6 @@ app.use(helmet({
       },
     }
 }));
-
 
 
 // //-----------------------Static cacheing-------------------
