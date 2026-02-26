@@ -41,10 +41,14 @@ app.use(helmet({
 //     }
 // }));
 
+
+//---------------------templates-----------------
+// app.set("view engine", "ejs");
+// app.set("views", path.join(__dirname, "views"));
+// look into ejs and making "empty" html pages that hold includes from ejs
+
 //-----------------------------Route------------------------
-// app.get('/secure', (req, res) => {
-// res.sendFile(path.join(__dirname, 'pages', 'index.html'));
-// });
+
 
 app.use(express.static(
     path.join(__dirname, 'pages')));
@@ -57,7 +61,7 @@ app.use(express.static(
             res.set('Cache-Control', 'public, max-age=86400, immutable'); // Cache for 24 hours
         }
 
-        if (path.endsWith('.jpg') || path.endsWith('.png')) {
+        if (path.endsWith('.jpg') || path.endsWith('.png') || path.endsWith('.ico')) {
             res.set('Cache-Control', 'public, max-age=2592000, immutable'); // Cache images for 30 days
         }
     }
