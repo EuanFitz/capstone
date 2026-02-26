@@ -1,19 +1,12 @@
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
-const http = require('http');
-
 const helmet = require('helmet');
 const path = require('path');
-
 const app = express();
-const PORT_HTTP = 3000; 
 const PORT_HTTPS = 3443; 
 
-// // Sample route for HTTP
-// app.get('/', (req, res) => {
-//     res.send('Hello from HTTP!');
-// });
+//--------------Helmet setup and stipulations-----------
 
 app.use(helmet({
     strictTransportSecurity:  {
@@ -23,21 +16,21 @@ app.use(helmet({
     },
     contentSecurityPolicy: {
       directives: {
-        "default-src": ["'self'"], 
-        "script-src": ["'self'"], 
-        "style-src": ["'self'", "'unsafe-inline'"], 
-        "img-src": ["'self'", "data:"], 
-        "upgrade-insecure-requests": [],
-        "require-trusted-types-for": ["'script'"],
+        "defaultSrc": ["'self'"], 
+        "scriptSrc": ["'self'"], 
+        "styleSrc": ["'self'", "'unsafe-inline'"], 
+        "imgSrc": ["'self'", "data:"], 
+        "upgradeInsecureRequests": [],
+        // "requireTrustedTypesFor": ["'script'"],
 
       },
     }
-      
-
 }));
 
-// Serve static files (images, CSS, JS) with caching
-app.use('/static', express.static('public', {
+
+
+//-----------------------Static cacheing-------------------
+app.use(express.static('public', {
     setHeaders: (res, path) => {
         if (path.endsWith('.css')) {
             res.set('Cache-Control', 'public, max-age=86400, immutable'); // Cache for 24 hours
@@ -48,53 +41,26 @@ app.use('/static', express.static('public', {
     }
 }));
 
-// Sample route for HTTPS
-app.get('/secure', (req, res) => {
-res.sendFile(path.join(__dirname, 'pages', 'index.html'));
-    // res.send('Hello from HTTPS!');
-});
-
-
-
-// // Apply HSTS middleware to the HTTPS server
-
-
-// // Create HTTP server
-// http.createServer(app).listen(PORT_HTTP, () => {
-//     console.log(`HTTP Server running at http://localhost:${PORT_HTTP}`);
+//-----------------------------Route------------------------
+// app.get('/secure', (req, res) => {
+// res.sendFile(path.join(__dirname, 'pages', 'index.html'));
 // });
 
-// Create HTTPS server with SSL certificate
+app.use(express.static(path.join(__dirname, 'pages')));
+
+
+
+//-------------------------Key & Cert------------------------
 const options = {
     key: fs.readFileSync('private-key.pem'), 
     cert: fs.readFileSync('certificate.pem'), 
 };
 
-// Create HTTPS server
-const httpsServer = https.createServer(options, (req, res) => {
+//----------------------------Server creation-------------------
+const httpsServer = https.createServer(options, app);
 
-    helmet()(req, res, () => {
-        app(req, res);
-    });
-});
 
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         "default-src": ["'self'"], 
-//         "script-src": ["'self'"], 
-//         "style-src": ["'self'", "'unsafe-inline'"], 
-//         "img-src": ["'self'", "data:"], 
-//         "upgrade-insecure-requests": [],
-//         "require-trusted-types-for": ["'script'"],
-
-//       },
-//     },
-//   })
-// );
-
-// Start HTTPS server
+// ----------------------------Server start call---------------
 httpsServer.listen(PORT_HTTPS, () => {
-    console.log(`HTTPS Server running at https://localhost:${PORT_HTTPS}/secure`);
+    console.log(`HTTPS Server running at https://localhost:${PORT_HTTPS}`);
 });
