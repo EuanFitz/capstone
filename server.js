@@ -31,6 +31,7 @@ app.use(helmet({
 // ------------- Configure ejs and setting route to views -------------//////
 app.set("view engine", "ejs"); //
 app.set("views", path.join(__dirname, "views"));
+
 // //-----------------------Static cacheing-------------------
 // app.use(express.static('public', {
 //     setHeaders: (res, path) => {
