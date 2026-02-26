@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('../partials/head') %>
+</head>
+<body>
+    <header>
+        
+    </header>
+    <main>
+        <section>
+            <h2>Employee Registration</h2>
+<!-- temp deleting the action and method (user.php and POST) to make page static for assignment submission -->
+                <form action="" method=""> 
+                    <div>
+                        <label for="first">First name*</label>
+                        <input type="text" name="first" id="first" placeholder="First name" required>
+                    </div>
+                    <div>
+                        <label for="last">Last name*</label>
+                        <input type="text" name="last" id="last" placeholder="Last name" required>
+                    </div>
+                    <div>
+                        <!-- This will be based on companies selected departments -->
+                        <label for="department">Department*</label>
+                        <select name="department" id="department" required>
+                            <option value="">Select Department</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <!-- This will be based on companies selected departments -->
+                        <label for="company">Company*</label>
+                        <select name="company" id="company" required>
+                            <option value="">Select Company</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option> 
+                            <option value="">4</option>
+                        </select>
+                    </div>
+                    <div class="full">
+                        <label for="email">Work Email*</label>
+                        <input type="email" name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="full">
+                        <label for="phone">Work Phone(If Applicable)</label>
+                        <input type="tel" name="phone" id="phone" placeholder="Phone">
+                    </div>
+                    <button class="full" type="submit" name="submit">Submit Registration</button>
+                </form>
+        </section>
+        <section>
+            <%- include('../partials/logo') %>
+            <h2>Welcome to ClickSafe</h2>
+            <p>This form will link your email and work numbers to your Admin or IT team. This will allow them to send phishing simulations and training information to you throughout the year. Please ensure all your details are correct before submitting. Afterwards, you will not be required to go back to this site.</p>
+
+            <p>Thank you for using ClickSafe!</p>
+
+            <button onclick="history.back()" class="backButton">Go Back</button>
+
+        </section>
+        
+    </main>
+</body>
+</html>
