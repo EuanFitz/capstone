@@ -66,6 +66,22 @@ const httpsServer = https.createServer(options, (req, res) => {
     });
 });
 
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "default-src": ["'self'"], 
+        "script-src": ["'self'"], 
+        "style-src": ["'self'", "'unsafe-inline'"], 
+        "img-src": ["'self'", "data:"], 
+        "upgrade-insecure-requests": [],
+        "require-trusted-types-for": ["'script'"],
+
+      },
+    },
+  })
+);
+
 // Start HTTPS server
 httpsServer.listen(PORT_HTTPS, () => {
     console.log(`HTTPS Server running at https://localhost:${PORT_HTTPS}/secure`);
