@@ -38,7 +38,7 @@ app.use('/static', express.static('public', {
 
 // Sample route for HTTPS
 app.get('/secure', (req, res) => {
-res.sendFile(path.join(__dirname, 'pages', 'faq.html'));
+res.sendFile(path.join(__dirname, 'pages', 'index.html'));
     // res.send('Hello from HTTPS!');
 });
 
