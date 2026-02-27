@@ -73,8 +73,15 @@ app.use(express.static(
     }
 }));
 
-app.get("/public:id", (req,res)=>{
-
+app.get("/graphs", (req,res)=>{
+    res.set('Cache-Control', 'max-age:300, stale-while-revalidate=60');
+    res.json([
+        {id: 1, filename: "Dashboard-piechart.png", alt: "placeholder"},
+        {id: 2, filename: "Dashboard-bargraph.png", alt: "placeholder"},
+        {id: 3, filename: "Dashboard-linegraph.png", alt: "placeholder"},
+        {id: 4, filename: "Dashboard-percentage.png", alt: "placeholder"},
+        {id: 5, filename: "Dashboard-circlegraph.png", alt: "placeholder"}
+    ]);
 });
 
 

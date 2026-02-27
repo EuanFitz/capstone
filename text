@@ -1,0 +1,11 @@
+<%
+    async function loadEvents() {
+        const res = await fetch("/graphs");
+        const graph = await res.json();
+
+        graph.forEach(e =>{ %>
+            <img src="<% `/${graph.filename}`%>" alt="<% graph.alt %>">
+        <% });
+    }; 
+     loadEvents();
+    %>
