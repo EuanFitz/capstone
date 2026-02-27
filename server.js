@@ -68,10 +68,14 @@ app.use(express.static(
         }
 
         if (path.endsWith('.jpg') || path.endsWith('.png') || path.endsWith('.ico') || path.endsWith('.svg')) {
-            res.set('Cache-Control', 'public, max-age=2592000, stale-while-revaliadate=30'); // Cache images for 30 days, can be stale for 30 seconds while it revalidates. 
+            res.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=30'); // Cache images for 30 days, can be stale for 30 seconds while it revalidates. 
         }
     }
 }));
+
+app.get("/public:id", (req,res)=>{
+
+});
 
 
 //------------------------ERROR HANDLING---------------------
