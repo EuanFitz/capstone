@@ -72,16 +72,32 @@ app.use(express.static(
         }
     }
 }));
-
-app.get("/graphs", (req,res)=>{
-    res.set('Cache-Control', 'max-age=300, stale-while-revalidate=60');
-    res.json([
+const graphs = [
         {id: 1, filename: "Dashboard-piechart.png", alt: "A purple piechart"},
         {id: 2, filename: "Dashboard-bargraph.png", alt: "a purple bar graph"},
         {id: 3, filename: "Dashboard-linegraph.png", alt: "a purple line graph"},
         {id: 4, filename: "Dashboard-percentage.png", alt: "a circular representation of a percentage"},
         {id: 5, filename: "Dashboard-circlegraph.png", alt: "a circle graph"}
-    ]);
+    ];
+
+app.get("/graphs", (req,res)=>{
+    res.set('Cache-Control', 'max-age=300, stale-while-revalidate=60');
+    res.json(graphs);
+});
+
+app.get("/graphs/:id", (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    const graph = graphs.find(c => c.id === id);
+
+    if (!graph) {
+        return res.status(404).send("Not found");
+    }
+
+    res.set("Cache-Control", "public, max-age=300");
+
+    res.json(graph);
 });
 
 
