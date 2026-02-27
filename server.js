@@ -74,7 +74,7 @@ app.use(express.static(
 }));
 
 app.get("/graphs", (req,res)=>{
-    res.set('Cache-Control', 'max-age:300, stale-while-revalidate=60');
+    res.set('Cache-Control', 'max-age=300, stale-while-revalidate=60');
     res.json([
         {id: 1, filename: "Dashboard-piechart.png", alt: "placeholder"},
         {id: 2, filename: "Dashboard-bargraph.png", alt: "placeholder"},
