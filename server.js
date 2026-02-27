@@ -53,8 +53,9 @@ app.set("views", path.join(__dirname, "views"));
 //-----------------------------Route------------------------
 
 
-app.use(express.static(
-    path.join(__dirname, 'pages')));
+const homeRoutes = require("./routes/home");
+
+app.use('/', homeRoutes);
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
@@ -70,6 +71,11 @@ app.use(express.static(
     }
 }));
 
+
+//------- ERROR HANDLING ------//
+app.use((req, res) =>{
+    res.status(404).render("pages/404", { title: "Not found"});
+});
 
 
 //-------------------------Key & Cert------------------------

@@ -25,10 +25,5 @@ router.get("/admin", (req, res) =>{
     });
 });
 
-router.get("/404", (req, res) =>{
-    res.render('pages/404', {
-        title: "error"
-    });
-});
 
 module.exports = router;
