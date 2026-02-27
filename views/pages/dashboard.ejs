@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../iincludes/head') %>
+    <%- include('../includes/head') %>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <h1><%= title %></h1>
-    <%= data.forEach(chart =>{ %>
-        <img src="<%=`/" alt="">
-    <%= }); %>
+    <% data.forEach(chart => { %>
+        <img src="<%= `/${chart.filename}` %>" alt="<%= chart.alt %>">
+    <% }); %>
     <%- include('../includes/footer') %>
 </body>
 </html>
