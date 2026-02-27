@@ -18,7 +18,7 @@ main {
     background-color: #1F1F1F;
 }
 
-section {
+#backingBox {
     background-color: #DAD8E1;
     border-radius: 20px;
     justify-items: center;
