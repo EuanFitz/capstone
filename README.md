@@ -46,7 +46,7 @@ This project uses **Node.js** and **ejs** to manage the environment.
 <br> <br>
 6. In the **Capstone** directory, ensure your private-key and certificate are saved as **private-key.pem** and **certificate.pem** respectively, and are *not located in any sub-folders in the capstone directory*
 
-![image of how your certificate and key files should appear in your folder/directory.](path/to/image.png)
+![image of how your certificate and key files should appear in your folder/directory.](public/readmeReference.png)
 <br> <br>
 
 7. In your commandline/cmd terminal in your code editor, run the command
