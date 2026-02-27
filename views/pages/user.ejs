@@ -61,7 +61,9 @@
 
             <p>Thank you for using ClickSafe!</p>
 
-            <button onclick="history.back()" class="backButton">Go Back</button>
+<a href="/" class="backButton">Go back</a>
+
+
 
         </section>
         
@@ -69,3 +71,11 @@
     <%- include('../includes/footer') %>
 </body>
 </html>
+
+<script>
+  const goBackLink = document.querySelector(".backButton");
+  goBackLink.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    history.back();
+  });
+</script>

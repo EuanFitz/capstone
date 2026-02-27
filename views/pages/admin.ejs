@@ -16,26 +16,44 @@
                         <label for="name">Full Name*</label>
                         <input type="text" name="name" id="name" placeholder="Full Name" required>
                     </div>
-                    <div>
+
                     <div>
                         <label for="email">Work Email*</label>
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
+
                     <div>
                         <label for="phone">Work Phone(If Applicable)</label>
                         <input type="tel" name="phone" id="phone" placeholder="Phone">
                     </div>
-                    <button type="submit" name="submit">Submit Registration</button>
+                    
+                        <button type="submit" name="submit">Submit Registration</button>
                 </form>
         </section>
         <section>
-            <img src="/LogoBlue.svg" alt="ClickSafe logo">
+           <%- include('../includes/logoPurple') %>
             <h2>Welcome to ClickSafe</h2>
             <p>Register your business, allow employees to be added to your network, then you’ll be able to start a campaign from your admin dashboard. </p>
 
             <p>Thank you for using ClickSafe!</p>
+
+            <a href="/" class="backButton">Go back</a>
         </section>
+
+
+
+
+        </section>
+        
     </main>
     <%- include('../includes/footer') %>
 </body>
 </html>
+
+<script>
+  const goBackLink = document.querySelector(".backButton");
+  goBackLink.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    history.back();
+  });
+</script>
