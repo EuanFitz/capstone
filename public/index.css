@@ -15,12 +15,20 @@ main {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #F9FAFB;
+    background-color: #1F1F1F;
+}
+
+section {
+    background-color: #DAD8E1;
+    border-radius: 20px;
+    justify-items: center;
+    padding: 3rem;
 }
 
 h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: #2F3252;
 }
 
 h2 {
@@ -37,7 +45,7 @@ h2 {
 #landing-links a {
     text-decoration: none;
     color: #F9FAFB;
-    background-color: #545779;
+    background-color: #6750A4;
     padding: 0.75rem 1.5rem;
     border-radius: 10px;
     font-size: 1.25rem;
