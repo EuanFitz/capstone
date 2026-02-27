@@ -62,17 +62,17 @@ app.use(express.static(
 
     setHeaders: (res, path) => {
         if (path.endsWith('.css')) {
-            res.set('Cache-Control', 'public, max-age=86400, immutable'); // Cache for 24 hours
+            res.set('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
         }
 
-        if (path.endsWith('.jpg') || path.endsWith('.png') || path.endsWith('.ico')) {
-            res.set('Cache-Control', 'public, max-age=2592000, immutable'); // Cache images for 30 days
+        if (path.endsWith('.jpg') || path.endsWith('.png') || path.endsWith('.ico') || path.endsWith('.svg')) {
+            res.set('Cache-Control', 'public, max-age=2592000, stale-while-revaliadate=30'); // Cache images for 30 days, can be stale for 30 seconds while it revalidates. 
         }
     }
 }));
 
 
-//------- ERROR HANDLING ------//
+//------------------------ERROR HANDLING---------------------
 app.use((req, res) =>{
     res.status(404).render("pages/404", { title: "Not found"});
 });
