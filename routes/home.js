@@ -29,5 +29,12 @@ router.get("/admin", (req, res) =>{
     });
 });
 
+router.get("/dashboard", (req,res) =>{
+    res.set('Cache-Control', "max-age:300, stale-while-revalidate"); //
+    res.render("pages/dashboard", {
+        title: "dashboard"
+    });
+});
+
 
 module.exports = router;
