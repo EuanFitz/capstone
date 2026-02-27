@@ -53,9 +53,11 @@ app.set("views", path.join(__dirname, "views"));
 //-----------------------------Route------------------------
 
 
-const homeRoutes = require("./routes/home");
+const homeRoute = require("./routes/home");
+const dashboardRoute = require("./routes/data");
 
-app.use('/', homeRoutes);
+app.use('/', homeRoute);
+app.use('/dashboard', dashboardRoute);
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
