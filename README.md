@@ -33,8 +33,8 @@ This project uses **Node.js** and **ejs** to manage the environment.
 2. Open the repository clone in your **code editor** (*like VS Code*)
 <br> <br>
 3. in your commandline or cmd terminal, install the following dependancies:
-    - **express.js** 
-    <br>```npm install express https fs hsts```
+    - **express.js, Helmet, Https, File System** 
+    <br>```npm install express https fs helmet```
     - **OpenSSL** (install via manager like Homebrew, Winget, or chocolatey ) example for homebrew: 
     <br>```brew install openssl```
     <br> <br>
