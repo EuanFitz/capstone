@@ -83,3 +83,13 @@ main section form div button{
     border-radius: 20px;
     color: #486284;
 }
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #222;
+    color: #F9FAFB;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
