@@ -85,20 +85,20 @@ app.get("/graphs", (req,res)=>{
     res.json(graphs);
 });
 
-app.get("/graphs/:id", (req, res) => {
+// app.get("/graphs/:id", (req, res) => {
 
-    const id = parseInt(req.params.id);
+//     const id = parseInt(req.params.id);
 
-    const graph = graphs.find(c => c.id === id);
+//     const graph = graphs.find(c => c.id === id);
 
-    if (!graph) {
-        return res.status(404).send("Not found");
-    }
+//     if (!graph) {
+//         return res.status(404).send("Not found");
+//     }
 
-    res.set("Cache-Control", "public, max-age=300");
+//     res.set("Cache-Control", "public, max-age=300");
 
-    res.json(graph);
-});
+//     res.json(graph);
+// });
 
 
 //------------------------ERROR HANDLING---------------------
