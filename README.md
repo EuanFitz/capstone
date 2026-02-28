@@ -27,7 +27,7 @@ This project uses **Node.js** and **ejs** to manage the environment.
 
 ### Steps:
 
-1. Clone the Capstone Github Repository 
+1. Clone the Capstone Github Repository **server-side branch**
 <br>```https://github.com/EuanFitz/capstone/tree/server-side```
 <br> <br>
 2. Open the repository clone in your **code editor** (*like VS Code*)
@@ -108,8 +108,8 @@ The steps required to create your own certificate were covered in steps **4** & 
 | Static Caching    | Set in **server.js:35**, this ensures all css docs and image types located in the public folder are cached based on filetype.  Css files are cached for 24 hours to improve page load times and reduce server load. Image types (with the extensions of .png, .jpg, and .ico)  are cached for 30 days to reduce server load and to have browsers reuse previously downloaded images instead of fetching them again.  |
 | Dynamic Caching   | Set up in **server.js:81**,  This affects the items within const graph. These are set to revalidate every minute and have a max-age of 5 minutes. This was done as these images are placeholders for what will bcome live and active graphs, created based on db data relating to user interaction with phishing simulation. As these will later be considerd "live" or close to live, we wanted to get used to fast refreshing and caching standards.       |
 
-
-*Reasoning/Summary*: 
+---
+### *Reasoning/Summary*: 
 <br>
 ***Static*** and relatively unchanging elements such as CSS and images were set with caching parameters based on their importance and likelihood to change. 
 
