@@ -5,7 +5,7 @@
 - Euan Fitzpatrick - **Web Developer**
 - Rachel Payette - **Web Developer**
 - Finn O'Driscoll - **Web Developer**
-- Taylor Mathieu - **Web Developer**
+- Taylor Mathieu - **UX/UI Designer**
 
 ## Overview - 
 Group project for Capstone class & Showcase in 4th semester at SAIT SADT.
@@ -28,7 +28,7 @@ This project uses **Node.js** and **ejs** to manage the environment.
 ### Steps:
 
 1. Clone the Capstone Github Repository 
-<br>```https://github.com/EuanFitz/capstone/tree/main```
+<br>```https://github.com/EuanFitz/capstone/tree/server-side```
 <br> <br>
 2. Open the repository clone in your **code editor** (*like VS Code*)
 <br> <br>
@@ -88,28 +88,32 @@ The steps required to create your own certificate were covered in steps **4** & 
 ## Caching Strategies - 
 
 ### Developed Routes:
-List routes 
-- list item
-- list item
-- list item
-- list item
-- list item
-- etc.
+
+- Landing page
+```/```
+- Admin Login
+```/admin```
+- User login
+```/user```
+- FAQ page
+````/faq````
+- Admin Dashboard Page
+```/dashboard```
 
 
 ### Caching Policies
 
 | Caching Policy      | Reasoning |
 | ----------- | ----------- |
-| Policy      | Reasons     |
-| Policy   | Reasons        |
-| Policy   | Reasons        |
-| Policy   | Reasons        |
-| Policy   | Reasons        |
-| Policy   | Reasons        |
+| Static Caching    | Set in **server.js:35**, this ensures all css docs and image types located in the public folder are cached based on filetype.  Css files are cached for 24 hours to improve page load times and reduce server load. Image types (with the extensions of .png, .jpg, and .ico)  are cached for 30 days to reduce server load and to have browsers reuse previously downloaded images instead of fetching them again.  |
+| Dynamic Caching   | Set up in **server.js:81**,  This affects the items within const graph. These are set to revalidate every minute and have a max-age of 5 minutes. This was done as these images are placeholders for what will bcome live and active graphs, created based on db data relating to user interaction with phishing simulation. As these will later be considerd "live" or close to live, we wanted to get used to fast refreshing and caching standards.       |
+
 
 *Reasoning/Summary*: 
-Blurb here about why the above listed strategies were selected.
+<br>
+***Static*** and relatively unchanging elements such as CSS and images were set with caching parameters based on their importance and likelihood to change. 
+
+***Dynamic***  and *live* elements, like the future data-representational visualization aids (graphs) need to be cached and refreshed frequently. the timing used in our file (1 minute and 5 minutes) will likley be adjusted when the actual elements are developed. This code, like the placeholder static graph images, will be changed as the project developes. 
 
 ---
 ## Lessons Learned - 
