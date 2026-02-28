@@ -142,6 +142,10 @@ We spent quite a bit of time trying to figure out how to dynamically set routes 
 <br>
 We set up a temporary Nav bar to allow you to (*somewhat*) seamlessly navigate throught the site. this would ***absolutely be removed*** for the actual launch of the product and is merely there for ease of access. 
 
+<br>
+C-panel credentials were added and can be found in the commit history. Due to this oversight, we have since changed the c-panel db login credentials.
+
+
 Thank you for your time!
 Cheers, 
 
