@@ -118,6 +118,33 @@ The steps required to create your own certificate were covered in steps **4** & 
 ---
 ## Lessons Learned - 
 
-Reflect on any challenges you faced and the solutions you applied.
+**SSL Method Reflection:**
+<br>
+After a lot of consideration we decided to use OpenSSL to create out certificates and keys. We originally planned to use Let's Encrypt and Certbot because we would like to make the web application live but realized we'd need to purchase a domain to accomplish this. Using OpenSSL allows us to learn, test, and configure an https webpage without the conflict of ***money***. Each individual web developer on the team generated their own certificate and key and were able to access the pages with a https connection. 
 
+**Implementing HTTP Headers reflection:**
+<br>
+The above table discusses our implemented headers and reasoning.
+Helmet was very quick and easy to set up as almost all the default settings aligned with how we wanted our page secured. The biggest challenge would be trying to actually understand what it was doing in the background and what each individual header actually did. 
 
+**General Thoughts & Reflections**
+<br>
+For setting up our routes we linked our server.js file to our route/home folder to allow us to set our routes in a separate file. This will allow us to debug in the future without having to sift through the server.js file to find issues. This was very simple to set up with express.Router allowing us to set a path name such at "/" or "/dashboard" to our pages. We were also able to assign the title of each individual page and dynamically change it with includes and EJS.
+ 
+During the setup of our routes we implemented Cache control in each route.
+For pages that would theoretically have sensitive information like the admin/user login page we used no-store, to ensure that sensitive data was not cached. For the FAQ page as it is rarely changing we set the max-age to 30 days because this page is not changing. The home page also has a longer cache of 24 hours as it wont change frequently. With the dashboard in theory this data will be changing fairly frequently it has a max age of 60 seconds before revalidating.
+ 
+In terms of the content were caching, our files consist mostly of images and CSS files. We set these files to cache as public, allowing the browser clients and CDNs to cache this data for faster load times. CSS was cached for 24 hours and images are being cached for 30 days because these files tend to be larger and can slow down load times but also have no sensitive data attached. Images are stale-while-revalidating for 30 seconds so that even if they need to revalidate it will show the old version until that is done. 
+
+We spent quite a bit of time trying to figure out how to dynamically set routes and chaching. We managed to set up an array of images with file paths, ids, and alt text, and then pull these images onto our dashboard.EJS page. This data-set is cached for 5 minutes with a stale while revalidate of 30 seconds just for an example. We were trying to understand how to individually cache by id but it was quite difficult and we didn't end up figuring out how to do it. After reflection, the data in the array is being served as a whole and doesn’t require dynamic routing. This would work in the future if we had different information dynamically available on a single page that each required different caching rules.
+
+**Note:**
+<br>
+We set up a temporary Nav bar to allow you to (*somewhat*) seamlessly navigate throught the site. this would ***absolutely be removed*** for the actual launch of the product and is merely there for ease of access. 
+
+Thank you for your time!
+Cheers, 
+
+- Rachel P.
+- Euan F.
+- Finn O.
