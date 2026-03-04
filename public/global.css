@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*------------------------Colour Variables----------------------*/
+:root {
+  --LogoBlue: #513D86;
+  --PrimaryLightPurple: #B69DF8;
+  --PrimaryMidPurple: #6750A4;
+  --DarkModeBackground: #1f1f1f;
+  --DarkModeMid: #4f4e50;
+
+  --RegistrationContainer: #fffbfe;
+  --SideMenu: #333234;
+  --DashboardInnerContainers: #6f6f6f;
+
+  /*---Shadow effects---*/
+  box-shadow: inset 0 4 4px rgba(0, 0, 0, 0.25);
+
+}
