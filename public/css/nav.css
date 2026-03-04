@@ -1,0 +1,27 @@
+@import url('global.css');
+.navHeader {
+    background-color: #DAD8E1;
+    padding: 1rem;
+}
+
+.navHeader ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navHeader a {
+    color: #6750A4;
+    font-family: var(--BodyFont);
+    font-size: large;
+}
+
+.navHeader a:hover {
+color: #fff;
+}
+
+.navHeader ul li:last-of-type{
+    color: #fff;
+    background: var(--FaqButton);
+    padding: 1rem;
+}

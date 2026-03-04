@@ -17,8 +17,10 @@
   --RegistrationContainer: #fffbfe;
   --SideMenu: #333234;
   --DashboardInnerContainers: #6f6f6f;
+  --FaqButton: #78767D;
 
   /*---Shadow effects---*/
   box-shadow: inset 0 4 4px rgba(0, 0, 0, 0.25);
 
+    /*---FONT STACKS---*/
 }
