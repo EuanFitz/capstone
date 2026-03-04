@@ -1,6 +1,7 @@
 @import url('global.css');
+
 .navHeader {
-    background-color: #DAD8E1;
+    background-color: var(--RegistrationContainer);
     padding: 1rem;
 }
 
@@ -11,13 +12,13 @@
 }
 
 .navHeader a {
-    color: #6750A4;
+    color: var(--PrimaryMidPurple);
     font-family: var(--BodyFont);
     font-size: large;
 }
 
 .navHeader a:hover {
-color: #fff;
+    color: #fff;
 }
 
 .navHeader ul li:last-of-type{

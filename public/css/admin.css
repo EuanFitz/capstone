@@ -1,8 +1,7 @@
 @import url('global.css');
 
-
 h2{
-    font-family: var(--HeadFont);
+    font-family: var(--HeadFont)
 }   
 p, label, button, li{
     font-family: var(--BodyFont);
