@@ -14,19 +14,15 @@
         <section>
             <h2>Employee Registration</h2>
                 <form action="user.php" method="post"> 
-                    <div>
-                        <label for="first">First name*</label>
-                        <input type="text" name="first" id="first" placeholder="First name" required>
-                    </div>
-                    <div>
-                        <label for="last">Last name*</label>
-                        <input type="text" name="last" id="last" placeholder="Last name" required>
+                    <div class="full">
+                        <label for="first">Your full Name*</label>
+                        <input type="text" name="first" id="first" required>
                     </div>
                     <div>
                         <!-- This will be based on companies selected departments -->
                         <label for="department">Department*</label>
                         <select name="department" id="department" required>
-                            <option value="">Select Department</option>
+                            <option value=""></option>
                             <option value="">1</option>
                             <option value="">2</option>
                             <option value="">3</option>
@@ -37,7 +33,7 @@
                         <!-- This will be based on companies selected departments -->
                         <label for="company">Company*</label>
                         <select name="company" id="company" required>
-                            <option value="">Select Company</option>
+                            <option value=""></option>
                             <option value="">1</option>
                             <option value="">2</option>
                             <option value="">3</option> 
@@ -46,13 +42,14 @@
                     </div>
                     <div class="full">
                         <label for="email">Work Email*</label>
-                        <input type="email" name="email" id="email" placeholder="Email" required>
+                        <input type="email" name="email" id="email" required>
                     </div>
                     <div class="full">
                         <label for="phone">Work Phone(If Applicable)</label>
-                        <input type="tel" name="phone" id="phone" placeholder="Phone">
+                        <input type="tel" name="phone" id="phone">
                     </div>
                     <button class="full" type="submit" name="submit">Submit Registration</button>
+
                 </form>
         </section>
         <section>
