@@ -1,0 +1,15 @@
+nav {
+    background-color: var(--SideMenu);
+    color: #fff;
+}
+
+nav h2 {
+    font-family: kallisto, sans-serif;
+    font-weight: 300;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: "Comfortaa", sans-serif;
+}
