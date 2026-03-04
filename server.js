@@ -100,24 +100,24 @@ app.get("/graphs", (req,res)=>{
 
 
 //------------------------DATABASE CONNECT/QUERY------------
-const connection = require('connection');
+// const connection = require('connection.js');
 
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
+// connection.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
 
-//--------------------VVV QUIRIES HERE VVV---------------------------
+// //--------------------VVV QUIRIES HERE VVV---------------------------
 
-  connection.query('',function (error, results, feilds){
-    if (error) throw error;
-  })
+//   connection.query('',function (error, results, feilds){
+//     if (error) throw error;
+//   })
 
-  connection.end(); 
-});
-//------------------------ERROR HANDLING---------------------
-app.use((req, res) =>{
-    res.status(404).render("pages/404", { title: "Not found"});
-});
+//   connection.end(); 
+// });
+// //------------------------ERROR HANDLING---------------------
+// app.use((req, res) =>{
+//     res.status(404).render("pages/404", { title: "Not found"});
+// });
 
 
 //-------------------------Key & Cert------------------------
