@@ -1,8 +1,7 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+@import url('global.css');
+@import url('nav.css');
+@import url('footer.css');
+
 main{
     max-width: 1500px;
 }
@@ -15,9 +14,9 @@ body {
 
 main{
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 5fr 4fr;
     align-items: center;
-    font-family: sans-serif;
+    font-family: var(--BodyFont);
     gap: 2rem;
     text-align: center;
     color: #fff;
@@ -25,15 +24,14 @@ main{
 }
 
 main section:first-of-type{
-    background: #FFFBFE;
+    background: var(--RegistrationContainer);
     color: #000;
     border-radius: 20px;
-    padding-bottom: 2rem;
+    padding: 2rem;
 }
 
 main section:first-of-type h2{
-    padding-left: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom:  1rem;
 }
 
 main section form{
@@ -62,9 +60,8 @@ main section form div input, body section form div select{
     height: 40px;
     padding-left: 1rem;
     border: none;
-    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--inputShadow);
     font-size: large;
-    color: #878383;
 }
 main section form div label{
     padding-left: .3rem;
@@ -84,7 +81,7 @@ section form button{
 }
 
 section form button:hover {
-    background-color: #B69DF8;
+    background-color: var(--PrimaryLightPurple);
     color: #000;
 }
 
@@ -108,15 +105,5 @@ section:last-of-type p:last-of-type {
 
 .backButton:hover {
     background-color: #4A4459;
-    color: #B69DF8;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #222;
-    color: #F9FAFB;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    color: var(--PrimaryLightPurple);
 }
