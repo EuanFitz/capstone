@@ -20,6 +20,8 @@
   --SideMenu: #333234;
   --DashboardInnerContainers: #6f6f6f;
   --FaqButton: #78767D;
+  --ChartGradient: linear-gradient(to top, rgba(128,97,219,0.38), rgba(128,97,219,0.94));
+
 
   /*---Shadow effects---*/
   --inputShadow: inset 0 4 4px rgba(0, 0, 0, 0.25);
