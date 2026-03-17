@@ -8,6 +8,10 @@
 
 </head>
 <body>
+    <h1><%= title %></h1>
+
+    <main>
+<!-----------------------------Nav----------------------------->        
     <nav class="sideMenu">
 
         <div>
@@ -169,22 +173,56 @@
         </ul>
     </nav>
 
-    <h1><%= title %></h1>
+
     
-    <div id="images"></div>
+
 
 <!-------------------Main Dashboard content---------------------->
-<div id="graphContainer">
-<section>
-    <h3>Target</h3>
 
-</section>
+<div id="graphContainer">
+
+    <!-- chart docs at: https://www.w3schools.com/ai/ai_chartjs.asp -->
+
+    <section>
+        <h3>Target</h3>
+        <canvas  id="percentage" style="width:100%;max-width:700px"></canvas>
+    </section>
+
+    <section>
+        <h3>Tests Passed</h3>
+        <canvas  id="PieChart_A" style="width:100%;max-width:700px"></canvas>
+    </section>
+
+    <section>
+        <h3>Employee Status</h3>
+        <canvas id="PieChart_B" style="width:100%;max-width:700px"></canvas>
+    </section>
+
+    <section>
+        <h3>Results</h3>
+        <canvas id="BarChart" style="width:100%;max-width:700px"></canvas>
+
+    </section>
+
+    <section>
+        <canvas id="LineGraph" style="width:100%;max-width:700px"></canvas>
+
+
+    </section>
 
 </div>
+</main>
+
+
     <%- include('../includes/footer') %>
 </body>
 
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
+
+<script src="../includes/charts.js">
+
+</script>
+
 </html>
