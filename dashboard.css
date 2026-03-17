@@ -1,0 +1,23 @@
+nav {
+    background-color: var(--SideMenu);
+    color: #fff;
+
+}
+
+nav h2 {
+    font-family: var(--HeadFont);
+    font-weight: 300;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: var(--BodyFont);
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+}
