@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*------------------------Colour Variables----------------------*/
+:root {
+  --LogoBlue: #513D86;
+  --PrimaryLightPurple: #B69DF8;
+  --PrimaryMidPurple: #6750A4;
+  --DarkModeBackground: #1f1f1f;
+  --DarkModeMid: #4f4e50;
+  --PrimaryOffWhite: #FFFBFE;
+
+  --RegistrationContainer: #fffbfe;
+  --SideMenu: #333234;
+  --DashboardInnerContainers: #6f6f6f;
+  --FaqButton: #78767D;
+  --ChartGradient: linear-gradient(to top, rgba(128,97,219,0.38), rgba(128,97,219,0.94));
+
+
+  /*---Shadow effects---*/
+  --inputShadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  /*---FONT STACKS---*/
+  --HeadFont: kallisto, 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
+  --BodyFont: "Comfortaa", 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
+  --headingFont: "Inter", sans-serif;
+}
+
+body {
+  background: var(--DarkModeBackground);
+}
+/* ---------Nav------------------ */
+nav {
+  background-color: var(--SideMenu);
+  color: #fff;
+  display: grid;
+  grid-template-columns: min-content;
+  grid-template-rows: min-content min-content min-content;
+  gap: 1rem;
+  border-radius: 0 0 10px 10px;
+}
+
+nav div {
+  display: flex;
+  padding: 0 .5rem;
+  gap: .5rem;
+}
+
+nav h2 {
+    font-family: var(--HeadFont);
+    font-weight: 300;
+    align-self: center;
+}
+
+nav ul:first-of-type {
+  grid-row: 2/3;
+}
+
+nav ul:last-of-type {
+  border-top: 2px solid var(--DashboardInnerContainers);
+  grid-row: 3/4;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: var(--BodyFont);
+}
+
+
+h1 {
+  color: var(--PrimaryOffWhite);
+  font-family: var(--HeadFont);
+  font-weight: 500;
+}
+
+ h3 {
+  color: var(--PrimaryOffWhite);
+  font-family: var(--headingFont);
+  font-weight: 400;
+ }
+
+ 
+

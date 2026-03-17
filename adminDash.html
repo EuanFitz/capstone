@@ -8,10 +8,10 @@
 
 </head>
 <body>
-    <h1>PHP Title</h1>
+
 
     <main>
-<!-----------------------------Nav----------------------------->        
+<!-----------------------------Nav----------------------------->     <h1>Current Campaign Metrics</h1>       
     <nav class="sideMenu">
 
         <div>
@@ -175,7 +175,8 @@
 
 
     
-
+<body>
+    
 
 <!-------------------Main Dashboard content---------------------->
 
@@ -183,34 +184,41 @@
 
     <!-- chart docs at: https://www.w3schools.com/ai/ai_chartjs.asp -->
 
+
+    <!-- mini section with two charts -->
+
     <section>
         <h3>Target</h3>
+        <div class="dashboardInnerContainer">
         <canvas  id="percentage" style="width:100%;max-width:700px"></canvas>
+        </div>
     </section>
 
     <section>
         <h3>Tests Passed</h3>
+        <div class="dashboardInnerContainer">
         <canvas  id="PieChart_A" style="width:100%;max-width:700px"></canvas>
+        </div>
     </section>
 
+<!-- ----back to reg -->
     <section>
         <h3>Employee Status</h3>
+        <div class="dashboardInnerContainer">
         <canvas id="PieChart_B" style="width:100%;max-width:700px"></canvas>
+        </div>
     </section>
 
     <section>
         <h3>Results</h3>
+        <div class="dashboardInnerContainer">
         <canvas id="BarChart" style="width:100%;max-width:700px"></canvas>
-
-    </section>
-
-    <section>
-        <canvas id="LineGraph" style="width:100%;max-width:700px"></canvas>
-
+        </div>
 
     </section>
 
 </div>
+
 </main>
 
 

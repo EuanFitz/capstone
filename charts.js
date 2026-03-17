@@ -1,3 +1,5 @@
+Chart.defaults.global.defaultFontColor = '#FFFBFE';
+
 var BarColors = [
   "#d4caf2",
   "#B69DF8",
