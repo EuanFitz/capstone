@@ -16,6 +16,8 @@
   --DarkModeBackground: #1f1f1f;
   --DarkModeMid: #4f4e50;
   --PrimaryOffWhite: #FFFBFE;
+  --NeutralMid: #FFFBFE;
+  --SecondaryDarkBlue: #2F3252;
 
   --RegistrationContainer: #fffbfe;
   --SideMenu: #333234;
@@ -87,5 +89,19 @@ h1 {
   font-weight: 400;
  }
 
+ a {
+  font-family: var(--BodyFont);
+ }
+
+ p {
+  font-family: var(--BodyFont);
+ }
+
+ /* -----------------------------Classes--------------------- */
+ .lightContainer {
+  background-color: var(--NeutralMid);
+  border-radius: 20px;
+  box-shadow: var(--inputShadow);
+ }
  
 
