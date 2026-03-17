@@ -2,3 +2,4 @@ node_modules
 certificate.pem
 private-key.pem
 global/connection.php
+.env
