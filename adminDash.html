@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <!-- include Head -->
+ <!--  <?php include 'includes/head.inc'; ?> -->
+
     <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="global.css">
     <script src="/app.js" defer></script>
 
 </head>
@@ -12,7 +13,11 @@
 
     <main>
 <!-----------------------------Nav----------------------------->     <h1>Current Campaign Metrics</h1>       
-    <nav class="sideMenu">
+
+<!-- PHP put nav inc here -->
+ <!--  <?php include 'includes/sideNav.inc'; ?> -->
+
+<nav class="sideMenu">
 
         <div>
             <svg width="54" height="60" viewBox="0 0 320 356" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -172,8 +177,6 @@
 
         </ul>
     </nav>
-
-
     
 <body>
     
@@ -223,6 +226,7 @@
 
 
     <!-- PHP Include footer -->
+    <!--  <?php include 'includes/footer.inc'; ?> -->
 </body>
 
 <script

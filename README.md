@@ -13,15 +13,16 @@ Developing a web app designed to help companies improve internal web security vi
 <br> <br>
 ## Styling Rules - 
 
-### Includes Folder
+## Includes Folder
 The includes folder Contains:
 
 - Side Nav Menu
 - Head Links
 - Footer
 
+---
 ### Nav
-The Sive Nav Menu is located in the ***includes*** folder
+The Side Nav Menu is located in the ***includes*** folder
 <br>
 The Nav is styled globally in the Global.css sheet and uses `Display: Grid;`.
 <br>
@@ -29,7 +30,18 @@ The Nav can be added to pages via php include, and is compatible with both `disp
 <br>
 however, you must target the nav in the page-specific style sheet and disctate where on the page it must go. 
 
-**Note:**
+---
+
+### Head Links
+The html/php head links are included in the ***include*** folder.
+<br>
+There is currently a placeholder in the title:
+<br>
+ `<title><?php echo variable?> || ClickSafe.com  </title>`
+ <br>
+ This will need to be adjusted for PHP use, but will be nicely scalable. 
+
+## Notes:
 <br>
 Notes Here 
 
