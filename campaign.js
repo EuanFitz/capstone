@@ -1,4 +1,5 @@
 //PEOPLE
+// THIS WILL BE POPULATED VIA PHP
 const employees = [
   // Company 1
   { company_id: 1, department_id: 3, name: 'James Carter', phone: '403-555-0101' },
