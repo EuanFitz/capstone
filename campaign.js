@@ -166,6 +166,16 @@ const employees = [
   { company_id: 15, department_id: 25, name: 'Morgan Coleman', phone: '403-555-0248' },
   { company_id: 15, department_id: 3, name: 'Avery Watson', phone: '403-555-0249' },
   { company_id: 15, department_id: 2, name: 'Jordan Hayes', phone: '403-555-0250' },
+  { company_id: 15, department_id: 3, name: 'Drew Price', phone: '403-555-0241' },
+  { company_id: 15, department_id: 13, name: 'Blair Hughes', phone: '403-555-0242' },
+  { company_id: 15, department_id: 21, name: 'Chase Powell', phone: '403-555-0243' },
+  { company_id: 15, department_id: 25, name: 'Quinn Gray', phone: '403-555-0244' },
+  { company_id: 15, department_id: 2, name: 'Reese Ross', phone: '403-555-0245' },
+  { company_id: 15, department_id: 13, name: 'Tatum Jenkins', phone: '403-555-0246' },
+  { company_id: 15, department_id: 21, name: 'Hayden Perry', phone: '403-555-0247' },
+  { company_id: 15, department_id: 25, name: 'Morgan Coleman', phone: '403-555-0248' },
+  { company_id: 15, department_id: 3, name: 'Avery Watson', phone: '403-555-0249' },
+  { company_id: 15, department_id: 2, name: 'Jordan Hayes', phone: '403-555-0250' },
   // Company 16
   { company_id: 16, department_id: 3, name: 'Parker Patterson', phone: '403-555-0251' },
   { company_id: 16, department_id: 5, name: 'Finley Simmons', phone: '403-555-0252' },
@@ -314,17 +324,18 @@ function renderEmployees(deptFilter) {
     ? company15Employees
     : company15Employees.filter(emp => emp.department_id === deptFilter);
 
-  const tbody = document.getElementById('recipient-list');
-  tbody.innerHTML = '';
+  const recipientList = document.getElementById('recipient-list');
+  recipientList.innerHTML = '';
 
   filtered.forEach(function(emp) {
-    const row = document.createElement('tr');
+    const row = document.createElement('div');
+    row.classList.add('recipient-row');
     row.innerHTML = `
-      <td>${emp.name}</td>
-      <td>${emp.department_id}</td>
-      <td><input type="checkbox" name="recipients" value="${emp.phone}" data-dept="${emp.department_id}" /></td>
+      <span>${emp.name}</span>
+      <span>${emp.department_id}</span>
+      <input type="checkbox" name="recipients" value="${emp.phone}" data-dept="${emp.department_id}" />
     `;
-    tbody.appendChild(row);
+    recipientList.appendChild(row);
   });
 }
 

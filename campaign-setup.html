@@ -1,3 +1,23 @@
+<!-- <?php
+
+MAKE sure theres a company set first
+
+
+
+$companyId = $_POST['company_id'];
+
+//Queries
+$department_query = "SELECT * FROM department d JOIN company_department cd ON d.company_id = cd.company_id WHERE d.company_id = $companyId";
+
+$employees_query = "SELECT * FROM employee e WHERE e.company_id = $companyId";
+
+TURN Employees into JSon for javascripts 
+$employee_result = mysqli_query($connection, $employee_query);
+$employees = [];
+while ($emp = mysqli_fetch_assoc($employee_result)){
+    $employees[]= $emp;
+};
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +29,7 @@
 <body>
     <main>
         <h1>Create new campaign</h1>
-        <form action="">
+        <form action="successful-setup.html" method="post">
             <div class="campaign-setup">
                 <input type="text" name="campaign_name" id="campaign_name" placeholder="Campaign Name" required>
                 <div>
@@ -45,6 +65,14 @@
                     </div>
                     <!-- populate with php loop depending on company departments -->
                     <ul class="select-list">
+                 <!-- <?php 
+                 $company_dept = mysqli_query($connection, $department_query);
+
+                 while($departments = mysqli_fetch_assoc($company_dept)){
+                        echo "<li>$departments['department_name']</li>";
+                 }
+                 ?> -->
+                        
                         <li>All</li>
                         <li>HR</li>
                         <li>Engineering</li>
@@ -54,16 +82,15 @@
                 </div>
             <div class="recipient-text">
             <div>
-                <table>
-                <thead class="recipient-header">
-                    <th>Employee Name</th>
-                    <th>Department</th>
-                    <th><a href="#" class="select-all">Select All</a></th>
-                </thead>
-            <tbody id="recipient-list">
-                
-            </tbody>
-            </table>
+            <div class="recipient-list-container">
+                <div class="recipient-header">
+                    <span>Employee Name</span>
+                    <span>Department</span>
+                    <a href="#" class="select-all">Select All</a>
+                </div>
+            <div id="recipient-list" class="recipient-list"> 
+            </div>
+        </div>
             </div>
             <div class="description">
                 <label for="description">Description</label>
