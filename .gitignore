@@ -3,4 +3,5 @@ certificate.pem
 private-key.pem
 connection.php
 connection.js
+.env
 

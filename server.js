@@ -6,6 +6,9 @@ const path = require('path');
 const app = express();
 const PORT_HTTPS = 3443; 
 
+
+
+
 //--------------Helmet setup and stipulations-----------
 
 app.use(helmet({
@@ -54,8 +57,13 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const homeRoute = require("./routes/home");
+const adminRoute = require("./routes/admin");
+const authRoute = require("./routes/auth");
+
 
 app.use('/', homeRoute);
+app.use('/api/admin', adminRoute);
+app.use('/api/auth', authRoute);
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
@@ -70,6 +78,7 @@ app.use(express.static(
         }
     }
 }));
+
 const graphs = [
         {id: 1, filename: "Dashboard-piechart.png", alt: "A purple piechart"},
         {id: 2, filename: "Dashboard-bargraph.png", alt: "a purple bar graph"},
