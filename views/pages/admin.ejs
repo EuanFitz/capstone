@@ -11,7 +11,7 @@
     <main>
         <section>
             <h2>Admin Registration</h2>
-                <form>
+                <form method="POST" action="/api/auth/register">
                     <input type="hidden" value="company" value="3">
                     <div>
                         <label for="username">Username*</label>
@@ -22,7 +22,11 @@
                         <label for="password">Password*</label>
                         <input type="password" name="password" id="password" required>
                     </div>
-
+                    <select name="role" id="role" required>
+                        <option value="">Select Role</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
                         <button type="submit">Register</button>
                 </form>
         </section>
