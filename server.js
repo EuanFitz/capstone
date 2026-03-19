@@ -57,13 +57,15 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const homeRoute = require("./routes/home");
-const adminRoute = require("./routes/admin");
-const authRoute = require("./routes/auth");
+// const adminRoute = require("./routes/admin");
+// const authRoute = require("./routes/auth");
+// empty rn, comment out till updated
 
 
 app.use('/', homeRoute);
-app.use('/api/admin', adminRoute);
-app.use('/api/auth', authRoute);
+// app.use('/api/admin', adminRoute);
+// app.use('/api/auth', authRoute);
+// empty rn, comment out till updated
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
