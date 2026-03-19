@@ -4,7 +4,7 @@
   "description": "ClickSafe web application public server",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js --env-file=.env",
+    "dev": "node --env-file=.env server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "fs": "^0.0.1-security",
     "helmet": "^8.1.0",
     "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.3.1"
   }
 }

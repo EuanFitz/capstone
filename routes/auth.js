@@ -6,27 +6,32 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 
-// =============================
-// ==========REGISTER===========
-// =============================
+    
+    // =============================
+    // ==========REGISTER===========
+    // =============================
 
-
+router.post('/register', async (req, res) =>{
 //Get form values from adminregister.ejs 
+try{
 const { username, password, role } = req.body;
-//Check if username already exists
-const [exists] = await.db.query(`SELECT * FROM users WHERE username = ?,`[username]);
-if(exists.length > 0){
-    res.status(409).json({ message: "Username already exists"});
-}
 
-const hashedPassword = await argon2.hash(password);
 //Hash the password
+const hashedPassword = await argon2.hash(password);
+
 //Create new User
+
+const newUser = new User({username, password:hashedPassword, role});
 //Put it somewhere
+        await newUser.save();
 
 //Error handling
 
-
+}catch (error) { 
+        //if it goes wrong log the error to the server 
+        res.status(500).json({ error: error.message });
+  }
+});
 
 // =============================
 // ============LOGIN============
