@@ -20,12 +20,14 @@
   },
   "homepage": "https://github.com/EuanFitz/capstone#index.html",
   "dependencies": {
+    "argon2": "^0.44.0",
+    "body-parser": "^2.2.2",
     "ejs": "^4.0.1",
     "ejs-lint": "^2.0.1",
     "express": "^5.2.1",
     "fs": "^0.0.1-security",
     "helmet": "^8.1.0",
     "https": "^1.0.0",
-    "mysql2": "^3.20.0"
+    "mongoose": "^9.3.1"
   }
 }

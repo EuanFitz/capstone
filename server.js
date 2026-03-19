@@ -3,8 +3,10 @@ const https = require('https');
 const fs = require('fs');
 const helmet = require('helmet');
 const path = require('path');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
-const PORT_HTTPS = 3443; 
+const PORT_HTTPS = process.env.PORT || 3443; 
 
 
 
@@ -57,13 +59,15 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const homeRoute = require("./routes/home");
-const adminRoute = require("./routes/admin");
-const authRoute = require("./routes/auth");
+// const adminRoute = require("./routes/admin");
+// const authRoute = require("./routes/auth");
 
 
 app.use('/', homeRoute);
-app.use('/api/admin', adminRoute);
-app.use('/api/auth', authRoute);
+// app.use('/api/admin', adminRoute);
+// app.use('/api/auth', authRoute);
+
+app.use(bodyParser.json());
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
@@ -79,18 +83,30 @@ app.use(express.static(
     }
 }));
 
-const graphs = [
-        {id: 1, filename: "Dashboard-piechart.png", alt: "A purple piechart"},
-        {id: 2, filename: "Dashboard-bargraph.png", alt: "a purple bar graph"},
-        {id: 3, filename: "Dashboard-linegraph.png", alt: "a purple line graph"},
-        {id: 4, filename: "Dashboard-percentage.png", alt: "a circular representation of a percentage"},
-        {id: 5, filename: "Dashboard-circlegraph.png", alt: "a circle graph"}
-    ];
+//======MONGODB Connection===========//
 
-app.get("/graphs", (req,res)=>{
-    res.set('Cache-Control', 'max-age=300, stale-while-revalidate=60');
-    res.json(graphs);
-});
+async function connectDB() {
+    try{
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('MongoDB connected!');
+    } catch (error){
+        console.error('MOGO CONNECTION ERROR:', error);
+        process.exit(1);
+    }
+}
+
+// const graphs = [
+//         {id: 1, filename: "Dashboard-piechart.png", alt: "A purple piechart"},
+//         {id: 2, filename: "Dashboard-bargraph.png", alt: "a purple bar graph"},
+//         {id: 3, filename: "Dashboard-linegraph.png", alt: "a purple line graph"},
+//         {id: 4, filename: "Dashboard-percentage.png", alt: "a circular representation of a percentage"},
+//         {id: 5, filename: "Dashboard-circlegraph.png", alt: "a circle graph"}
+//     ];
+
+// app.get("/graphs", (req,res)=>{
+//     res.set('Cache-Control', 'max-age=300, stale-while-revalidate=60');
+//     res.json(graphs);
+// });
 
 // app.get("/graphs/:id", (req, res) => {
 
@@ -141,5 +157,6 @@ const httpsServer = https.createServer(options, app);
 
 // ----------------------------Server start call---------------
 httpsServer.listen(PORT_HTTPS, () => {
+    connectDB();
     console.log(`HTTPS Server running at https://localhost:${PORT_HTTPS}`);
 });

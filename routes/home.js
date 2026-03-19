@@ -15,17 +15,17 @@ router.get("/faq", (req, res) =>{
     });
 });
 
-router.get("/user", (req, res) =>{
+router.get("/login", (req, res) =>{
     res.set('Cache-Control', 'no-store'); //No cache can have sensitive data
-    res.render('pages/user', {
-        title: "User Intake"
+    res.render('pages/adminlogin', {
+        title: "Login"
     });
 });
 
-router.get("/admin", (req, res) =>{
+router.get("/register", (req, res) =>{
     res.set('Cache-Control', 'no-store'); //No cache can have sensitive data
     res.render('pages/admin', {
-        title: "Admin Login"
+        title: "Register"
     });
 });
 
