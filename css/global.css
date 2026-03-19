@@ -76,7 +76,7 @@ nav ul li a{
     font-family: var(--BodyFont);
 }
 
-
+/* ---------------------Text & Links------------------------ */
 h1 {
   color: var(--PrimaryOffWhite);
   font-family: var(--HeadFont);

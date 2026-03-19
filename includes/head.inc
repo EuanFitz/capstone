@@ -2,4 +2,4 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo variable ?> || ClickSafe.com  </title>    
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="css/global.css">
