@@ -61,12 +61,21 @@ router.post('/login', async (req, res) =>{
                 process.env.JWT_SECRET,
                 { expiresIn: "1h" },
         );
+
+        //-------Adding cookie code ------ -RP
+        res.cookie('token', token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                maxAge: 60 * 60 * 1000 // An hour.
+        });
         
         //login successful message
-        res.status(200).json({ message: `${username} Login Successful`, token });
-        } catch (error) {
-        res.status(500).json({ error: error.message });
-        }
+    res.status(200).json({ message: `${username} Login Successful` });
+ 
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
-
+ 
 module.exports = router;

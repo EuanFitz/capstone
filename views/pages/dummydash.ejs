@@ -21,8 +21,9 @@
 <h2>ClickSafe</h2>
 
         </div>
-        <!-- Dashboard Items -->
+        <!-- Nav Items: Admin -->
         <ul>
+        <% if (user.role === 'admin') { %>
             <li>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_206_2607)">
@@ -95,12 +96,12 @@
 </svg>
 <a href="">Item 4</a>
             </li>
-
+    <% } %>
         </ul>
 
 
 
-        <!--  General Items-->
+        <!--  Nav Items: User/all-->
         <ul>
             <li>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,9 +172,7 @@
 
         </ul>
     </nav>
-
-
-    
+  
 
 
 <!-------------------Main Dashboard content---------------------->
@@ -181,33 +180,43 @@
 <div id="graphContainer">
 
     <!-- chart docs at: https://www.w3schools.com/ai/ai_chartjs.asp -->
+<!---------------------------Admin and User view---------------->
+ <section>
+  <h3>Your Results</h3>
+  <canvas id="LineGraph" style="width:100%;max-width:700px"></canvas>
+</section>
 
-    <section>
-        <h3>Target</h3>
-        <canvas  id="percentage" style="width:100%;max-width:700px"></canvas>
-    </section>
+<section>
+  <h3>Tests Passed</h3>
+  <canvas id="PieChart_A" style="width:100%;max-width:700px"></canvas>
+</section>
 
-    <section>
-        <h3>Tests Passed</h3>
-        <canvas  id="PieChart_A" style="width:100%;max-width:700px"></canvas>
-    </section>
+<!-- ------------user Only View -->
+<% if (user.role === 'user') { %>
+  <section class="user-only-section">
+    <h3>My Training Progress</h3>
+    <p>Complete your next module to stay protected.</p>
+    <canvas id="percentage" style="width:100%;max-width:700px"></canvas>
+  </section>
+<% } %>
 
-    <section>
-        <h3>Employee Status</h3>
-        <canvas id="PieChart_B" style="width:100%;max-width:700px"></canvas>
-    </section>
+<!---------------Admin Only View -->
+<% if (user.role === 'admin') { %>
+  <section class="admin-only-section">
+    <h3>Target — Organisation Overview</h3>
+    <canvas id="percentage" style="width:100%;max-width:700px"></canvas>
+  </section>
 
-    <section>
-        <h3>Results</h3>
-        <canvas id="BarChart" style="width:100%;max-width:700px"></canvas>
+  <section class="admin-only-section">
+    <h3>Employee Status</h3>
+    <canvas id="PieChart_B" style="width:100%;max-width:700px"></canvas>
+  </section>
 
-    </section>
-
-    <section>
-        <canvas id="LineGraph" style="width:100%;max-width:700px"></canvas>
-
-
-    </section>
+  <section class="admin-only-section">
+    <h3>Campaign Results</h3>
+    <canvas id="BarChart" style="width:100%;max-width:700px"></canvas>
+  </section>
+<% } %>
 
 </div>
 </main>
@@ -217,7 +226,7 @@
 </body>
 
 <script
-src="https://cdn.jsdelivr.net/npm/chart.js"">
+src="https://cdn.jsdelivr.net/npm/chart.js">
 </script>
 
 <script src="/js/charts.js">

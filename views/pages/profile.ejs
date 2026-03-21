@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../includes/head') %>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+<header>
+  <%- include('../includes/nav') %>
+</header>
+
+<main class="profileMain">
+
+
+  <section class="profileCard">
+    <div class="avatarWrapper">
+      <div class="avatar">
+        
+        <span id="avatarInitials"><%= user && user.username ? user.username.charAt(0).toUpperCase() : 'U' %></span>
+      </div>
+      <div class="roleTag roleTag--<%= user.role %>">
+        <%= user.role === 'admin' ? '🛡️ Admin' : '👤 Employee' %>
+      </div>
+    </div>
+
+    <h2 id="profileUsername">Loading...</h2>
+    <p class="profileSubtext">ClickSafe Member</p>
+<!-----------------------------Left: profile stuff-->
+    <div class="profileStats">
+      <div class="profileStat">
+        <span class="statVal">3</span>
+        <span class="statKey">Campaigns</span>
+      </div>
+      <div class="profileStat">
+        <span class="statVal">86%</span>
+        <span class="statKey">Pass Rate</span>
+      </div>
+      <div class="profileStat">
+        <span class="statVal">2</span>
+        <span class="statKey">Badges</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- -----------------------Right: Info & Settings, etc. -->
+  <section class="profileDetails">
+    <h2>Account Details</h2>
+
+    <form id="profileForm">
+      <div class="full">
+        <label for="displayName">Display Name</label>
+        <input type="text" id="displayName" name="displayName" placeholder="Your name">
+      </div>
+
+      <div class="full">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="email@company.com">
+      </div>
+
+      <div class="full">
+        <label for="department">Department</label>
+        <input type="text" id="department" name="department" placeholder="e.g. IT, HR, Finance">
+      </div>
+
+      <!------------------Admin-only: role display -->
+      <% if (user.role === 'admin') { %>
+      <div class="full adminOnlyField">
+        <label>Role</label>
+        <input type="text" value="Administrator" readonly class="readonlyInput">
+      </div>
+      <% } %>
+
+      <button class="full" type="submit">Save Changes</button>
+    </form>
+
+    <!-----------------------Change Password -->
+    <div class="passwordSection">
+      <h3>Change Password</h3>
+
+      <form id="passwordForm">
+        <div class="full">
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" name="currentPassword">
+        </div>
+        <div class="full">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" name="newPassword">
+        </div>
+        <button class="full" type="submit">Update Password</button>
+      </form>
+    </div>
+
+    <a href="/" class="backButton">Go back</a>
+  </section>
+
+</main>
+
+<%- include('../includes/footer') %>
+
+<script>
+//-------------------- show name
+  const token = localStorage.getItem('token');
+  if (token) {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      document.getElementById('profileUsername').textContent = payload.username || 'User';
+    } catch(e) {}
+  }
+
+  document.querySelector(".backButton").addEventListener("click", (e) => {
+    e.preventDefault();
+    history.back();
+  });
+</script>
+</body>
+</html>

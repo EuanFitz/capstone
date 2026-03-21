@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../includes/head') %>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/adminpanel.css">
+</head>
+<body>
+  <h1><%= title %></h1>
+  <main>
+    <nav class="sideMenu">
+      <div>
+        <!-- Your ClickSafe SVG Logo -->
+        <svg width="54" height="60" viewBox="0 0 320 356" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M156.033 0.462886C157.973 -0.152847 160.056 -0.154286 161.996 0.458532L297.359 43.1975C300.549 44.2047 303.001 46.7149 303.827 49.9607C309.369 71.7382 329.352 157.697 314.781 212.909C294.379 290.218 190.912 343.26 166.517 354.815C163.212 356.38 159.505 356.396 156.188 354.856C131.577 343.427 26.6358 290.66 5.59192 212.909C-9.3037 157.874 9.68047 71.939 14.9998 50.0313C15.798 46.7441 18.2603 44.1935 21.4803 43.1714L156.033 0.462886Z" fill="#B69DF8"/>
+        </svg>
+        <h2>ClickSafe</h2>
+      </div>
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/admin" class="active">Admin Panel</a></li>
+        <li><a href="/profile">Account</a></li>
+      </ul>
+      <ul>
+        <li><a href="/profile">Account</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+    </nav>
+
+    <div id="adminContent">
+
+      <!-- Stats row -->
+      <div class="statsRow">
+        <div class="statCard">
+          <span class="statNumber" id="totalEmployees">--</span>
+          <span class="statLabel">Total Employees</span>
+        </div>
+        <div class="statCard">
+          <span class="statNumber" id="activeCampaigns">--</span>
+          <span class="statLabel">Active Campaigns</span>
+        </div>
+        <div class="statCard">
+          <span class="statNumber" id="passRate">--</span>
+          <span class="statLabel">Avg. Pass Rate</span>
+        </div>
+        <div class="statCard">
+          <span class="statNumber" id="atRisk">--</span>
+          <span class="statLabel">At Risk Users</span>
+        </div>
+      </div>
+
+      <!-- User Management Table -->
+      <section class="adminSection">
+        <div class="sectionHeader">
+          <h3>User Management</h3>
+          <button class="actionButton" id="addUserBtn">+ Add User</button>
+        </div>
+        <div class="tableWrapper">
+          <table class="adminTable">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Last Active</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody">
+              <tr>
+                <td colspan="5" style="text-align:center; opacity:0.6;">Loading users...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Campaign Management -->
+      <section class="adminSection">
+        <div class="sectionHeader">
+          <h3>Campaign Overview</h3>
+          <a href="/admin/campaigns/new" class="actionButton">+ New Campaign</a>
+        </div>
+        <div class="tableWrapper">
+          <table class="adminTable">
+            <thead>
+              <tr>
+                <th>Campaign Name</th>
+                <th>Type</th>
+                <th>Started</th>
+                <th>Completion</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Q1 Phishing Sim</td>
+                <td>Phishing</td>
+                <td>Jan 2025</td>
+                <td>
+                  <div class="progressBar">
+                    <div class="progressFill" style="width:72%"></div>
+                  </div>
+                  <span>72%</span>
+                </td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr>
+                <td>Security Awareness</td>
+                <td>Training</td>
+                <td>Feb 2025</td>
+                <td>
+                  <div class="progressBar">
+                    <div class="progressFill" style="width:45%"></div>
+                  </div>
+                  <span>45%</span>
+                </td>
+                <td><span class="badge badge--active">Active</span></td>
+              </tr>
+              <tr>
+                <td>Password Hygiene</td>
+                <td>Training</td>
+                <td>Dec 2024</td>
+                <td>
+                  <div class="progressBar">
+                    <div class="progressFill" style="width:100%"></div>
+                  </div>
+                  <span>100%</span>
+                </td>
+                <td><span class="badge badge--complete">Complete</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <%- include('../includes/footer') %>
+</body>
+</html>

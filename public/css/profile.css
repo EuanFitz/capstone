@@ -1,0 +1,144 @@
+@import url('global.css');
+@import url('nav.css');
+@import url('footer.css');
+
+.profileMain {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  color: #fff;
+}
+
+/* ---- Profile Card ---- */
+.profileCard {
+  background: var(--SideMenu);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.avatarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--PrimaryMidPurple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-family: var(--HeadFont);
+  color: #fff;
+  border: 3px solid var(--PrimaryLightPurple);
+}
+
+.roleTag {
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-family: var(--BodyFont);
+  font-size: 0.85rem;
+}
+
+.roleTag--admin {
+  background: var(--PrimaryMidPurple);
+  color: #fff;
+}
+
+.roleTag--user {
+  background: #333;
+  color: var(--PrimaryLightPurple);
+  border: 1px solid var(--PrimaryLightPurple);
+}
+
+.profileCard h2 {
+  font-family: var(--HeadFont);
+  font-size: 1.5rem;
+}
+
+.profileSubtext {
+  opacity: 0.6;
+  font-family: var(--BodyFont);
+  font-size: 0.9rem;
+}
+
+.profileStats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.profileStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statVal {
+  font-family: var(--HeadFont);
+  font-size: 1.5rem;
+  color: var(--PrimaryLightPurple);
+}
+
+.statKey {
+  font-family: var(--BodyFont);
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* ---- Profile Details ---- */
+.profileDetails {
+  background: #FFFBFE;
+  color: #000;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profileDetails h2,
+.profileDetails h3 {
+  font-family: var(--HeadFont);
+}
+
+.profileDetails h2 { font-size: 2rem; }
+.profileDetails h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+#profileForm,
+#passwordForm {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.passwordSection {
+  border-top: 1px solid #DED8E1;
+  padding-top: 1.5rem;
+}
+
+.adminOnlyField input.readonlyInput {
+  background: #e8e3ef;
+  cursor: not-allowed;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .profileMain {
+    grid-template-columns: 1fr;
+  }
+}

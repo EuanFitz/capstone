@@ -1,3 +1,6 @@
+require('dotenv').config(); // Adding here to test if fixes token reading issues - rp
+// npm install dotenv
+
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
@@ -65,13 +68,16 @@ app.set("views", path.join(__dirname, "views"));
 const homeRoute = require("./routes/home");
 const adminRoute = require("./routes/admin");
 const authRoute = require("./routes/auth");
-// empty rn, comment out till updated
+const profileRoute = require("./routes/profile");
+const cookieParser = require('cookie-parser'); // added for cookie use - RP
 
 
+app.use(cookieParser()); // Do cookie things! -RP
 app.use('/', homeRoute);
-app.use('/api/admin', adminRoute);
+app.use('/api/admin', adminRoute); // should be admin only!
 app.use('/api/auth', authRoute);
-// empty rn, comment out till updated
+app.use('/api/profile', profileRoute); // should be when anyone is logged in.
+
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
