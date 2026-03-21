@@ -1,7 +1,7 @@
 "use strict";
 const express = require('express');
 const argon2 = require('argon2');
-
+const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 
@@ -24,6 +24,9 @@ const hashedPassword = await argon2.hash(password);
 const newUser = new User({username, password:hashedPassword, role});
 //Put it somewhere
         await newUser.save();
+
+        //Send status when it works
+        res.status(201).json({ message: 'User created successfully' }); 
 
 //Error handling
 

@@ -4,11 +4,10 @@ const fs = require('fs');
 const helmet = require('helmet');
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const app = express();
 const PORT_HTTPS = process.env.PORT || 3443; 
 
-
+app.use(express.json());
 
 
 //--------------Helmet setup and stipulations-----------
@@ -22,7 +21,7 @@ app.use(helmet({
     contentSecurityPolicy: {
       directives: {
         "defaultSrc": ["'self'"], 
-        "scriptSrc": ["'self'"], 
+        "scriptSrc": ["'self'", "https://cdn.jsdelivr.net"],
         "styleSrc": ["'self'", "'unsafe-inline'"], 
         "imgSrc": ["'self'", "data:"], 
         "upgradeInsecureRequests": [],
@@ -59,17 +58,15 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const homeRoute = require("./routes/home");
-// const adminRoute = require("./routes/admin");
-// const authRoute = require("./routes/auth");
+const adminRoute = require("./routes/admin");
+const authRoute = require("./routes/auth");
 // empty rn, comment out till updated
 
 
 app.use('/', homeRoute);
-// app.use('/api/admin', adminRoute);
-// app.use('/api/auth', authRoute);
+app.use('/api/admin', adminRoute);
+app.use('/api/auth', authRoute);
 // empty rn, comment out till updated
-
-app.use(bodyParser.json());
 
 app.use(express.static(
     path.join(__dirname, 'public'), {

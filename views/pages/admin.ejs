@@ -3,6 +3,7 @@
 <head>
     <%- include('../includes/head') %>
     <link rel="stylesheet" href="/css/admin.css">
+    <script src="/js/adminregister.js" defer></script>
 </head>
 <body>
     <header>
@@ -11,7 +12,7 @@
     <main>
         <section>
             <h2>Admin Registration</h2>
-                <form method="POST" action="/api/auth/register">
+                <form id="register" action="">
                     <input type="hidden" value="company" value="3">
                     <div>
                         <label for="username">Username*</label>
@@ -49,4 +50,3 @@
     <%- include('../includes/footer') %>
 </body>
 </html>
-<script src="/js/adminregister.js"></script>

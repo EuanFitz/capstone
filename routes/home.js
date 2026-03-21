@@ -29,9 +29,16 @@ router.get("/register", (req, res) =>{
     });
 });
 
+router.get("/success", (req, res) =>{
+    res.set('Cache-Control', 'no-store'); //No cache can have sensitive data
+    res.render('pages/success', {
+        title: "Registered"
+    });
+});
+
 router.get("/dashboard", (req,res) =>{
     res.set('Cache-Control', "max-age=60,"); //
-    res.render("pages/dashboard", {
+    res.render("pages/dummydash", {
         title: "dashboard"
     });
 });
