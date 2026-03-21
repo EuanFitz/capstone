@@ -4,8 +4,8 @@ const fs = require('fs');
 const helmet = require('helmet');
 const path = require('path');
 const app = express();
-const PORT_HTTPS = 3443; 
-
+const PORT_HTTPS = process.env.PORT || 3000; 
+// same as 'app.js' - note to self
 
 
 
@@ -57,13 +57,25 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const homeRoute = require("./routes/home");
-const adminRoute = require("./routes/admin");
-const authRoute = require("./routes/auth");
+// const adminRoute = require("./routes/admin");
+// const authRoute = require("./routes/auth");
 
 
 app.use('/', homeRoute);
-app.use('/api/admin', adminRoute);
-app.use('/api/auth', authRoute);
+// app.use('/api/admin', adminRoute);
+// app.use('/api/auth', authRoute);
+
+async function connectDB() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB Connected");
+  } catch (error) {
+    console.error("MONGO CONNECTION ERROR: ", error);
+    process.exit(1);
+  }
+}
+
+
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
