@@ -29,8 +29,7 @@ app.use(helmet({
         "styleSrc": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], 
         "fontSrc": ["'self'", "https://fonts.gstatic.com"], 
         "imgSrc": ["'self'", "data:"], 
-        "upgradeInsecureRequests": [],
-        // "requireTrustedTypesFor": ["'script'"],
+        "upgradeInsecureRequests": []
 
       },
     }
