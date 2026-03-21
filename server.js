@@ -5,6 +5,10 @@ const helmet = require('helmet');
 const path = require('path');
 const mongoose = require('mongoose');
 const app = express();
+const session = require('express-session');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 const PORT_HTTPS = process.env.PORT || 3443; 
 
 app.use(express.json());
@@ -22,7 +26,8 @@ app.use(helmet({
       directives: {
         "defaultSrc": ["'self'"], 
         "scriptSrc": ["'self'", "https://cdn.jsdelivr.net"],
-        "styleSrc": ["'self'", "'unsafe-inline'"], 
+        "styleSrc": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], 
+        "fontSrc": ["'self'", "https://fonts.gstatic.com"], 
         "imgSrc": ["'self'", "data:"], 
         "upgradeInsecureRequests": [],
         // "requireTrustedTypesFor": ["'script'"],

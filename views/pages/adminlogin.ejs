@@ -12,7 +12,7 @@
         <section>
             <h2>Employee Registration</h2>
 <!-- temp deleting the action and method (user.php and POST) to make page static for assignment submission -->
-                <form action="POST" method=""> 
+                <form id="login" action="POST" method=""> 
                     <div class="full">
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" required>
@@ -42,7 +42,7 @@
     <%- include('../includes/footer') %>
 </body>
 </html>
-
+<script src="/js/login.js"></script>
 <script>
   const goBackLink = document.querySelector(".backButton");
   goBackLink.addEventListener("click", (event) => {

@@ -41,13 +41,32 @@ const newUser = new User({username, password:hashedPassword, role});
 // =============================
 
 //Get form values from admin.ejs
-//Check if username exists
-//error if !user
-//if user exists check if passwords match using argon2
-//if match next()
-//if not match "Password doesn't match"
-//Assign jwt
-//login successful message
-
+router.post('/login', async (req, res) =>{
+        try{
+                const { username, password} = req.body;
+        //Check if username exists
+        const user = await User.findOne({ username });
+        //error if !user
+        if (!user)
+        return res.status(400).json({ message: `${username} not found` });
+        //if user exists check if passwords match using argon2
+        const isMatch = await argon2.verify(user.password, password);
+        if (!isMatch)
+        //if not match "Password doesn't match"
+        return res.status(400).json({ message: "Invalid Credentials" });
+        //if match next()
+        //Assign jwt
+        const token = jwt.sign(
+                { id: user._id, role: user.role },
+                process.env.JWT_SECRET,
+                { expiresIn: "1h" },
+        );
+        
+        //login successful message
+        res.status(200).json({ message: `${username} Login Successful`, token });
+        } catch (error) {
+        res.status(500).json({ error: error.message });
+        }
+});
 
 module.exports = router;
