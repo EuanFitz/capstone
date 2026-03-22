@@ -276,8 +276,9 @@ If their role is permitted, the request continues normally.
 **- EJS Templating Syntax**
     <br> A small but memorable lesson: <% %> has JavaScript  die silently, while <%= %> outputs a value to the page. Mixing these up caused template variables to appear blank with no error thrown, which was initially difficult to diagnose (mostly for Rachel and her dyslexic butt!) -RP.
 
-**- Other Lessons here**
-    <br> context
+**- OAuth**
+    <br> Setting up Oatuth was a big challenge. There are a lot of steps where things can go wrong from our code setup -> google  -> callback -> token -> cookie. Spelling mistakes result in cryptic errors and can make it hard to pinpoint what went wrong.  It is important to be organized with the file setup. This made it easier to find my spelling mistakes and bugs.  I updated the User model and learned what "sparse" meant,. Basically when MongoDB goes through users it will only include this row IF it is set. Otherwise it will ignore the  null values so we don’t get duplicate null errors. -EF
+
 
 **- Other Lessons here**
     <br> context
