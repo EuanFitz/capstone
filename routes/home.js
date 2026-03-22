@@ -59,6 +59,10 @@ router.get("/", (req, res) => {
   res.render('pages/index', { title: "Home" });
 });
 
+router.get("/404", (req, res) => {
+  res.set('Cache-Control', 'public, max-age=86400');
+  res.render('pages/404', { title: "ClickSafe Error Message" });
+});
 
 router.get("/login", (req, res) => {
   res.set('Cache-Control', 'no-store');
@@ -95,6 +99,7 @@ router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
 router.get("/profile", authMiddleware, authorize("admin","user"),(req, res) => {
   res.set('Cache-Control', 'public, max-age=2592000');
   res.render('pages/profile', {
+    username: req.user.username,
     title: "Your Profile",
     user: req.user
     });

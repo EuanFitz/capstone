@@ -3,12 +3,7 @@ const authorize = require("../middleware/authorization");
 const authMiddleware = require("../middleware/auth");
 const router = express.Router();
 
-//  accessible to both admin and user roles
-router.get("/", authMiddleware, authorize("admin", "user"), (req, res) => {
-  res.set('Cache-Control', 'no-store');
-  res.render('pages/profile', {
-    user: req.user
-  });
-});
+// Future API routes go here. when we update passwords and other changes for the user.
+
 
 module.exports = router;

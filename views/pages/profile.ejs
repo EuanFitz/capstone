@@ -14,6 +14,7 @@
 
 
   <section class="profileCard">
+    <h1><%= title %></h1>
     <div class="avatarWrapper">
       <div class="avatar">
         
@@ -24,7 +25,7 @@
       </div>
     </div>
 
-    <h2 id="profileUsername">Loading...</h2>
+    <p><%= username %></p>
     <p class="profileSubtext">ClickSafe Member</p>
 <!-----------------------------Left: profile stuff-->
     <div class="profileStats">
@@ -99,14 +100,7 @@
 <%- include('../includes/footer') %>
 
 <script>
-//-------------------- show name
-  const token = localStorage.getItem('token');
-  if (token) {
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      document.getElementById('profileUsername').textContent = payload.username || 'User';
-    } catch(e) {}
-  }
+//-------------------- back button → make include later
 
   document.querySelector(".backButton").addEventListener("click", (e) => {
     e.preventDefault();
