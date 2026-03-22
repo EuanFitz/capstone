@@ -41,6 +41,27 @@ There is currently a placeholder in the title:
  <br>
  This will need to be adjusted for PHP use, but will be nicely scalable. 
 
+
+## Envirnoment Requirements:
+
+```├── argon2@0.44.0
+├── body-parser@2.2.2
+├── cookie-parser@1.4.7
+├── dotenv@17.3.1
+├── ejs-lint@2.0.1
+├── ejs@4.0.1
+├── express-session@1.19.0
+├── express@5.2.1
+├── fs@0.0.1-security
+├── helmet@8.1.0
+├── https@1.0.0
+├── jsonwebtoken@9.0.3
+├── mongoose@9.3.1
+├── passport-google-oauth20@2.0.0
+└── passport@0.7.0
+```
+
+
 ## Notes:
 <br>
 Notes Here 
