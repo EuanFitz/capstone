@@ -5,9 +5,7 @@ const helmet = require('helmet');
 const path = require('path');
 const mongoose = require('mongoose');
 const app = express();
-const session = require('express-session');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const passport = require('./routes/passport');
 
 const PORT_HTTPS = process.env.PORT || 3443; 
 
@@ -34,6 +32,11 @@ app.use(helmet({
       },
     }
 }));
+
+
+// Initialize Passport and session
+app.use(passport.initialize());
+
 
 
 // ------------- Configure ejs and setting route to views -------------//////
@@ -64,13 +67,14 @@ app.set("views", path.join(__dirname, "views"));
 const homeRoute = require("./routes/home");
 const adminRoute = require("./routes/admin");
 const authRoute = require("./routes/auth");
-// empty rn, comment out till updated
+// const passportRoute = require("./routes/passport");
+
 
 
 app.use('/', homeRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/auth', authRoute);
-// empty rn, comment out till updated
+
 
 app.use(express.static(
     path.join(__dirname, 'public'), {
@@ -97,55 +101,6 @@ async function connectDB() {
         process.exit(1);
     }
 }
-
-// const graphs = [
-//         {id: 1, filename: "Dashboard-piechart.png", alt: "A purple piechart"},
-//         {id: 2, filename: "Dashboard-bargraph.png", alt: "a purple bar graph"},
-//         {id: 3, filename: "Dashboard-linegraph.png", alt: "a purple line graph"},
-//         {id: 4, filename: "Dashboard-percentage.png", alt: "a circular representation of a percentage"},
-//         {id: 5, filename: "Dashboard-circlegraph.png", alt: "a circle graph"}
-//     ];
-
-// app.get("/graphs", (req,res)=>{
-//     res.set('Cache-Control', 'max-age=300, stale-while-revalidate=60');
-//     res.json(graphs);
-// });
-
-// app.get("/graphs/:id", (req, res) => {
-
-//     const id = parseInt(req.params.id);
-
-//     const graph = graphs.find(c => c.id === id);
-
-//     if (!graph) {
-//         return res.status(404).send("Not found");
-//     }
-
-//     res.set("Cache-Control", "public, max-age=300");
-
-//     res.json(graph);
-// });
-
-
-//------------------------DATABASE CONNECT/QUERY------------
-// const connection = require('connection.js');
-
-// connection.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-
-// //--------------------VVV QUIRIES HERE VVV---------------------------
-
-//   connection.query('',function (error, results, feilds){
-//     if (error) throw error;
-//   })
-
-//   connection.end(); 
-// });
-// //------------------------ERROR HANDLING---------------------
-// app.use((req, res) =>{
-//     res.status(404).render("pages/404", { title: "Not found"});
-// });
 
 
 //-------------------------Key & Cert------------------------
