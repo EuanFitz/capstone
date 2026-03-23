@@ -89,11 +89,15 @@ MONGO_URI=your_mongodb_connection_string_here
 JWT_SECRET=your_secret_key_here
 NODE_ENV=development
 PORT=3443
+GOOGLE_CLIENT_ID= your_google_client_connection_string_here
+GOOGLE_CLIENT_SECRET= your_secret_key_here
 ```
 
 **Notes:**
 - `MONGO_URI` — Get this from your MongoDB Atlas dashboard
 - `JWT_SECRET` — Choose any long, random string. The longer the better. e.g. `myS3cur3S3cr3tK3y!`
+- `GOOGLE_CLIENT_ID` — get from google cloud services
+- `GOOGLE_CLIENT_SECRET` — another random string here. 
 - `NODE_ENV` — Use `development` locally. Do **not** change this to `production` unless deploying.
 - The `.env` file is listed in `.gitignore` and **must never be committed to GitHub.** Contact the dev team for the correct values.
 
@@ -131,6 +135,11 @@ The ClickSafe Dev Team
 - if (profile, FAQ, dummydash) pages are attempted to be access through manually altering the URL, they are instead redirected to the login page, as they don't have a cookie/session. or session via cookie. However, the 404 error page was made accessible in case it needed to be referenced when a user is not logged in. 
 - on /profile, the change details and password forms are not functional yet, but will be later on. (A secondary route page has been made for incoming changes)
 - footer links and interactions are currently disabled as well and are there for aesthetics only currently.
+
+### Secure Hashing and password authentication - 
+We are using argon2, which hashes the passwords and stores them( hashed) in our db. When logging in, the password is hashed again by Argon2 and **must match** the stored password. Else, the user is given the respective error message that either their username or password does not match what is stored in the db. 
+<br>
+additioanlly, it has been made impossible to register two usernames that are identical. 
 
 
 <br>
@@ -201,19 +210,12 @@ Every request to a protected route sends the cookie automatically
 authMiddleware verifies token → attaches req.user → route proceeds
      ↓
 Token expires after 1 hour → user is redirected to /login
+     ↓
+Token is cleared when user logs out.
 ```
 
 ---
 
-#### Relevant Files
-
-| File | Role |
-|---|---|
-| `routes/auth.js` | Registration and login logic |
-| `middleware/auth.js` | JWT verification on protected routes |
-| `middleware/authorization.js` | Role-based access control |
-| `model/User.js` | MongoDB user schema |
-| `.env` | Stores `JWT_SECRET`  (**never commit this!**) |
 
 <br>
 <br>
@@ -265,7 +267,7 @@ If their role is permitted, the request continues normally.
      Having three devs working on the same section/code problem simultaneously through different branches leads to difficulties trying to centralize and align routes. It added extra time in bug-fixing trying to figure out why a route was not working as intended only to find it was being defined (and therefore overwritten) by another route written elsewhere. we had to create a method of organization that allowed all devs to continue coding without sabotaging each other's work. 
 
 **- PHP to Node**
-    <br> this was a steep learning curve for all of us, as we learned all of our back-end knowledge through php last semester and had not integrate much (if any) server-relevant JS, so learning Node was new for us. Additionally, we would know how to do something in php, and then having to translate that over to node.js and express took a lot of time to get the hang of. We were able to trudge through the challenging parts and come up with some creative solutions. 
+    <br> this was a steep learning curve for all of us, as we learned all of our back-end knowledge through php last semester and had not integrated much (if any) server-relevant JS, so learning Node was new for us. Additionally, we would know how to do something in php, and then having to translate that over to node.js and express took a lot of time to get the hang of. We were able to trudge through the challenging parts and come up with some creative solutions. 
 
 **- Rachel's past experience with MERN**
     <br> I had the opportunity to code with a back-end Dev in a MERN stack project over the summer, so once we got to defining routes, I was able to enter a *"flowstate"* where the layout and code was familiar to me and I was able to lean heavily on my past experience. This was not something that directly applies to "*lessons Learned*" but does prove that taking on new opportunities as they present themselves can have unexpected and **hugely useful** outcomes! very grateful to have some knowledge going in! -RP
@@ -280,7 +282,7 @@ If their role is permitted, the request continues normally.
     authentication was then handled by one middleware, and 
     authorization by another. Separating them made the code cleaner and easier to read, understand, and add to.
 
-**- Frontend/Backend Contract Consistency**
+**- Frontend/Backend Contact Consistency**
     <br> Several bugs came from the frontend and backend making different assumptions. For instance, fetch requests pointed at the wrong URL, the frontend expecting a token in the response body while the backend was sending it as a cookie, and EJS templates referencing variables that were never passed from the route. This taught us the importance of keeping the frontend and backend in sync, and checking both ends when something isn't working as expected.
 
 **- EJS Templating Syntax**
@@ -289,9 +291,6 @@ If their role is permitted, the request continues normally.
 **- OAuth**
     <br> Setting up Oatuth was a big challenge. There are a lot of steps where things can go wrong from our code setup -> google  -> callback -> token -> cookie. Spelling mistakes result in cryptic errors and can make it hard to pinpoint what went wrong.  It is important to be organized with the file setup. This made it easier to find my spelling mistakes and bugs.  I updated the User model and learned what "sparse" meant,. Basically when MongoDB goes through users it will only include this row IF it is set. Otherwise it will ignore the  null values so we don’t get duplicate null errors because the id also has to be unique. -EF
 
-
-**- Other Lessons here**
-    <br> context
 
 
 
