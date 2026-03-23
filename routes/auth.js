@@ -103,7 +103,7 @@ router.get('/google/callback',
         });
 
         //Say it worked
-        res.status(200).json({ message: `${username} logged in succesfuly.`})
+        res.status(200).json({ message:  'logged in succesfuly.'})
         res.redirect("/success");
         }
 
