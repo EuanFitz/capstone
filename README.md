@@ -123,7 +123,17 @@ The ClickSafe Dev Team
 <br>
 <br>
 
+## Notes for Ashlyn:
+- Side navigational Menu on Dashboard page:
+	- The Side-nav will show different options based on who is logged in, but links are not functional currently.
+- dashboard shows different nav options and charts based on role that is logged in
+-  profile page is accessible to all users logged in (regardless of role) but cannot be accessed if not logged in. 
+- if (profile, FAQ, dummydash) pages are attempted to be access through manually altering the URL, they are instead redirected to the login page, as they don't have a cookie/session. or session via cookie. However, the 404 error page was made accessible in case it needed to be referenced when a user is not logged in. 
+- on /profile, the change details and password forms are not functional yet, but will be later on. (A secondary route page has been made for incoming changes)
+- footer links and interactions are currently disabled as well and are there for aesthetics only currently.
 
+
+<br>
 
 ## Authentication & Session Management -
 
@@ -258,7 +268,7 @@ If their role is permitted, the request continues normally.
     <br> this was a steep learning curve for all of us, as we learned all of our back-end knowledge through php last semester and had not integrate much (if any) server-relevant JS, so learning Node was new for us. Additionally, we would know how to do something in php, and then having to translate that over to node.js and express took a lot of time to get the hang of. We were able to trudge through the challenging parts and come up with some creative solutions. 
 
 **- Rachel's past experience with MERN**
-    <br> I had the opportunity to code with a back-end Dev in a MERN stack project over the summer, so once we got to defining routes, i was able to enter a *flowstate* where the layout and code was familiar to me and I was able to lean heavily on my past experience. This was not something that directly applies to "*lessons Learned*" but does prove that taking on new opportunities as they present themselves can have unexpected and **hugely useful** outcomes! very grateful to have some knowledge going in! -RP
+    <br> I had the opportunity to code with a back-end Dev in a MERN stack project over the summer, so once we got to defining routes, I was able to enter a *"flowstate"* where the layout and code was familiar to me and I was able to lean heavily on my past experience. This was not something that directly applies to "*lessons Learned*" but does prove that taking on new opportunities as they present themselves can have unexpected and **hugely useful** outcomes! very grateful to have some knowledge going in! -RP
 
 **- JWT & Cookie-Based Authentication**
     <br> Coming from PHP sessions, implementing stateless authentication using  JWTs was a new concept. Learning how to sign a token, embed user data 
