@@ -50,8 +50,6 @@ npm install
 
 - Argon2 
 ```npm install argon2```
-- body-parse
-```npm install body-parser```
 - cookie-parser
 ```npm install cookie-parser```
 - dotenv
