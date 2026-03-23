@@ -99,16 +99,12 @@ router.get('/google/callback',
         res.cookie('token', token, {
             httpOnly: true,  
             secure: true,
-            sameSite: 'strict', 
-            maxAge: 3600
+            sameSite: 'lax', //Allows for cookie after redirect
+            maxAge: 60 * 60 * 1000
         });
 
-        //Say it worked
-        res.status(200).json({ message: `${req.user.username} logged in succesfuly.`})
         res.redirect("/profile");
-        }
-
-
+}
 );
 
 
