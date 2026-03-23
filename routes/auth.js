@@ -89,8 +89,8 @@ router.get('/google/callback',
         passport.authenticate('google', { session: false, failureRedirect: '/login'}),
         (req, res) => {
         // Give JWT
-        const token = jwt.sign(
-                { id: req.user._id, role: req.user.role },
+      const token = jwt.sign(
+                { id: req.user._id, role: req.user.role, username: req.user.username },
                 process.env.JWT_SECRET,
                 { expiresIn: "1h" },
         );
@@ -104,8 +104,8 @@ router.get('/google/callback',
         });
 
         //Say it worked
-        res.status(200).json({ message: `${username} logged in succesfuly.`})
-        res.redirect("/success");
+        res.status(200).json({ message: `${req.user.username} logged in succesfuly.`})
+        res.redirect("/profile");
         }
 
 
