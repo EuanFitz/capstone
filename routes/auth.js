@@ -79,4 +79,37 @@ router.post('/login', async (req, res) =>{
   }
 });
 
+// =============================
+// ========== GOOGLE ===========
+// =============================
+
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email']}));
+        
+router.get('/google/callback',
+        passport.authenticate('google', { session: false, failureRedirect: '/login'}),
+        (req, res) => {
+        // Give JWT
+        const token = jwt.sign(
+                { id: req.user._id, role: req.user.role },
+                process.env.JWT_SECRET,
+                { expiresIn: "1h" },
+        );
+
+        //JWT Save to cookie 
+        res.cookie('token', token, {
+            httpOnly: true,  
+            secure: true,
+            sameSite: 'strict', 
+            maxAge: 3600
+        });
+
+        //Say it worked
+        res.status(200).json({ message: `${username} logged in succesfuly.`})
+        res.redirect("/success");
+        }
+
+
+);
+
+
 module.exports = router;
