@@ -7,5 +7,5 @@ logoutButton.addEventListener('click', async (e) =>{
     });
     if(res.ok){
         window.location.href = '/login';
-    }
+    }ca
 });  
