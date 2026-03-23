@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const path = require('path');
 const mongoose = require('mongoose');
 const app = express();
+const passport = require('./routes/passport');
 
 const PORT_HTTPS = process.env.PORT || 3443; 
 
@@ -29,12 +30,16 @@ app.use(helmet({
         "styleSrc": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], 
         "fontSrc": ["'self'", "https://fonts.gstatic.com"], 
         "imgSrc": ["'self'", "data:"], 
-        "upgradeInsecureRequests": [],
-        // "requireTrustedTypesFor": ["'script'"],
+        "upgradeInsecureRequests": []
 
       },
     }
 }));
+
+
+// Initialize Passport and session
+app.use(passport.initialize());
+
 
 
 // ------------- Configure ejs and setting route to views -------------//////
@@ -84,7 +89,6 @@ async function connectDB() {
         process.exit(1);
     }
 }
-
 
 
 //-------------------------Key & Cert------------------------

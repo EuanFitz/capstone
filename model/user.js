@@ -8,13 +8,18 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: false
     },
     role:{
         type: String,
         required: true,
         enum: ['user', 'admin'],
         default: 'user'
+    },
+    googleId: {
+        type: String,
+        unique: true,
+        sparse: true // Allows non google users
     }
 });
 

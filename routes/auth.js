@@ -4,6 +4,7 @@ const argon2 = require('argon2');
 const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
+const passport = require('./passport');
 
 
     
@@ -77,5 +78,5 @@ router.post('/login', async (req, res) =>{
     res.status(500).json({ error: error.message });
   }
 });
- 
+
 module.exports = router;
