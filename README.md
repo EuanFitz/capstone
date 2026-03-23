@@ -94,7 +94,7 @@ PORT=3443
 - `JWT_SECRET` — Choose any long, random string. The longer the better. e.g. `myS3cur3S3cr3tK3y!`
 - `NODE_ENV` — Use `development` locally. Do **not** change this to `production` unless deploying.
 - The `.env` file is listed in `.gitignore` and **must never be committed to GitHub.** Contact the dev team for the correct values.
-
+- 'Authorized redirect URIs on your google cloud application must be https://localhost:3456/api/auth/google/callback
 ### D) Running the Application -
 
 **1.** In your terminal, navigate to the root of the project directory.
