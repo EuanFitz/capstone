@@ -79,6 +79,16 @@ router.post('/login', async (req, res) =>{
   }
 });
 
+router.post('/logout', async (req, res) => {
+        const token = req.cookies?.token;
+         if (!token) return res.sendStatus(204);
+         res.clearCookie('token', {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production', // FYI: here to match our login route. 
+         });
+        res.status(200).json({ message: 'Logged out successfully' });
+});
+
 // =============================
 // ========== GOOGLE ===========
 // =============================
