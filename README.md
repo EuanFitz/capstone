@@ -25,7 +25,7 @@ If you encounter any issus while following the set-up instructions, please reach
 
 **2.** Navigate to the Capstone repository on GitHub in your web browser
 ```https://github.com/EuanFitz/capstone```
-**3.** From the branch drop-down, select **ServerSide**
+**3.** From the branch drop-down, select **phase 2**
 
 **4.** Click the green < > Code button.
 
