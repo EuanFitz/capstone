@@ -1,0 +1,380 @@
+body { margin: 0; overflow: hidden; }
+
+main {
+    display: grid;
+    grid-template-columns: 200px 1fr 220px;
+    grid-template-rows: auto 1fr auto auto;
+    height: 100vh;
+    overflow: hidden;
+    gap: 0;
+}
+
+/* Nav */
+nav {
+    grid-column: 1/2;
+    grid-row: 1/5;
+    height: 100vh;
+    overflow-y: auto;
+    border-radius: 0;
+}
+
+/* Title */
+h1 {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    padding: 1.2rem 1.5rem 0;
+    font-size: 1.2rem;
+    color: var(--PrimaryOffWhite);
+    flex-shrink: 0;
+}
+
+/* Right sidebar: method + mini templates */
+.sideTemplates {
+    grid-column: 3/4;
+    grid-row: 1/5;
+    background: #1a1a1f;
+    border-left: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+}
+
+.sideTemplates::-webkit-scrollbar { width: 4px; }
+.sideTemplates::-webkit-scrollbar-thumb {
+    background: var(--PrimaryMidPurple);
+    border-radius: 4px;
+}
+
+/* Method checkboxes */
+#methodContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.8rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+#methodContainer span {
+    width: 100%;
+    opacity: 0.6;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#methodContainer input[type="checkbox"] {
+    accent-color: var(--PrimaryMidPurple);
+    margin-right: 0.2rem;
+}
+
+/* Mini template cards */
+.miniTemplates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.templateCard,
+.activeTemplate {
+    background: #2a2a2e;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0.6rem;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+}
+
+.templateCard:hover {
+    border-color: rgba(182, 157, 248, 0.4);
+    transform: translateY(-1px);
+}
+
+.activeTemplate {
+    border-color: var(--PrimaryMidPurple);
+    background: rgba(103, 80, 164, 0.15);
+}
+
+.templateCardName {
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.72rem;
+    margin: 0 0 0.4rem;
+    opacity: 0.8;
+}
+
+.templatePreview {
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    padding: 0.4rem;
+}
+
+.previewSubject {
+    font-size: 0.6rem;
+    color: var(--PrimaryLightPurple);
+    font-family: var(--BodyFont);
+    margin-bottom: 0.3rem;
+    opacity: 0.9;
+}
+
+.previewLines { display: flex; flex-direction: column; gap: 0.25rem; }
+.previewLine { height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; width: 100%; }
+.previewLine.short { width: 60%; }
+
+/* ========== EMAIL COMPOSER ========== */
+.emailContainer {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 0 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.emailContainer form {
+    background: #2a2a2e;
+    border: 1px solid rgba(182, 157, 248, 0.2);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Template name bar */
+.templateNameInput {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: var(--PrimaryOffWhite);
+    font-family: var(--HeadFont);
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    width: 100%;
+}
+
+.templateNameInput::placeholder { opacity: 0.35; }
+
+/* To / From rows */
+.emailField {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+}
+
+.emailField label {
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.85rem;
+    opacity: 0.55;
+    min-width: 40px;
+}
+
+#recipientTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    flex: 1;
+}
+
+.tag {
+    background: var(--PrimaryMidPurple);
+    color: white;
+    border-radius: 20px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+    font-family: var(--BodyFont);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.tag button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    opacity: 0.7;
+}
+
+.tag button:hover { opacity: 1; }
+
+#fromValue {
+    flex: 1;
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.emailButton {
+    background: rgba(103, 80, 164, 0.3);
+    border: 1px solid rgba(182, 157, 248, 0.3);
+    color: var(--PrimaryLightPurple);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.emailButton:hover { background-color: var(--PrimaryMidPurple); }
+
+/* Custom dropdowns */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 3.5rem;
+    background: #1f1f2e;
+    border: 1px solid rgba(182, 157, 248, 0.3);
+    border-radius: 10px;
+    min-width: 180px;
+    z-index: 100;
+    display: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+.dropdown.show { display: block; }
+
+.dropdownTitle {
+    color: var(--PrimaryLightPurple);
+    font-family: var(--BodyFont);
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem 0.25rem;
+    opacity: 0.8;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin: 0;
+}
+
+.dropdownItem {
+    padding: 0.5rem 0.75rem;
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.dropdownItem:hover { background: rgba(103, 80, 164, 0.4); }
+
+/* Email body */
+#emailBody {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.88rem;
+    padding: 1rem;
+    resize: none;
+    outline: none;
+    line-height: 1.7;
+    min-height: 0;
+}
+
+#emailBody::placeholder { opacity: 0.3; }
+
+/* Signature */
+.emailSignature {
+    padding: 0.75rem 1rem;
+    color: var(--PrimaryOffWhite);
+    font-family: var(--BodyFont);
+    font-size: 0.82rem;
+    opacity: 0.6;
+    white-space: pre-line;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin: 0;
+    min-height: 60px;
+}
+
+/* Save/delete row */
+.saveArchive {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+}
+
+.saveArchive button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+}
+
+.saveArchive button:hover { opacity: 1; }
+
+/* ========== BOTTOM BARS ========== */
+.optionsContainer {
+    grid-column: 2/3;
+    grid-row: 3/4;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem 0;
+}
+
+.optionBttn {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--PrimaryOffWhite);
+    border-radius: 20px;
+    padding: 0.35rem 1.2rem;
+    font-family: var(--BodyFont);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.optionBttn:hover { background-color: rgba(103, 80, 164, 0.4); }
+
+.launchContainer {
+    grid-column: 2/3;
+    grid-row: 4/5;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem 1.5rem 1rem;
+}
+
+.launchContainer button {
+    background: var(--PrimaryMidPurple);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7rem 2rem;
+    font-family: var(--BodyFont);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(103, 80, 164, 0.4);
+}
+
+.launchContainer button:hover {
+    background-color: var(--LogoBlue);
+    transform: translateY(-1px);
+}
+
+/* Footer */
+footer {
+    grid-column: 1/4;
+}
