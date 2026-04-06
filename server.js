@@ -1,6 +1,4 @@
-require('dotenv').config(); // Adding here to test if fixes token reading issues - rp
-// npm install dotenv
-
+require('dotenv').config();
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
