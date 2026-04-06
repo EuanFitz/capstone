@@ -35,7 +35,7 @@ header h1{
     text-decoration: none;
 }
 
-.navHeader ul li:last-of-type{
+.navHeader ul li:last-of-type a{
     color: #fff;
     background: var(--FaqButton);
     padding: .3rem 3rem;

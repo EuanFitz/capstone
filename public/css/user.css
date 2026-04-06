@@ -107,3 +107,7 @@ section:last-of-type p:last-of-type {
     background-color: #4A4459;
     color: var(--PrimaryLightPurple);
 }
+a{
+    color: var(--PrimaryMidPurple);
+    margin-top: 1rem;
+}

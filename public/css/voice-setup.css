@@ -6,10 +6,7 @@ body{
 }
 main{
     margin: 2rem;
-    display: flex;
-    flex-direction: column;
 }
-
 h1{
     font-family: var(--HeadFont);
 }
