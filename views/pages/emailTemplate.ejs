@@ -24,49 +24,142 @@
         <label for="checkPhone">Phone</label>
         <input type="checkbox">
       </div>
+<!------Mini Templates -->
+      <section class="miniTemplates">
+        <div class="activeTemplate"
+          onclick="loadTemplate(this, 'Dear Employee,\n\nPlease verify your account credentials immediately by clicking the link below. Failure to do so will result in account suspension.\n\nClick here: http://verify-account.fake/login\n\nIT Department')">
+
+          <p class="templateCardName">IT Email</p>
+
+          <div class="templatePreview">
+              <div class="previewSubject">
+                Confirm Credentials
+              </div>
+
+              <div class="previewLines">
+                  <div class="previewLine"></div>
+                  <div class="previewLine short"></div>
+                  <div class="previewLine"></div>
+                  <div class="previewLine short"></div>
+              </div>
+
+          </div>
+        </div>
+
+        <!-- next template -->
+        <div class="templateCard"
+          onclick="loadTemplate(this, 'Urgent: Your invoice #4821 is ready.\n\nPlease download and review the attached invoice immediately. If you have questions, contact billing.\n\nDownload: http://invoices.fake/download\n\nAccounts Payable')">
+
+          <p class="templateCardName">Payroll Email</p>
+
+          <div class="templatePreview">
+              <div class="previewSubject">
+                Urgent Invoice
+              </div>
+
+              <div class="previewLines">
+                  <div class="previewLine"></div>
+                  <div class="previewLine short"></div>
+                  <div class="previewLine"></div>
+                  <div class="previewLine short"></div>
+              </div>
+
+          </div>
+        </div>
+
+        <!-- another card -->
+        <div class="templateCard"
+          onclick="loadTemplate(this, 'Hi there,\n\nYou have a pending document awaiting your signature. Please sign immediately to avoid delays.\n\nSign here: http://docusign.fake/sign\n\nLegal Department')">
+
+          <p class="templateCardName">Legal Email</p>
+
+          <div class="templatePreview">
+              <div class="previewSubject">
+                Pending Document
+              </div>
+
+              <div class="previewLines">
+                  <div class="previewLine"></div>
+                  <div class="previewLine short"></div>
+                  <div class="previewLine"></div>
+                  <div class="previewLine short"></div>
+              </div>
+
+          </div>
+        </div>
+
+      </section>
+
 
     </div>
+
+
+
+
 <!-----------------------Fake Email Form----------------------->
     <section class="emailContainer">
       <form action="">
+
+        <input type="text" id="templateName" placeholder="Template Name" class="templateNameInput">        
 <!-------TO:   -->
-       <label for="emailTo">To:</label>
-       <button class="emailButton">+</button>
-       <select name="emailTo" id="emailTo">
-        <option value="">Human Resources</option>
-        <option value="">Marketing</option>
-        <option value="">Sales</option>
-       </select>
+       <div class="emailField emailField-to">
+        <label for="emailTo">To:</label>
+
+        <div id="recipientTags"></div>
+
+        <button class="emailButton" type="button">+</button>
+
+        <select name="emailTo" id="emailTo">
+            <option value="">Human Resources</option>
+            <option value="">Marketing</option>
+            <option value="">Sales</option>
+        </select>
+      </div>
 
 <!-------FROM:   -->
-       <label for="emailFrom">From:</label>
-       <button class="emailButton">▶</button>       
-       <select name="emailFrom" id="emailFrom">
-        <option value="">Manager</option>
-        <option value="">Area Manager</option>
-        <option value="">CFO</option>
-        <option value="">Human Resources</option>
-       </select>
+      <div class="emailField emailField-from">
+          <label for="emailFrom">From:</label>
+
+          <span id="fromValue">Select sender...</span>
+
+          <button class="emailButton" type="button">▶</button>
+
+          <select name="emailFrom" id="emailFrom">
+              <option value="">Manager</option>
+              <option value="">Area Manager</option>
+              <option value="">CFO</option>
+              <option value="">Human Resources</option>
+          </select>
+      </div>
 
 <!-------body   -->
-       <input type="textarea" placeholder="rite your phishing email content here, or select a template from the right to pre-fill...">
+    <textarea id="emailBody" placeholder="Write your phishing email content here, or select a template from the right to pre-fill..."></textarea>
 
 <!-------Signature area stuff   -->
-      <p>this needs to be added in based on whick option was selected from the dropdown, so it will match the dept. or person. -RP</p>
+    <pre id="emailSignature" class="emailSignature"></pre>
 
 <!-------save or trash  -->  
        <div class="saveArchive">
 
-        <button>💾</button>
+        <button id="save">💾</button>
 
-        <button>🗑️</button>
-
+        <button id="delete">🗑️</button>
 
        </div>
-
-
       </form>
     </section>
+<!-------------------Launch Campaign----------------->
+    <div class="launchContainer">
+      <button>Launch Campaign</button>
+    </div>
+<!---------------------Option Buttons---------------->
+
+  <div class="optionsContainer">
+    <button class="optionBttn">Option 1</button>
+    <button class="optionBttn">Option 2</button>
+    <button class="optionBttn">Option 3</button>
+    
+  </div>
 
 
 
@@ -74,5 +167,7 @@
     </main>
 
     <%- include('../includes/footer') %>
+
+    <script src="/js/emailTemplate.js"></script>
 </body>
 </html>
