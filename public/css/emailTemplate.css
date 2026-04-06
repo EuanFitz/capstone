@@ -81,7 +81,7 @@ h1 {
 }
 
 .templateCard,
-.activeTemplate {
+.templateCard.active {
     background: #2a2a2e;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
@@ -95,7 +95,7 @@ h1 {
     transform: translateY(-1px);
 }
 
-.activeTemplate {
+.templateCard.active {
     border-color: var(--PrimaryMidPurple);
     background: rgba(103, 80, 164, 0.15);
 }
@@ -270,10 +270,10 @@ h1 {
     font-family: var(--BodyFont);
     font-size: 0.85rem;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background-color 0.15s;
 }
 
-.dropdownItem:hover { background: rgba(103, 80, 164, 0.4); }
+.dropdownItem:hover { background-color: rgba(103, 80, 164, 0.4); }
 
 /* Email body */
 #emailBody {
@@ -292,6 +292,48 @@ h1 {
 }
 
 #emailBody::placeholder { opacity: 0.3; }
+
+.fieldLabel {
+    font-family: var(--BodyFont);
+    color: var(--PrimaryOffWhite);
+}
+.linkField {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.linkTextInput {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed rgba(182, 157, 248, 0.4);
+    color: #9eb7fc;
+    font-family: var(--BodyFont);
+    font-size: 0.88rem;
+    outline: none;
+    width: 100%;
+    text-decoration: underline;
+}
+
+.linkTextInput::placeholder {
+    color: rgba(124, 159, 255, 0.4);
+    text-decoration: none;
+}
+
+.linkPreview {
+    font-family: var(--BodyFont);
+    font-size: 0.78rem;
+    color: var(--PrimaryOffWhite);
+    opacity: 0.5;
+}
+
+.linkPreview a {
+    color: #9eb7fc;
+    text-decoration: underline;
+    pointer-events: none; 
+}
 
 /* Signature */
 .emailSignature {

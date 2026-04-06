@@ -89,13 +89,36 @@ function updateSignature(sender) {
 
 // -----------------------------------Template loading ----
 function loadTemplate(card, content) {
-    document.querySelectorAll('.templateCard, .activeTemplate').forEach(c => {
-        c.classList.remove('activeTemplate');
-        c.classList.add('templateCard');
+
+    document.querySelectorAll('.templateCard').forEach(c => {
+        c.classList.remove('active');
     });
-    card.classList.remove('templateCard');
-    card.classList.add('activeTemplate');
-    document.getElementById('emailBody').value = content;
+
+    card.classList.add('active');
+
+    document.getElementById('emailBody').value = content.replace(/\\n/g, '\n');
+}
+
+
+document.querySelectorAll('.templateCard').forEach(card => {
+    card.addEventListener('click', () => {
+        loadTemplate(card, card.dataset.content);
+    });
+});
+
+// ---- Link display text editor ----
+const linkTextInput = document.getElementById('linkDisplayText');
+const linkPreview = document.getElementById('linkPreview');
+
+linkTextInput.addEventListener('input', () => {
+    // updates the preview anchor text as admin types
+    linkPreview.textContent = linkTextInput.value || 'Click here';
+});
+
+//-----Load first template by default
+const firstCard = document.querySelector('.templateCard.active');
+if (firstCard) {
+    loadTemplate(firstCard, firstCard.dataset.content);
 }
 
 // --------------------------Close dropdowns on outside click ----
