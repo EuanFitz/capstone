@@ -5,20 +5,26 @@
     <link rel="stylesheet" href="css/voice-setup.css">
 </head>
 <body>
-    <form action="">
-        <h2>Setup text to voice</h2>
-        <select name="voice" id="voice">
-            <option value="">Choose voice</option>
-            <option value="A1">Admin 1</option>
-            <option value="A2">Admin 2</option>
-            <option value="F1">Female 1</option>
-            <option value="F2">Female 2</option>
-            <option value="M1">Male 1</option>
-            <option value="M2">Male 2</option>
-        </select>
-        <textarea name="message" id="message" placeholder="Write your message here"></textarea>
-        <button type="submit">Create Vish</button>
-    </form>
+    <main>
+        <h1>Setup text to voice</h1>
+        <form action="">
+            <div class="options">
+            <select name="voice" id="voice">
+                <option value="">Choose voice</option>
+                <option value="A1">Admin 1</option>
+                <option value="A2">Admin 2</option>
+                <option value="F1">Female 1</option>
+                <option value="F2">Female 2</option>
+                <option value="M1">Male 1</option>
+                <option value="M2">Male 2</option>
+            </select>
+            </div>
+            <div class="text-submit">
+            <textarea name="message" id="message" placeholder="Write your message here"></textarea>
+            <button type="submit">Create Voice Message</button>
+            </div>
+        </form>
+    </main>
     <%- include('../includes/footer') %>
 </body>
 </html>
