@@ -107,7 +107,7 @@ document.addEventListener('click', () => {
 document.getElementById('save').addEventListener('click', (e) => {
     e.preventDefault();
     const name = document.getElementById('templateName')?.value || 'Untitled';
-    alert(`Template "${name}" saved!`);
+    alert(`Template "${name}" has been saved!`);
     // TO-DO: wire to POST /api/admin/templates - RP
 });
 
