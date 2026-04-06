@@ -43,5 +43,25 @@ router.get("/dashboard", (req,res) =>{
     });
 });
 
+router.get("/new-campaign", (req,res) =>{
+    res.set('Cache-Control', "max-age=60,"); //
+    res.render("pages/campaign-setup", {
+        title: "New Campaign"
+    });
+});
+
+router.get("/setup-success", (req,res) =>{
+    res.set('Cache-Control', "max-age=60,"); //
+    res.render("pages/setup-success", {
+        title: "Campaign Started"
+    });
+});
+
+router.get("/voice-setup", (req,res) =>{
+    res.set('Cache-Control', "max-age=60,"); //
+    res.render("pages/vishing-setup", {
+        title: "New Voice"
+    });
+});
 
 module.exports = router;

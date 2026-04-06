@@ -1,0 +1,47 @@
+@import url(global.css);
+body{
+    height: 100vh;
+}
+main{
+    background: var(--DarkModeBackground);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+main h1{
+    color: var(--PrimaryMidPurple);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: var(--HeadFont);
+}
+
+main p{
+    color:#FFF;
+    margin: 0 auto;
+    font-family: var(--BodyFont);
+}
+a{
+    color: #FFF;
+}
+
+main div{
+    display: flex;
+    gap: 1rem;
+    margin-top: 5rem;
+    align-self: center;
+}
+
+main div a{
+    text-decoration: none;
+    color: #FFF;
+    height: 40px;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: var(--PrimaryMidPurple);
+    display: flex;
+    align-items: center;
+}
+
+main div a:hover{
+    background: #a083f0;
+}
