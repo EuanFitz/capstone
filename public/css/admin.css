@@ -1,6 +1,4 @@
 @import url('global.css');
-@import url('nav.css');
-@import url('footer.css');
 h2{
     font-family: var(--HeadFont)
 
@@ -121,12 +119,7 @@ section:last-of-type p:last-of-type {
     background-color: #4A4459;
     color: #B69DF8;
 }
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #222;
-    color: #F9FAFB;
-    width: 100%;
-    bottom: 0;
+a{
+    color: var(--PrimaryMidPurple);
+    margin-top: 1rem;
 }

@@ -5,7 +5,10 @@ body {
     color: #333;
 
 }
-
+#logoContainer{
+   display: flex;
+   justify-content: center;
+}
 main {
     display: flex;
     flex-direction: column;
@@ -35,8 +38,7 @@ h2 {
 
 #landing-links {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    justify-content: space-around;
 }
 
 #landing-links a {
@@ -56,24 +58,16 @@ h2 {
 
 #signup {
     display: flex;
+    color: #fff;
 }
 
 #signup a {
     text-decoration: none;
     color: #486284;
+    margin-left: 4px;
 }
 
 #signup a:hover {
     text-decoration: underline;
     color: #36506a;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #222;
-    color: #F9FAFB;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }

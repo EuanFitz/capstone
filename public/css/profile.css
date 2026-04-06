@@ -1,7 +1,5 @@
 @import url('global.css');
-@import url('nav.css');
 @import url('footer.css');
-
 .profileMain {
   display: grid;
   grid-template-columns: 1fr 2fr;
