@@ -29,6 +29,38 @@ router.get("/success", (req, res) => {
   res.render('pages/success', {title: "Registration Completed"});
 });
 
+router.get("/emailTemplate", authMiddleware, authorize("admin"), (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.render('pages/emailTemplate', {
+    title: "Email Templates",
+    user: req.user
+  });
+});
+
+router.get("/new-campaign", authMiddleware, authorize("admin"), (req,res) =>{
+    res.set('Cache-Control', "max-age=60,"); 
+    res.render("pages/campaign-setup", {
+        title: "New Campaign",
+        user: req.user
+    });
+});
+ 
+router.get("/setup-success", authMiddleware, authorize("admin"), (req,res) =>{
+    res.set('Cache-Control', "max-age=60,"); 
+    res.render("pages/setup-success", {
+        title: "Campaign Started",
+        user: req.user
+    });
+});
+ 
+router.get("/voice-setup", authMiddleware, authorize("admin"), (req,res) =>{
+    res.set('Cache-Control', "max-age=60,"); 
+    res.render("pages/vishing-setup", {
+        title: "New Voice",
+        user: req.user
+    });
+});
+
 // --------------Router: both roles allowed
 router.get("/dummydash", authMiddleware, authorize("admin", "user"), (req, res) => {
   res.set('Cache-Control', 'no-store');

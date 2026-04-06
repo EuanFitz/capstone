@@ -28,6 +28,7 @@
 
   /*---Shadow effects---*/
   --inputShadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+  --minorShadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
   /*---FONT STACKS---*/
   --HeadFont: kallisto, 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;

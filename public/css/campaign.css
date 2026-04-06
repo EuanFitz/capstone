@@ -1,0 +1,238 @@
+@import url(global.css);
+
+* {
+    box-sizing: border-box;
+    color: #FFFBFE;
+}
+
+/* ================================================ */
+/* ==================== MAIn ==================== */
+/* ================================================ */
+body{
+    background: var(--DarkModeBackground);
+}
+/* ================================================ */
+/* ==================== FONTS ==================== */
+/* ================================================ */
+h1, h2 { font-family: var(--HeadFont); }
+
+form input, form select, .recipient-list-container .recipient-list, li, textarea { font-family: var(--BodyFont); }
+
+.recipient-list-container .recipient-header, label { font-family: var(--HeadFont); font-size: 20px; }
+.recipient-list-container .recipient-list { font-size: 16px; }
+
+/* ================================================ */
+/* ============= FORM ELEMENTS =================== */
+/* ================================================ */
+input, select, textarea,
+input::placeholder, textarea::placeholder {
+    color: #6750A4;
+    border: none;
+    border-radius: 10px;
+    padding: .5rem;
+}
+
+input, select { height: 40px; background: #fff; }
+
+textarea {
+    height: 225px;
+    max-height: 80%;
+    background-color: #DAD8E1;
+    border-radius: 20px;
+    padding: 1rem;
+    resize: none;
+    overflow: hidden;
+    box-shadow: inset 0 4px 4px 0 #00000025;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10C4 10.5304 4.21071 11.0391 4.58579 11.4142C4.96086 11.7893 5.46957 12 6 12C6.53043 12 7.03914 11.7893 7.41421 11.4142C7.78929 11.0391 8 10.5304 8 10C8 9.46957 7.78929 8.96086 7.41421 8.58579C7.03914 8.21071 6.53043 8 6 8C5.46957 8 4.96086 8.21071 4.58579 8.58579C4.21071 8.96086 4 9.46957 4 10Z' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 4V8' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 12V20' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10 16C10 16.5304 10.2107 17.0391 10.5858 17.4142C10.9609 17.7893 11.4696 18 12 18C12.5304 18 13.0391 17.7893 13.4142 17.4142C13.7893 17.0391 14 16.5304 14 16C14 15.4696 13.7893 14.9609 13.4142 14.5858C13.0391 14.2107 12.5304 14 12 14C11.4696 14 10.9609 14.2107 10.5858 14.5858C10.2107 14.9609 10 15.4696 10 16Z' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 4V14' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 18V20' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16 7C16 7.53043 16.2107 8.03914 16.5858 8.41421C16.9609 8.78929 17.4696 9 18 9C18.5304 9 19.0391 8.78929 19.4142 8.41421C19.7893 8.03914 20 7.53043 20 7C20 6.46957 19.7893 5.96086 19.4142 5.58579C19.0391 5.21071 18.5304 5 18 5C17.4696 5 16.9609 5.21071 16.5858 5.58579C16.2107 5.96086 16 6.46957 16 7Z' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M18 4V5' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M18 9V20' stroke='%236750A4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .5rem center;
+    padding-right: 2.5rem;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    background: #EADDFF;
+}
+
+input[type="checkbox"]:checked { background: #BCC0EB; }
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: 2px solid #6750A4;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+/* Focus states */
+textarea:focus, form button:focus, form input:focus, form select:focus {
+    outline: #6750A4 2px solid;
+}
+
+/* ================================================ */
+/* ================= LAYOUT ====================== */
+/* ================================================ */
+main { 
+    margin: 2rem;
+}
+
+form {
+    background: #4F4E50;
+    padding: 1rem;
+    max-height: 480px;
+    margin: 2rem;
+    position: relative;
+    padding-bottom: 80px;
+    border-radius: 20px;
+}
+
+.campaign-setup {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.recipient-text {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1rem;
+}
+
+.recipient-section {
+    background: #6F6F6F;
+    position: relative;
+    padding: 3rem 1rem 1rem;
+    max-height: 390px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* ================================================ */
+/* ================= TABLE ======================= */
+/* ================================================ */
+.recipient-list-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    height: 100%;
+}
+
+.recipient-header,
+.recipient-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#recipient-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    max-height: 280px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: .5rem;
+    border: 1px solid #BCC0EB;
+}
+
+
+/* ================================================ */
+/* ============= DEPARTMENT DROPDOWN ============= */
+/* ================================================ */
+.custom-select {
+    padding: .5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.department-header {
+    display: flex;
+    gap: .5rem;
+    padding: .2rem .5rem;
+    margin: -.5rem;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+}
+
+.department-header h2 { margin: 0; color: #6750A4; }
+.department-header svg { transition: .3s; }
+
+.select-list {
+    display: none;
+    list-style: none;
+    flex-direction: column;
+    gap: .3rem;
+    margin: .2rem -.5rem;
+    padding: 0;
+    background: #DAD8E1;
+    border: 2px solid #6750A4;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    z-index: -1;
+}
+
+.select-list li {
+    cursor: pointer;
+    color: #4F4E50;
+    margin: .5rem;
+    padding: .5rem 1.5rem;
+    border-radius: 15px;
+    transition: .2s;
+}
+
+.select-list li:first-of-type { margin-top: .8rem; }
+.select-list li:hover { background: #424045; color: #fff; }
+
+/* ================================================ */
+/* =============== DESCRIPTION =================== */
+/* ================================================ */
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ================================================ */
+/* ================= BUTTONS ===================== */
+/* ================================================ */
+.actions {
+    position: absolute;
+    right: 2rem;
+    top: 320px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.actions button {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 20px;
+}
+
+.actions button:first-of-type { background: #2a2a2b; }
+.actions button:first-of-type:hover { background: #414142; }
+.actions button:last-of-type { background: #6750A4; }
+.actions button:last-of-type:hover { background: #a083f0; }

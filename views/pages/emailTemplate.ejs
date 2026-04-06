@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/head') %>
+    <link rel="stylesheet" href="/css/emailTemplate.css">
+</head>
+<body>
+
+  <main>
+
+    <%- include('../includes/sideNav') %>
+    <h1><%= title %></h1>
+<!----------------Boxes above RightSide templates------------>
+    <div class="sideTemplates">
+
+      <div id="methodContainer">
+        <span>Method</span>
+        <label for="checkEmail">Email</label>
+        <input type="checkbox" checked>
+
+        <label for="checkText">Text</label>
+        <input type="checkbox">
+
+        <label for="checkPhone">Phone</label>
+        <input type="checkbox">
+      </div>
+
+    </div>
+<!-----------------------Fake Email Form----------------------->
+    <section class="emailContainer">
+      <form action="">
+<!-------TO:   -->
+       <label for="emailTo">To:</label>
+       <button class="emailButton">+</button>
+       <select name="emailTo" id="emailTo">
+        <option value="">Human Resources</option>
+        <option value="">Marketing</option>
+        <option value="">Sales</option>
+       </select>
+
+<!-------FROM:   -->
+       <label for="emailFrom">From:</label>
+       <button class="emailButton">▶</button>       
+       <select name="emailFrom" id="emailFrom">
+        <option value="">Manager</option>
+        <option value="">Area Manager</option>
+        <option value="">CFO</option>
+        <option value="">Human Resources</option>
+       </select>
+
+<!-------body   -->
+       <input type="textarea" placeholder="rite your phishing email content here, or select a template from the right to pre-fill...">
+
+<!-------Signature area stuff   -->
+      <p>this needs to be added in based on whick option was selected from the dropdown, so it will match the dept. or person. -RP</p>
+
+<!-------save or trash  -->  
+       <div class="saveArchive">
+
+        <button>💾</button>
+
+        <button>🗑️</button>
+
+
+       </div>
+
+
+      </form>
+    </section>
+
+
+
+
+    </main>
+
+    <%- include('../includes/footer') %>
+</body>
+</html>
