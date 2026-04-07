@@ -148,4 +148,10 @@ document.querySelector('#delete').addEventListener('click', (e) => {
 
 document.querySelector("#launchButton").addEventListener('click', (e) => {
     alert(`Template "${name}" has been saved!`);
+    document.querySelector('#emailBody').value = '';
+    document.querySelector('#emailSignature').textContent = '';
+    document.querySelector('#fromValue').textContent = 'Select sender...';
+    document.querySelector('#templateName').value = '';
+    recipientTags.innerHTML = '';
+
 })
