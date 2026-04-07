@@ -98,13 +98,18 @@ h3 {
     transition: background-color 0.25s ease-in-out;
 }
 
+.buttonText{
+  text-align: center;
+  color: var(--PrimaryOffWhite);
+      text-decoration: none;
+    color: var(--PrimaryOffWhite);
+    text-align: center;
+  }
+
+
 .dashActions:hover {
   background-color: #545356;
 }
 
-  .dashActions a{
-    text-decoration: none;
-    color: var(--PrimaryOffWhite);
-    text-align: center;
-  }
+
 
