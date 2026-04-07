@@ -10,6 +10,7 @@
         <h1>Setup text to voice</h1>
         <form action="">
             <div class="options">
+            <input type="text" id="name" required placeholder="Template Name">
             <select name="voice" id="voice">
                 <option value="">Choose voice</option>
                 <option value="A1">Admin 1</option>
@@ -22,7 +23,7 @@
             </div>
             <div class="text-submit">
             <textarea name="message" id="message" placeholder="Write your message here"></textarea>
-            <button type="submit">Create Voice Message</button>
+            <button type="submit" onclick="alert('Voice Message Saved to Templates');">Save Voice</button>
             </div>
         </form>
     </main>
