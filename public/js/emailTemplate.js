@@ -135,12 +135,13 @@ document.getElementById('save').addEventListener('click', (e) => {
 });
 
 // ---- Delete button ----
-document.getElementById('delete').addEventListener('click', (e) => {
+document.querySelector('#delete').addEventListener('click', (e) => {
     e.preventDefault();
     if (confirm('Delete this template?')) {
-        document.getElementById('emailBody').value = '';
-        document.getElementById('emailSignature').textContent = '';
-        document.getElementById('fromValue').textContent = 'Select sender...';
+        document.querySelector('#emailBody').value = '';
+        document.querySelector('#emailSignature').textContent = '';
+        document.querySelector('#fromValue').textContent = 'Select sender...';
+        document.querySelector('#templateName').value = '';
         recipientTags.innerHTML = '';
     }
 });
