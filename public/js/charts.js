@@ -9,6 +9,22 @@ document.addEventListener('DOMContentLoaded', function () {
     "#100333"
   ];
 
+    // #yourResults
+  new Chart("LineGraph", {
+    type: "pie",
+    data: {
+      labels: ["Interacted", "Did Not Interact", "Link Clicked", "Read", "Deleted", "Reported"],
+      datasets: [{ backgroundColor: BarColors, data: [12, 15, 36, 22, 0, 5] }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: '#FFFBFE', font: { size: 10 } } }
+      }
+    }
+  });
+
   // #Percentage / Target Overview
   new Chart("percentage", {
     type: "pie",
