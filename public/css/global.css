@@ -49,7 +49,12 @@ body {
   grid-template-columns: 200px 1fr;
   overflow: auto;
 }
+.sideNavPage nav > ul li{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
+}
 nav {
     background-color: var(--SideMenu);
     color: #fff;
