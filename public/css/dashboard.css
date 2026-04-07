@@ -98,6 +98,14 @@ h3 {
     transition: background-color 0.25s ease-in-out;
 }
 
+ a {
+    font-family: var(--BodyFont);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .buttonText{
   text-align: center;
   color: var(--PrimaryOffWhite);
