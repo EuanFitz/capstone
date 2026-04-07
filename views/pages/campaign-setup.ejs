@@ -78,9 +78,9 @@
             </div>
             <!-- Actions -->
             <div class="actions">
-                <button id="savedraft">Save draft</button>
                 <button type="submit">Launch Campaign</button>
             </div>
+            <button id="savedraft" onclick="alert(`${document.querySelector('#campaign_name').value} Saved to drafts`)">Save draft</button>
         </form>
     </main>
     <%- include('../includes/footer') %>
