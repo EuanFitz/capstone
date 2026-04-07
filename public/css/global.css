@@ -60,6 +60,7 @@ nav {
     border-radius: 0 0 10px 10px;
     height: 100vh;
     justify-content: space-evenly;
+    grid-template-rows: min-content 1fr 1fr;
 }
 nav .logo{
   text-decoration: none;
@@ -80,6 +81,7 @@ nav h2 {
     font-family: var(--HeadFont);
     font-weight: 300;
     align-self: center;
+    color: var(--PrimaryLightPurple);
 }
 
 nav ul:first-of-type {
