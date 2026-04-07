@@ -104,14 +104,16 @@ h3 {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    text-decoration: none;
 }
 
 .buttonText{
-  text-align: center;
-  color: var(--PrimaryOffWhite);
-      text-decoration: none;
+    text-align: center;
+    color: var(--PrimaryOffWhite);
+    text-decoration: none;
     color: var(--PrimaryOffWhite);
     text-align: center;
+  
   }
 
 
