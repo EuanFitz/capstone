@@ -16,7 +16,14 @@
                     <input type="date" name="start_date" id="start_date" placeholder="Start date">
                     <input type="date" name="ed_date" id="end_date" placeholder="End Date">
                 </div>
-                <select name="frequency" id="frequency">
+                <select name="template" id="template" required>
+                    <option value="">Template Selection</option>
+                    <option value="v1">Payroll Fake</option>
+                    <option value="v2">Manager Fake</option>
+                    <option value="v3">Voice Message Fake</option>
+                    <option value="v5">Voicemail Fake</option>
+                </select>
+                <select name="frequency" id="frequency" required>
                     <option value="">Select frequency</option>
                     <option value="once">Once</option>
                     <option value="daily">Daily</option>
