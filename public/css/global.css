@@ -13,10 +13,12 @@
   --LogoBlue: #513D86;
   --PrimaryLightPurple: #B69DF8;
   --PrimaryMidPurple: #6750A4;
+  --PrimaryDarkPurple: #3c2b6a;
   --DarkModeBackground: #1f1f1f;
   --DarkModeMid: #4f4e50;
   --PrimaryOffWhite: #FFFBFE;
-  --NeutralMid: #FFFBFE;
+  --NeutralMid: #F8F7FA;
+  --NeutralDark: #78767D;
   --SecondaryDarkBlue: #2F3252;
 
   --RegistrationContainer: #fffbfe;
@@ -30,6 +32,8 @@
   --inputShadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
   --minorShadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
+  /* ----border stuff---- */
+  --emailBorder: 2px solid rgb(101 51 159 / 6%);
   /*---FONT STACKS---*/
   --HeadFont: kallisto, 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
   --BodyFont: "Comfortaa", 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
@@ -51,16 +55,20 @@ nav {
     color: #fff;
     display: grid;
     grid-template-columns: min-content;
-    grid-template-rows: min-content min-content min-content;
+    /* grid-template-rows: min-content min-content min-content;  Commment:unneeded*/
     gap: 1rem;
     border-radius: 0 0 10px 10px;
     height: 100vh;
+    justify-content: space-evenly;
 }
 nav .logo{
   text-decoration: none;
 }
-nav ul{
-  list-style: none;
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 nav div {
   display: flex;

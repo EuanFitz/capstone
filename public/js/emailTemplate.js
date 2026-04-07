@@ -144,3 +144,7 @@ document.getElementById('delete').addEventListener('click', (e) => {
         recipientTags.innerHTML = '';
     }
 });
+
+document.querySelector("#launchButton").addEventListener('click', (e) => {
+    window.location.href = '/setup-success';
+})

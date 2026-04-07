@@ -23,6 +23,7 @@ main {
     border-radius: 20px;
     justify-items: center;
     padding: 3rem;
+    margin-bottom: 1rem;
 }
 
 h1 {
@@ -38,7 +39,7 @@ h2 {
 
 #landing-links {
     display: flex;
-    justify-content: space-around;
+    gap: 1rem;
 }
 
 #landing-links a {

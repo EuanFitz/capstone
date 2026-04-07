@@ -34,13 +34,13 @@ main section:first-of-type h2{
     margin-bottom:  1rem;
 }
 
-main section form{
+main section form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     font-size: x-small;
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
     text-align: left;
 }
 
@@ -107,7 +107,7 @@ section:last-of-type p:last-of-type {
     background-color: #4A4459;
     color: var(--PrimaryLightPurple);
 }
+
 a{
     color: var(--PrimaryMidPurple);
-    margin-top: 1rem;
 }

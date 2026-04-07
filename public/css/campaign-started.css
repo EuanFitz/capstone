@@ -6,30 +6,38 @@ main{
     margin: 6rem 2rem 2rem 2rem;
 }
 main h1{
-    color: var(--PrimaryMidPurple);
+    color: var(--PrimaryLightPurple);
     text-align: center;
     margin-bottom: 2rem;
     font-family: var(--HeadFont);
 }
 
-main p{
-    color:#FFF;
+main p {
+    color: #FFF;
     margin: 0 auto;
     font-family: var(--BodyFont);
+    text-align: center;
+    height: 4ch;
+    width: 100ch;
 }
+
 a{
     color: #FFF;
+    transition: color ease-in-out 0.25s;
+}
+
+p a:hover {
+    color: var(--PrimaryLightPurple);
 }
 
 .buttons{
     display: flex;
     gap: 1rem;
-    margin: auto;
-    margin-top: 5rem;
-    justify-content: space-around;
+    margin: 2rem 20%;
+    justify-content: space-evenly;
 }
 
-.buttons a{
+.buttons a {
     text-decoration: none;
     color: #FFF;
     height: 40px;
@@ -38,8 +46,11 @@ a{
     background: var(--PrimaryMidPurple);
     display: flex;
     align-items: center;
+    width: 20ch;
+    justify-content: center;
 }
 
 main div a:hover{
     background: #a083f0;
 }
+
