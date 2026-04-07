@@ -32,7 +32,7 @@ input::placeholder, textarea::placeholder {
     padding: .5rem;
 }
 
-input, select { height: 40px; background: #fff; }
+input, select { height: 40px; background: #fff; color: #6750A4}
 
 textarea {
     height: 225px;
