@@ -126,13 +126,13 @@ document.addEventListener('click', () => {
     document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
 });
 
-// ---------------------------Save button ----
-document.getElementById('save').addEventListener('click', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('templateName')?.value || 'Untitled';
-    alert(`Template "${name}" has been saved!`);
-    // TO-DO: wire to POST /api/admin/templates - RP
-});
+ // ---------------------------Save button ----
+// document.getElementById('save').addEventListener('click', (e) => {
+//     e.preventDefault();
+//     const name = document.getElementById('templateName')?.value || 'Untitled';
+//     alert(`Template "${name}" has been saved!`);
+//     // TO-DO: wire to POST /api/admin/templates - RP
+// });
 
 // ---- Delete button ----
 document.querySelector('#delete').addEventListener('click', (e) => {
@@ -147,5 +147,5 @@ document.querySelector('#delete').addEventListener('click', (e) => {
 });
 
 document.querySelector("#launchButton").addEventListener('click', (e) => {
-    window.location.href = '/setup-success';
+    alert(`Template "${name}" has been saved!`);
 })
