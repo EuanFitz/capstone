@@ -65,7 +65,7 @@ nav {
     border-radius: 0 0 10px 10px;
     height: 100vh;
     justify-content: space-evenly;
-    grid-template-rows: min-content 1fr 1fr;
+    grid-template-rows: min-content auto 1fr;
 }
 nav .logo{
   text-decoration: none;
@@ -75,6 +75,7 @@ nav ul {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 1rem;
 }
 nav div {
   display: flex;
@@ -89,13 +90,14 @@ nav h2 {
     color: var(--PrimaryLightPurple);
 }
 
-nav ul:first-of-type {
+.adminNav {
   grid-row: 2/3;
 }
 
-nav ul:last-of-type {
-  border-top: 2px solid var(--DashboardInnerContainers);
-  grid-row: 3/4;
+.userNav {
+    border-top: 2px solid var(--DashboardInnerContainers);
+    grid-row: 3 / 4;
+    align-self: start;
 }
 
 nav ul li a{
@@ -132,6 +134,20 @@ h1 {
   box-shadow: var(--inputShadow);
  }
 
+ .button {
+    color: var(--PrimaryOffWhite);
+    background-color: var(--PrimaryMidPurple);
+    border-radius: 20px;
+    border: none;
+    box-shadow: var(--minorShadow);
+    width: 20ch;
+    font-size: medium;
+    transition: background-color ease-in-out 0.25s;
+    padding: 5px 0;
+}
+.button:hover {
+background-color: var(--PrimaryDarkPurple);
+}
 
 /* ===================FOOTER================= */
 .sideNavPage footer{

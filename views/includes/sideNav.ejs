@@ -9,8 +9,9 @@
         </div>     
         </a> 
   <!-- Nav Items: Admin -->
-        <ul>
-        <% if (user.role === 'admin') { %>
+  <% if (user.role === 'admin') { %>
+        <ul class="adminNav">
+
             <li>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_206_2607)">
@@ -83,13 +84,14 @@
 </svg>
 <a href="/voice-setup">Setup Voice Message</a>
             </li>
-    <% } %>
+
         </ul>
+    <% } %>
 
 
 
         <!--  Nav Items: User/all-->
-        <ul>
+        <ul class="userNav">
             <li>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_206_2611)">

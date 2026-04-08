@@ -46,28 +46,28 @@
     <form id="profileForm">
       <div class="full">
         <label for="displayName">Display Name</label>
-        <input type="text" id="displayName" name="displayName" placeholder="Your name">
+        <input type="text" id="displayName" class="input" name="displayName" placeholder="Your name">
       </div>
 
       <div class="full">
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="email@company.com">
+        <input type="email" id="email" class="input"   name="email" placeholder="email@company.com">
       </div>
 
       <div class="full">
         <label for="department">Department</label>
-        <input type="text" id="department" name="department" placeholder="e.g. IT, HR, Finance">
+        <input type="text" id="department" class="input"  name="department" placeholder="e.g. IT, HR, Finance">
       </div>
 
       <!------------------Admin-only: role display -->
       <% if (user.role === 'admin') { %>
       <div class="full adminOnlyField">
         <label>Role</label>
-        <input type="text" value="Administrator" readonly class="readonlyInput">
+        <input type="text" class="input"  value="Administrator" readonly class="readonlyInput">
       </div>
       <% } %>
 
-      <button class="full" type="submit">Save Changes</button>
+      <button class="button" class="full" type="submit">Save Changes</button>
     </form>
 
     <!-----------------------Change Password -->
@@ -77,13 +77,13 @@
       <form id="passwordForm">
         <div class="full">
           <label for="currentPassword">Current Password</label>
-          <input type="password" id="currentPassword" name="currentPassword">
+          <input type="password" id="currentPassword" name="currentPassword" class="input" >
         </div>
         <div class="full">
           <label for="newPassword">New Password</label>
-          <input type="password" id="newPassword" name="newPassword">
+          <input type="password" id="newPassword" name="newPassword" class="input" >
         </div>
-        <button class="full" type="submit">Update Password</button>
+        <button class="button" class="full" type="submit">Update Password</button>
       </form>
     </div>
 

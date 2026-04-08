@@ -112,11 +112,14 @@
 
 .profileDetails h2,
 .profileDetails h3 {
-  font-family: var(--HeadFont);
+  font-size: 2rem;
+  font-family: var(--BodyFont);
+  color: var(--PrimaryMidPurple);
 }
 
-.profileDetails h2 { font-size: 2rem; }
-.profileDetails h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.profileDetails h3 { 
+  font-size: 1.2rem; margin-bottom: 0.5rem; 
+}
 
 #profileForm,
 #passwordForm {
@@ -133,6 +136,22 @@
   background: #e8e3ef;
   cursor: not-allowed;
   color: #555;
+}
+
+label {
+    font-family: var(--HeadFont);
+    font-weight: 300;
+    color: var(--LogoBlue);
+}
+
+.input {
+    font-family: var(--BodyFont);
+    border-radius: 20px;
+    padding: 2px;
+    border: none;
+    background-color: #e8e3ef;
+    text-indent: 1ch;
+    box-shadow: var(--inputShadow);
 }
 
 @media (max-width: 768px) {
