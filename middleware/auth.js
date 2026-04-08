@@ -51,6 +51,7 @@ const authMiddleware = (req, res, next) => {
  
   if (!token) {
     // redirect instead of JSON for page routes now.
+    console.log("No token found")
     return res.redirect('/login'); 
   }
  
@@ -59,6 +60,7 @@ const authMiddleware = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
+    console.log("Auth middleware error:", error)
     res.clearCookie('token');
     return res.redirect('/login');
   }

@@ -5,8 +5,7 @@ const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const passport = require('./passport');
-
-
+const { encrypt, decrypt } = require("../middleware/encryption");
     
     // =============================
     // ==========REGISTER===========
@@ -15,23 +14,39 @@ const passport = require('./passport');
 router.post('/register', async (req, res) =>{
 //Get form values from adminregister.ejs 
 try{
-const { username, password, role } = req.body;
-
+const { username, password, role, email, bio} = req.body;
+const encryptEmail = encrypt(email);
+const encryptBio = encrypt(bio);
+const defualtDisplay = username;
 //Hash the password
 const hashedPassword = await argon2.hash(password);
 
 //Create new User
 
-const newUser = new User({username, password:hashedPassword, role});
+const newUser = new User({username, password:hashedPassword, role, email:encryptEmail, bio:encryptBio, displayName:defualtDisplay});
 //Put it somewhere
         await newUser.save();
+        const token = jwt.sign(
+                { id: newUser._id, role: newUser.role, username: newUser.username },
+                process.env.JWT_SECRET,
+                { expiresIn: "1h" },
+        );
 
+        //-------Adding cookie code ------ -RP
+        res.cookie('token', token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                maxAge: 60 * 60 * 1000 // An hour.
+        });
+        
         //Send status when it works
         res.status(201).json({ message: 'User created successfully' }); 
 
 //Error handling
 
 }catch (error) { 
+        console.error("Registration Error:", error);
         //if it goes wrong log the error to the server 
         res.status(500).json({ error: error.message });
   }
@@ -79,16 +94,6 @@ router.post('/login', async (req, res) =>{
   }
 });
 
-router.post('/logout', async (req, res) => {
-        const token = req.cookies?.token;
-         if (!token) return res.sendStatus(204);
-         res.clearCookie('token', {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production', // FYI: here to match our login route. 
-         });
-        res.status(200).json({ message: 'Logged out successfully' });
-});
-
 // =============================
 // ========== GOOGLE ===========
 // =============================
@@ -116,6 +121,22 @@ router.get('/google/callback',
         res.redirect("/profile");
 }
 );
+
+
+
+// =============================
+// ========== LOGOUT ===========
+// =============================
+
+router.post('/logout', async (req, res) => {
+        const token = req.cookies?.token;
+         if (!token) return res.sendStatus(204);
+         res.clearCookie('token', {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production', // FYI: here to match our login route. 
+         });
+        res.status(200).json({ message: 'Logged out successfully' });
+});
 
 
 module.exports = router;

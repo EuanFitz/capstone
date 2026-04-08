@@ -3,7 +3,7 @@
 <head>
     <%- include('../includes/head') %>
     <link rel="stylesheet" href="/css/admin.css">
-    <script src="/js/adminregister.js" defer></script>
+    <script src="/js/register.js" defer></script>
 </head>
 <body>
     <header>
@@ -12,13 +12,16 @@
     <main>
         <section>
             <h2>Register</h2>
-                <form id="register" action="">
+                <form id="register" method="POST">
                     <input type="hidden" value="company" value="3">
                     <div>
                         <label for="username">Username*</label>
                         <input type="text" name="username" id="username" required>
                     </div>
-
+                     <div>
+                        <label for="username">Email*</label>
+                        <input type="emial" name="email" id="email" required>
+                    </div>
                     <div>
                         <label for="password">Password*</label>
                         <input type="password" name="password" id="password" required>

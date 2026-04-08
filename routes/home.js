@@ -1,8 +1,9 @@
-
-const express = require('express');
+const express = require("express");
 const authMiddleware = require("../middleware/auth");
 const authorize = require("../middleware/authorization");
+const User = require("../model/User");
 const router = express.Router();
+const { encrypt, decrypt } = require("../middleware/encryption")
 
 router.get("/", (req, res) => {
   res.set('Cache-Control', 'public, max-age=86400');
@@ -16,12 +17,12 @@ router.get("/404", (req, res) => {
 
 router.get("/login", (req, res) => {
   res.set('Cache-Control', 'no-store');
-  res.render('pages/adminlogin', { title: "Login" });
+  res.render('pages/login', { title: "Login" });
 });
 
 router.get("/register", (req, res) => {
   res.set('Cache-Control', 'no-store');
-  res.render('pages/admin', { title: "Register" });
+  res.render('pages/register', { title: "Register" });
 });
 
 router.get("/success", (req, res) => {
@@ -78,13 +79,22 @@ router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
     });
 });
 
-router.get("/profile", authMiddleware, authorize("admin","user"),(req, res) => {
+router.get("/profile", authMiddleware, authorize("admin","user"), async (req, res) => {
+  try{
+  const user = await User.findById(req.user._id);
   res.set('Cache-Control', 'public, max-age=2592000');
   res.render('pages/profile', {
-    username: req.user.username,
-    title: "Your Profile",
-    user: req.user
+      user: {
+        username: user.username,
+        displayName: user.displayName,
+        email: decrypt(user.email),
+        bio: decrypt(user.bio)
+      }
     });
+  } catch(error){
+    console.log(error);
+    res.redirect('/login');
+  }
 });
 
 module.exports = router;

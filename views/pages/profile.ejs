@@ -46,7 +46,9 @@
     <form id="profileForm">
       <div class="full">
         <label for="displayName">Display Name</label>
-        <input type="text" id="displayName" class="input" name="displayName" placeholder="Your name">
+        <input type="text" id="displayName" class="input" name="displayName" value="<%=
+       user.displayName ? user.displayName: user.username
+          %>">
       </div>
 
       <div class="full">
@@ -55,8 +57,10 @@
       </div>
 
       <div class="full">
-        <label for="department">Department</label>
-        <input type="text" id="department" class="input"  name="department" placeholder="e.g. IT, HR, Finance">
+        <label for="department">Bio</label>
+        <textarea type="text" id="bio" class="input" name="bio" value="<%=
+        user.bio ? user.bio: 'Add a bio'
+        %>"></textarea>
       </div>
 
       <!------------------Admin-only: role display -->
@@ -94,8 +98,9 @@
 
 <%- include('../includes/footer') %>
 
-<script src="/js/backbutton.js">
+<script src="/js/backbutton">
 //-------------------- back button → make include later
 </script>
+<script src="js/profileUpdate"></script>
 </body>
 </html>

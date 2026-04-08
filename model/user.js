@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+require
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -20,6 +20,19 @@ const UserSchema = new mongoose.Schema({
         type: String,
         unique: true,
         sparse: true // Allows non google users
+    },
+    displayName: {
+        type: String,
+        default: null
+    },
+    email: {
+        type: String,
+        default: null
+    },
+    bio:{
+        type: String,
+        maxLength: 500,
+        defualt: "No Bio"
     }
 });
 

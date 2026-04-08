@@ -17,8 +17,10 @@ const goBackLink = document.querySelector(".backButton");
 
       body: JSON.stringify({
         username: e.target.username.value,
+        email: e.target.email.value,
         password: e.target.password.value,
-        role: e.target.role.value
+        role: e.target.role.value,
+        bio: "No Bio"
       }),
     });
 
@@ -26,9 +28,10 @@ const goBackLink = document.querySelector(".backButton");
 
     //If the respone is good status 200-299
     if (res.ok) {
-      window.location.href = '/faq';
+      window.location.href = '/profile';
     }else{
-      console.error
+      console.log(error);
+      alert(data.message || 'Registration failed');
     }
   } catch (error) {
     console.error("Something went wrong", error);
