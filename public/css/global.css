@@ -49,12 +49,23 @@ body {
   grid-template-columns: 200px 1fr;
   overflow: auto;
 }
+.sideMenu{
+  max-width: 200px;
+}
 .sideNavPage nav > ul li{
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
+  max-width: 100%;
 }
+.logout-button button{
+  color: #fff;
+  font-family: var(--BodyFont);
+  background: none;
+  border: none;
+  font-size: large;
+}
+
 nav {
     background-color: var(--SideMenu);
     color: #fff;
@@ -76,6 +87,7 @@ nav ul {
     flex-direction: column;
     justify-content: space-evenly;
     gap: 1rem;
+    max-width: 100%;
 }
 nav div {
   display: flex;
