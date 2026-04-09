@@ -17,15 +17,15 @@ function encrypt(text){
     let encrypted = cipher.update(text, 'utf-8', 'hex');
     encrypted += cipher.final('hex');
 
-    return iv.toString('hex') + ':' + encrypted;
-    
+    return iv.toString('hex') + ':' + encrypted; // String is returned like iv:         gsgsgsdgsdgsdgsdg:n12kj34n1k23n123
 }
 
 function decrypt(encryption){
-    if(!encryption) return null;
 
-    const parts = encryption.split(':');
-    if (parts.length !== 2) return encryption;
+    if(!encryption) return null;                //----|
+                                                   // |----   This handles decryption break
+    const parts = encryption.split(':');           // |----   if the message isn't encrypted
+    if (parts.length !== 2) return encryption;  //----|
 
     const [ivHex, encrypted] = encryption.split(':');
     const iv = Buffer.from(ivHex, 'hex');

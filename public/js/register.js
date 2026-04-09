@@ -6,6 +6,18 @@ const goBackLink = document.querySelector(".backButton");
 
   const form = document.querySelector('#register');
 
+
+const escapeHTML = (str) => str.replace(/[&<>"']/g, 
+  tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[tag] || tag)
+);
+
+
   form.addEventListener('submit', async (e) =>{
     e.preventDefault();
       try {

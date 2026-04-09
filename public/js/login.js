@@ -35,8 +35,8 @@ const form = document.getElementById('login');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  const username = e.target.username.value;
+  const password = e.target.password.value;
 
   try {
     const res = await fetch('/api/auth/login', { 

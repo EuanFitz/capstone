@@ -81,6 +81,7 @@ router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
 
 router.get("/profile", authMiddleware, authorize("admin","user"), async (req, res) => {
   try{
+    //Find and pull the user from the database based on their token ID
   const user = await User.findById(req.user.id);
   res.set('Cache-Control', 'public, max-age=2592000');
   res.render('pages/profile', {
@@ -88,7 +89,7 @@ router.get("/profile", authMiddleware, authorize("admin","user"), async (req, re
       user: {
         role: user.role,
         username: user.username,  
-        displayName: user.displayName ? user.displayName: '',
+        displayName: user.displayName ? user.displayName: '', 
         email: decrypt(user.email),
         bio: user.bio ? decrypt(user.bio): "no bio"
       }

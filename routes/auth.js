@@ -15,13 +15,21 @@ router.post('/register', async (req, res) =>{
 //Get form values from adminregister.ejs 
 try{
 const { username, password, role, email,} = req.body;
-const encryptEmail = encrypt(email);
+
 //Hash the password
 const hashedPassword = await argon2.hash(password);
 
+        //user object
+        const user = {};
+        user.username = username;
+        user.password = hashedPassword;
+        user.role = role;
+        //email isn't required so check if it exsists 
+        if(email) user.email = email;
+
 //Create new User
 
-const newUser = new User({username, password:hashedPassword, role, email:encryptEmail});
+const newUser = new User(user);
 //Put it somewhere
         await newUser.save();
         const token = jwt.sign(
@@ -133,7 +141,7 @@ router.post('/logout', async (req, res) => {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production', // FYI: here to match our login route. 
          });
-        res.render('/');
+        res.redirect('/');
 });
 
 
