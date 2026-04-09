@@ -34,16 +34,3 @@ jobs:
       - name: Run audit fix
         run: npm audit fix
       # fix all the bad stuff!
-      - name: Commit updated files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git diff --quiet && echo "No changes to commit" && exit 0
-
-          # Build commit message from changed files
-          CHANGED=$(git diff --name-only | tr '\n' ', ' | sed 's/,$//')
-          git add .
-          git commit -m "chore: audit fix — updated $CHANGED"
-          git push
-          #straight up taken form reddit and stackoverflow.-RP
