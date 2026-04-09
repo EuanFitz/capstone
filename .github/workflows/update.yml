@@ -33,4 +33,4 @@ jobs:
         # showing vulnerable stuff before the fix happens, or else we might not see it. Please dont remove.
       - name: Run audit fix
         run: npm audit fix
-      # fix all the bad stuff!
+      # fix all the bad stuff!!
