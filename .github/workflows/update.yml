@@ -1,3 +1,6 @@
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  #added beczuse of GitHub warning for action. Keeps up to date for June change.
 name: audit-for-vulnerabilities
 run-name: ${{ github.actor }} is auditing packages
 # based on previous action outline and ashlyn's reccommendations/examples.
@@ -16,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
 
@@ -33,4 +36,4 @@ jobs:
         # showing vulnerable stuff before the fix happens, or else we might not see it. Please dont remove.
       - name: Run audit fix
         run: npm audit fix
-      # fix all the bad stuff!
+      # fix all the bad stuff!!
