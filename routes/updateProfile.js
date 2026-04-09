@@ -18,8 +18,7 @@ const updates ={}
         if(email) updates.email = encrypt(email);
         if(bio) updates.bio = encrypt(bio);
 
-        await User.findByIdAndUpdate(req.user.id, updates, {new: true});
-
+        await User.findByIdAndUpdate(req.user.id, updates, {returnDocument: 'after'});
         //Send status when it works
         res.status(201).json({ message: 'Update successful'}); 
 

@@ -147,15 +147,23 @@ label {
 .input {
     font-family: var(--BodyFont);
     border-radius: 20px;
-    padding: 2px;
+    padding: .5rem;
     border: none;
     background-color: #e8e3ef;
-    text-indent: 1ch;
+    text-indent: .5ch;
     box-shadow: var(--inputShadow);
 }
-.profileForm textarea{
-  height: 400px;
+input[type="email"]{
+  min-width: 200px;
+}
+.bio{
+  display: flex;
+  gap: 1rem;
+}
+.bio textarea{
+  height: 150px;
   resize: none;
+  padding: .5rem;
 }
 
 @media (max-width: 768px) {
