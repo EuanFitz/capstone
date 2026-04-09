@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/head') %>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body class="sideNavPage">
+  <%- include('../includes/sideNav') %>
+  <main>
+
+
+    <div id="dashRight">
+      <h1><%= title %></h1>
+
+      <div id="graphContainer">
+
+        <!-- Admin + User -->
+        <section class="dashboardInnerContainer">
+          <h3>Your Results</h3>
+          <div class="chartContainer">
+            <canvas id="LineGraph"></canvas>
+          </div>
+        </section>
+
+<section class="dashboardInnerContainer">
+  <h3>Tests Passed</h3>
+  <div class="chartContainer">
+    <canvas id="PieChart_A" height="200"></canvas>
+  </div>
+</section>
+
+        <!-- User Only -->
+        <% if (user.role === 'user') { %>
+          <section class="dashboardInnerContainer">
+            <h3>My Training Progress</h3>
+            <div class="chartContainer">
+              <canvas id="percentage"></canvas>
+            </div>
+          </section>
+        <% } %>
+
+        <!-- Admin Only -->
+        <% if (user.role === 'admin') { %>
+          <section class="dashboardInnerContainer">
+            <h3>Target — Organisation Overview</h3>
+            <div class="chartContainer">
+              <canvas id="percentage"></canvas>
+            </div>
+          </section>
+
+          <section class="dashboardInnerContainer">
+            <h3>Employee Status</h3>
+            <div class="chartContainer">
+              <canvas id="PieChart_B"></canvas>
+            </div>
+          </section>
+
+          <section class="dashboardInnerContainer">
+            <h3>Campaign Results</h3>
+            <div class="chartContainer">
+              <canvas id="BarChart"></canvas>
+            </div>
+          </section>
+        <% } %>
+
+      </div><!-- end graphContainer -->
+    </div><!-- end dashRight -->
+
+    <div id="buttonContainer">
+
+      <div class="dashActions">
+        <a href="/new-campaign">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75 60H65V50H60V60H50V65H60V75H65V65H75V60Z" stroke="white"/>
+        <path d="M38.5 75L12.5 59.5C11 58.5 10 57 10 55.25V24.75C10 23 11 21.25 12.5 20.5L37.5 5.75C38.25 5.25 39 5 40 5C41 5 41.75 5.25 42.5 5.75L67.5 20.5C69 21.5 70 23 70 24.75V40H65V24.75L40 10L15 24.75V55.25L41.25 70.75L38.5 75Z" stroke="white"/>
+        </svg>
+        
+        <p class="buttonText">Create New Campaign</p>
+        </a>
+      </div>
+      
+      <div class="dashActions">
+        <a href="">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_206_4081)">
+        <path d="M11 32H33C36.3137 32 39 34.6863 39 38V58C39 61.3137 36.3137 64 33 64H11V32Z" fill="#EADDFF"/>
+        <path d="M36.6667 63.3335H16.6667C14.8986 63.3335 13.2029 62.6311 11.9526 61.3809C10.7024 60.1306 10 58.4349 10 56.6668V20.0002C10 18.2321 10.7024 16.5364 11.9526 15.2861C13.2029 14.0359 14.8986 13.3335 16.6667 13.3335H30L40 23.3335H63.3333C65.1014 23.3335 66.7971 24.0359 68.0474 25.2861C69.2976 26.5364 70 28.2321 70 30.0002V43.3335" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M50 63.3332L56.6667 69.9998L70 56.6665" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_206_4081">
+        <rect width="80" height="80" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        <p class="buttonText">View Current Report</p>
+        </a>
+      </div>
+
+      <div class="dashActions">
+        <a href="">
+        <svg width="80" height="80" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_206_2608)">
+        <path d="M12 15.3144C12 14.8597 12.1873 14.4237 12.5207 14.1022C12.8541 13.7807 13.3063 13.6001 13.7778 13.6001H26.2222C26.6937 13.6001 27.1459 13.7807 27.4793 14.1022C27.8127 14.4237 28 14.8597 28 15.3144V23.8858C28 24.3405 27.8127 24.7765 27.4793 25.098C27.1459 25.4195 26.6937 25.6001 26.2222 25.6001H13.7778C13.3063 25.6001 12.8541 25.4195 12.5207 25.098C12.1873 24.7765 12 24.3405 12 23.8858V15.3144Z" fill="#6750A4"/>
+        <path d="M4 9.33317C4 8.62593 4.28095 7.94765 4.78105 7.44755C5.28115 6.94746 5.95942 6.6665 6.66667 6.6665H25.3333C26.0406 6.6665 26.7189 6.94746 27.219 7.44755C27.719 7.94765 28 8.62593 28 9.33317V22.6665C28 23.3737 27.719 24.052 27.219 24.5521C26.7189 25.0522 26.0406 25.3332 25.3333 25.3332H6.66667C5.95942 25.3332 5.28115 25.0522 4.78105 24.5521C4.28095 24.052 4 23.3737 4 22.6665V9.33317Z" stroke="#FFFBFE" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 10.6665H8.01333" stroke="#FFFBFE" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 10.6665H12.0133" stroke="#FFFBFE" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_206_2608">
+        <rect width="32" height="32" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        <p class="buttonText">View Past Reports</p>
+      </a>
+      </div>
+      
+    </div>
+
+  </main>
+
+  <%- include('../includes/footer') %>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="/js/charts.js"></script>

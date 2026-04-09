@@ -1,0 +1,56 @@
+@import url(global.css);
+body{
+    height: 100vh;
+}
+main{
+    margin: 6rem 2rem 2rem 2rem;
+}
+main h1{
+    color: var(--PrimaryLightPurple);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: var(--HeadFont);
+}
+
+main p {
+    color: #FFF;
+    margin: 0 auto;
+    font-family: var(--BodyFont);
+    text-align: center;
+    height: 4ch;
+    width: 100ch;
+}
+
+a{
+    color: #FFF;
+    transition: color ease-in-out 0.25s;
+}
+
+p a:hover {
+    color: var(--PrimaryLightPurple);
+}
+
+.buttons{
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 20%;
+    justify-content: space-evenly;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #FFF;
+    height: 40px;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: var(--PrimaryMidPurple);
+    display: flex;
+    align-items: center;
+    width: 20ch;
+    justify-content: center;
+}
+
+main div a:hover{
+    background: #a083f0;
+}
+

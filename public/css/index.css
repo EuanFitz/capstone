@@ -1,0 +1,74 @@
+@import url("global.css");
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+
+}
+#logoContainer{
+   display: flex;
+   justify-content: center;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #1F1F1F;
+}
+
+#backingBox {
+    background-color: #DAD8E1;
+    border-radius: 20px;
+    justify-items: center;
+    padding: 3rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #2F3252;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+#landing-links {
+    display: flex;
+    gap: 1rem;
+}
+
+#landing-links a {
+    text-decoration: none;
+    color: #F9FAFB;
+    background-color: #6750A4;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 25%);
+}
+
+#landing-links a:hover {
+    background-color: #2F3252;
+    transition: background-color 0.3s ease;
+}
+
+#signup {
+    display: flex;
+    color: #fff;
+}
+
+#signup a {
+    text-decoration: none;
+    color: #486284;
+    margin-left: 4px;
+}
+
+#signup a:hover {
+    text-decoration: underline;
+    color: #36506a;
+}

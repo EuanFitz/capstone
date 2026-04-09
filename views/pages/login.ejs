@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('../includes/head') %>
+   <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+    <header>
+            <%- include('../includes/nav') %>
+    </header>
+    <main>
+        <section>
+            <h2>Login</h2>
+<!-- temp deleting the action and method (user.php and POST) to make page static for assignment submission -->
+                <form id="login" action="POST" method=""> 
+                    <div class="full">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                   
+                    <div class="full">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <button class="full" type="submit">Login</button>
+                </form>
+                <a href="/api/auth/google">Login with Google</a>
+                <a href="/register">Register</a>
+        </section>
+        <section>
+            <%- include('../includes/logoPurple') %>
+            <h2>Welcome to ClickSafe</h2>
+            <p>This form will link your email and work numbers to your Admin or IT team. This will allow them to send phishing simulations and training information to you throughout the year. Please ensure all your details are correct before submitting. Afterwards, you will not be required to go back to this site.</p>
+
+            <p>Thank you for using ClickSafe!</p>
+
+<a href="/" class="backButton">Go back</a>
+
+
+
+        </section>
+        
+    </main>
+    <%- include('../includes/footer') %>
+</body>
+</html>
+<script src="../js/login.js"></script>

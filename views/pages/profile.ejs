@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../includes/head') %>
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body class="sideNavPage">
+  <%- include('../includes/sideNav') %>
+<main>
+<div class="profileMain">
+  <section class="profileCard">
+    <h1><%= title %></h1>
+    <div class="avatarWrapper">
+      <div class="avatar">
+        
+        <span id="avatarInitials"><%= user && user.username ? user.username.charAt(0).toUpperCase() : 'U' %></span>
+      </div>
+      <div class="roleTag roleTag--<%= user.role %>">
+        <%= user.role === 'admin' ? '🛡️ Admin' : '👤 Employee' %>
+      </div>
+    </div>
+
+    <p><%= user.displayName ? user.displayName: user.username %></p>
+    <p class="profileSubtext"><%= user.username %></p>
+    <p><%= user.bio %></p>
+<!-----------------------------Left: profile stuff-->
+    <div class="profileStats">
+      <div class="profileStat">
+        <span class="statVal">3</span>
+        <span class="statKey">Campaigns</span>
+      </div>
+      <div class="profileStat">
+        <span class="statVal">86%</span>
+        <span class="statKey">Pass Rate</span>
+      </div>
+      <div class="profileStat">
+        <span class="statVal">2</span>
+        <span class="statKey">Badges</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- -----------------------Right: Info & Settings, etc. -->
+  <section class="profileDetails">
+    <h2>Account Details</h2>
+
+    <form id="profileForm" method="POST">
+      <div class="full">
+        <label for="displayName">Display Name</label>
+        <input type="text" id="displayName" class="input" name="displayName" value="<%=
+       user.displayName ? user.displayName: user.username
+          %>">
+      </div>
+
+      <div class="full">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="input" name="email" placeholder="<%= 
+        user.email ? user.email: "Add Email"
+        %>">
+      </div>
+
+      <div class="full bio">
+        <label for="department">Bio</label>
+        <textarea maxlength="500" id="bio" class="input" name="bio" placeholder="Change Bio"></textarea>
+      </div>
+
+      <!------------------Admin-only: role display -->
+      <!-- <% if (user.role === 'admin') { %>
+      <div class="full adminOnlyField">
+        <label>Role</label>
+        <input type="text" class="input"  value="Administrator" readonly class="readonlyInput">
+      </div>
+      <% } %> -->
+
+      <button class="button" class="full" type="submit">Save Changes</button>
+    </form>
+
+    <!-----------------------Change Password -->
+    <div class="passwordSection">
+      <h3>Change Password</h3>
+
+      <form id="passwordForm">
+        <div class="full">
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" name="currentPassword" class="input" required>
+        </div>
+        <div class="full">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" name="newPassword" class="input" required >
+        </div>
+        <button class="button" class="full" type="submit">Update Password</button>
+      </form>
+    </div>
+
+    <a href="/" class="backButton">Go back</a>
+  </section>
+</div>
+</main>
+
+<%- include('../includes/footer') %>
+
+<script src="/js/backbutton.js">
+//-------------------- back button → make include later
+</script>
+<script src="js/updateProfile.js"></script>
+</body>
+</html>

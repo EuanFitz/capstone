@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*------------------------Colour Variables----------------------*/
+:root {
+  --LogoBlue: #513D86;
+  --PrimaryLightPurple: #B69DF8;
+  --PrimaryMidPurple: #6750A4;
+  --PrimaryDarkPurple: #3c2b6a;
+  --DarkModeBackground: #1f1f1f;
+  --DarkModeMid: #4f4e50;
+  --PrimaryOffWhite: #FFFBFE;
+  --NeutralMid: #F8F7FA;
+  --NeutralDark: #78767D;
+  --SecondaryDarkBlue: #2F3252;
+
+  --RegistrationContainer: #fffbfe;
+  --SideMenu: #333234;
+  --DashboardInnerContainers: #6f6f6f;
+  --FaqButton: #78767D;
+  --ChartGradient: linear-gradient(to top, rgba(128,97,219,0.38), rgba(128,97,219,0.94));
+
+
+  /*---Shadow effects---*/
+  --inputShadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+  --minorShadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  /* ----border stuff---- */
+  --emailBorder: 2px solid rgb(101 51 159 / 6%);
+  /*---FONT STACKS---*/
+  --HeadFont: kallisto, 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
+  --BodyFont: "Comfortaa", 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
+  --headingFont: "Inter", sans-serif;
+}
+
+body {
+  background: var(--DarkModeBackground);
+}
+/* ---------Nav------------------ */
+.sideNavPage{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  overflow: auto;
+}
+.sideMenu{
+  max-width: 200px;
+}
+.sideNavPage nav > ul li{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+.logout-button button{
+  color: #fff;
+  font-family: var(--BodyFont);
+  background: none;
+  border: none;
+  font-size: large;
+}
+
+nav {
+    background-color: var(--SideMenu);
+    color: #fff;
+    display: grid;
+    grid-template-columns: min-content;
+    /* grid-template-rows: min-content min-content min-content;  Commment:unneeded*/
+    gap: 1rem;
+    border-radius: 0 0 10px 10px;
+    height: 100vh;
+    justify-content: space-evenly;
+    grid-template-rows: min-content auto 1fr;
+}
+nav .logo{
+  text-decoration: none;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+    max-width: 100%;
+}
+nav div {
+  display: flex;
+  padding: 0 .5rem;
+  gap: .5rem;
+}
+
+nav h2 {
+    font-family: var(--HeadFont);
+    font-weight: 300;
+    align-self: center;
+    color: var(--PrimaryLightPurple);
+}
+
+.adminNav {
+  grid-row: 2/3;
+}
+
+.userNav {
+    border-top: 2px solid var(--DashboardInnerContainers);
+    grid-row: 3 / 4;
+    align-self: start;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: var(--BodyFont);
+}
+
+/* ---------------------Text & Links------------------------ */
+h1 {
+  color: var(--PrimaryOffWhite);
+  font-family: var(--HeadFont);
+  font-weight: 500;
+}
+
+ h3 {
+  color: var(--PrimaryOffWhite);
+  font-family: var(--headingFont);
+  font-weight: 400;
+ }
+
+ a {
+  font-family: var(--BodyFont);
+ }
+
+ p {
+  font-family: var(--BodyFont);
+ }
+
+ /* -----------------------------Classes--------------------- */
+ .lightContainer {
+  background-color: var(--NeutralMid);
+  border-radius: 20px;
+  box-shadow: var(--inputShadow);
+ }
+
+ .button {
+    color: var(--PrimaryOffWhite);
+    background-color: var(--PrimaryMidPurple);
+    border-radius: 20px;
+    border: none;
+    box-shadow: var(--minorShadow);
+    width: 20ch;
+    font-size: medium;
+    transition: background-color ease-in-out 0.25s;
+    padding: 5px 0;
+}
+.button:hover {
+background-color: var(--PrimaryDarkPurple);
+}
+
+/* ===================FOOTER================= */
+.sideNavPage footer{
+  grid-column: span 2;
+}
+/* comment to delete. testing push action */
