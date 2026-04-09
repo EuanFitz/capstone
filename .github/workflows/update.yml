@@ -1,0 +1,49 @@
+name: audit-for-vulnerabilities
+run-name: ${{ github.actor }} is auditing packages
+# based on previous action outline and ashlyn's reccommendations/examples.
+
+on:
+  push:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+
+permissions:
+  contents: write
+
+jobs:
+  audit-and-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Display vulnerabilities
+        run: npm audit || true
+        # showing vulnerable stuff before the fix happens, or else we might not see it. Please dont remove.
+      - name: Run audit fix
+        run: npm audit fix
+      # fix all the bad stuff!
+      - name: Commit updated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git diff --quiet && echo "No changes to commit" && exit 0
+
+          # Build commit message from changed files
+          CHANGED=$(git diff --name-only | tr '\n' ', ' | sed 's/,$//')
+          git add .
+          git commit -m "chore: audit fix — updated $CHANGED"
+          git push
+          #straight up taken form reddit and stackoverflow.-RP
