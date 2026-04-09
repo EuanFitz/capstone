@@ -1,47 +1,32 @@
-.navHeader {
-    background-color: #DAD8E1;
-    padding: 1rem;
+main{
+    margin: 3rem; 
 }
-
-.navHeader ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+section{
+    font-family: var(--BodyFont);
 }
-
-.navHeader a {
-    color: #6750A4;
-    font-family: sans-serif;
-    font-size: large;
-}
-
-.navHeader a:hover {
-color: #fff;
-}
-
-
-body {
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-    background-color: #000000;
-}
-
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    background-color: #F9FAFB;
+    min-height: 100vh;          
 }
 
-section#faq-container {
-    background-color: #4F4E50;
+main h1{
+    margin-bottom: 2rem;
+}
+
+#faq-container { 
+    background: none;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
 }
 
-h2 {
+main h2 {
     color: #beb1e1;
+    margin-bottom: .5rem; 
+}
+main p{
+    color: #fff;
 }
