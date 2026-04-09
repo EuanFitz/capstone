@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <p><%= user.username %></p>
-    <p class="profileSubtext">ClickSafe Member</p>
+    <p><%= user.displayName ? user.displayName: user.username %></p>
+    <p class="profileSubtext"><%= user.username %></p>
     <p><%= user.bio %></p>
 <!-----------------------------Left: profile stuff-->
     <div class="profileStats">
@@ -61,16 +61,16 @@
 
       <div class="full">
         <label for="department">Bio</label>
-        <textarea type="text" id="bio" class="input" name="bio" placeholder="Change Bio"></textarea>
+        <textarea maxlength="500" id="bio" class="input" name="bio" placeholder="Change Bio"></textarea>
       </div>
 
       <!------------------Admin-only: role display -->
-      <% if (user.role === 'admin') { %>
+      <!-- <% if (user.role === 'admin') { %>
       <div class="full adminOnlyField">
         <label>Role</label>
         <input type="text" class="input"  value="Administrator" readonly class="readonlyInput">
       </div>
-      <% } %>
+      <% } %> -->
 
       <button class="button" class="full" type="submit">Save Changes</button>
     </form>

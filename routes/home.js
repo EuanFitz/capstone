@@ -80,11 +80,8 @@ router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
 });
 
 router.get("/profile", authMiddleware, authorize("admin","user"), async (req, res) => {
-  console.log("profile route hit");
-  console.log("req.user:", req.user);
   try{
   const user = await User.findById(req.user.id);
-  console.log("User:", user);
   res.set('Cache-Control', 'public, max-age=2592000');
   res.render('pages/profile', {
       title: "Profile",

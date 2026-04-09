@@ -153,6 +153,10 @@ label {
     text-indent: 1ch;
     box-shadow: var(--inputShadow);
 }
+.profileForm textarea{
+  height: 400px;
+  resize: none;
+}
 
 @media (max-width: 768px) {
   .profileMain {

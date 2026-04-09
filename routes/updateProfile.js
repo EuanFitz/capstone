@@ -9,7 +9,7 @@ const { encrypt, decrypt } = require("../middleware/encryption");
 // ========== UPDATE INFO ======
 // =============================
 
-router.post('/update', async (req, res) =>{
+router.post('/update', authMiddleware, async (req, res) =>{
 //Get form values from profile form 
 try{
 const { displayName, email, bio } = req.body;
