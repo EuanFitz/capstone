@@ -1,0 +1,40 @@
+{
+  "name": "capstone",
+  "version": "1.0.0",
+  "description": "ClickSafe web application public server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EuanFitz/capstone.git"
+  },
+  "keywords": [],
+  "author": "Rachel Payette",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EuanFitz/capstone/issues"
+  },
+  "homepage": "https://github.com/EuanFitz/capstone#index.html",
+  "dependencies": {
+    "argon2": "^0.44.0",
+    "body-parser": "^2.2.2",
+    "cookie-parser": "^1.4.7",
+    "crpyto": "^0.0.1-security",
+    "dotenv": "^17.3.1",
+    "ejs": "^4.0.1",
+    "ejs-lint": "^2.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "fs": "^0.0.1-security",
+    "helmet": "^8.1.0",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}

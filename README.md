@@ -25,7 +25,7 @@ If you encounter any issus while following the set-up instructions, please reach
 
 **2.** Navigate to the Capstone repository on GitHub in your web browser
 ```https://github.com/EuanFitz/capstone```
-**3.** From the branch drop-down, select **ServerSide**
+**3.** From the branch drop-down, select **phase 2**
 
 **4.** Click the green < > Code button.
 
@@ -50,8 +50,6 @@ npm install
 
 - Argon2 
 ```npm install argon2```
-- body-parse
-```npm install body-parser```
 - cookie-parser
 ```npm install cookie-parser```
 - dotenv
@@ -100,7 +98,7 @@ GOOGLE_CLIENT_SECRET= your_secret_key_here
 - `GOOGLE_CLIENT_SECRET` — another random string here. 
 - `NODE_ENV` — Use `development` locally. Do **not** change this to `production` unless deploying.
 - The `.env` file is listed in `.gitignore` and **must never be committed to GitHub.** Contact the dev team for the correct values.
-
+- 'Authorized redirect URIs on your google cloud application must be https://localhost:3456/api/auth/google/callback
 ### D) Running the Application -
 
 **1.** In your terminal, navigate to the root of the project directory.

@@ -1,0 +1,157 @@
+#adminContent {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+}
+
+/* Stats Row */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.statCard {
+  background: var(--SideMenu);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  border-left: 4px solid var(--PrimaryMidPurple);
+  transition: border-color 0.2s;
+}
+
+.statCard:hover {
+  border-left-color: var(--PrimaryLightPurple);
+}
+
+.statNumber {
+  font-family: var(--HeadFont);
+  font-size: 2rem;
+  color: var(--PrimaryLightPurple);
+}
+
+.statLabel {
+  font-family: var(--BodyFont);
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Admin Sections */
+.adminSection {
+  background: var(--SideMenu);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader h3 {
+  font-family: var(--HeadFont);
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.actionButton {
+  background: var(--PrimaryMidPurple);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  font-family: var(--BodyFont);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.actionButton:hover {
+  background: var(--PrimaryLightPurple);
+  color: #000;
+}
+
+/* Table */
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--BodyFont);
+  color: #fff;
+}
+
+.adminTable thead tr {
+  border-bottom: 2px solid var(--PrimaryMidPurple);
+}
+
+.adminTable th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--PrimaryLightPurple);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.adminTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.adminTable tbody tr:hover {
+  background: rgba(103, 80, 164, 0.15);
+}
+
+/* Badges */
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.badge--active {
+  background: rgba(182, 157, 248, 0.2);
+  color: var(--PrimaryLightPurple);
+  border: 1px solid var(--PrimaryLightPurple);
+}
+
+.badge--complete {
+  background: rgba(72, 199, 142, 0.2);
+  color: #48c78e;
+  border: 1px solid #48c78e;
+}
+
+/* Progress Bar */
+.progressBar {
+  background: #444;
+  border-radius: 10px;
+  height: 6px;
+  width: 100px;
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--PrimaryMidPurple);
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .statsRow { grid-template-columns: repeat(2, 1fr); }
+}
