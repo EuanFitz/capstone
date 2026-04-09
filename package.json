@@ -23,7 +23,6 @@
     "argon2": "^0.44.0",
     "body-parser": "^2.2.2",
     "cookie-parser": "^1.4.7",
-    "crpyto": "^0.0.1-security",
     "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
     "ejs-lint": "^2.0.1",
