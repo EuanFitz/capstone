@@ -1,5 +1,5 @@
 require('dotenv').config();
-const crpyto = require('crypto');
+const crypto = require('crypto');
 const aes = "aes-128-cbc";
 
 const secretKey = Buffer.from(process.env.SECRET_KEY, 'hex');
@@ -10,9 +10,9 @@ if (!process.env.SECRET_KEY) {
 
 function encrypt(text){
 
-    const iv = crpyto.randomBytes(16);
+    const iv = crypto.randomBytes(16);
 
-    const cipher = crpyto.createCipheriv(aes, secretKey, iv);
+    const cipher = crypto.createCipheriv(aes, secretKey, iv);
 
     let encrypted = cipher.update(text, 'utf-8', 'hex');
     encrypted += cipher.final('hex');
@@ -22,12 +22,17 @@ function encrypt(text){
 }
 
 function decrypt(encryption){
-    const [ivHex, encrypted] = encyption.splot(':');
+    if(!encryption) return null;
+
+    const parts = encryption.split(':');
+    if (parts.length !== 2) return encryption;
+
+    const [ivHex, encrypted] = encryption.split(':');
     const iv = Buffer.from(ivHex, 'hex');
 
     const decipher = crypto.createDecipheriv(aes, secretKey, iv);
 
-    let decrypted = decipher.update(encryption, 'hex', 'utf-8');
+    let decrypted = decipher.update(encrypted, 'hex', 'utf-8');
     decrypted += decipher.final('utf-8');
 
     return decrypted

@@ -53,7 +53,7 @@ app.set("views", path.join(__dirname, "views"));
 const homeRoute = require("./routes/home");
 const adminRoute = require("./routes/admin");
 const authRoute = require("./routes/auth");
-const profileRoute = require("./routes/profile");
+const profileRoute = require("./routes/updateProfile");
 const cookieParser = require('cookie-parser'); // added for cookie use - RP
 
 
@@ -61,7 +61,7 @@ app.use(cookieParser()); // Do cookie things! -RP
 app.use('/', homeRoute);
 app.use('/api/admin', adminRoute); // should be admin only!
 app.use('/api/auth', authRoute);
-app.use('/api/profile', profileRoute); // should be when anyone is logged in.
+app.use('/api/updateProfile', profileRoute); // should be when anyone is logged in.
 
 
 app.use(express.static(

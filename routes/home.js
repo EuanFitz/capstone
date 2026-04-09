@@ -1,7 +1,7 @@
 const express = require("express");
 const authMiddleware = require("../middleware/auth");
 const authorize = require("../middleware/authorization");
-const User = require("../model/User");
+const User = require('../model/User');
 const router = express.Router();
 const { encrypt, decrypt } = require("../middleware/encryption")
 
@@ -80,21 +80,32 @@ router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
 });
 
 router.get("/profile", authMiddleware, authorize("admin","user"), async (req, res) => {
+  console.log("profile route hit");
+  console.log("req.user:", req.user);
   try{
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user.id);
+  console.log("User:", user);
   res.set('Cache-Control', 'public, max-age=2592000');
   res.render('pages/profile', {
+      title: "Profile",
       user: {
-        username: user.username,
-        displayName: user.displayName,
+        role: user.role,
+        username: user.username,  
+        displayName: user.displayName ? user.displayName: '',
         email: decrypt(user.email),
-        bio: decrypt(user.bio)
+        bio: user.bio ? decrypt(user.bio): "no bio"
       }
     });
   } catch(error){
     console.log(error);
-    res.redirect('/login');
+    res.render("/login");
   }
+});
+
+router.get("/test", (req, res) => {
+  console.log("test route hit");
+  console.log("cookies:", req.cookies);
+  res.json({ cookies: req.cookies });
 });
 
 module.exports = router;

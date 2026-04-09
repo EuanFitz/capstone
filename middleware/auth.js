@@ -45,6 +45,9 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser"); 
  
 const authMiddleware = (req, res, next) => {
+  console.log("authMiddleware hit");
+  console.log("cookies:", req.cookies);
+  
   // Checks cookie first, then uses security header if doesn't work/no cookie/ other issues etc. 
   const token = req.cookies?.token || 
     (req.header("Authorization")?.replace("Bearer ", ""));

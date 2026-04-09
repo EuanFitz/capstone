@@ -29,10 +29,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: null
     },
-    bio:{
+    bio: {
         type: String,
         maxLength: 500,
-        defualt: "No Bio"
+        defualt: null
     }
 });
 

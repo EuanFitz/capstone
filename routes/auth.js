@@ -14,16 +14,14 @@ const { encrypt, decrypt } = require("../middleware/encryption");
 router.post('/register', async (req, res) =>{
 //Get form values from adminregister.ejs 
 try{
-const { username, password, role, email, bio} = req.body;
+const { username, password, role, email,} = req.body;
 const encryptEmail = encrypt(email);
-const encryptBio = encrypt(bio);
-const defualtDisplay = username;
 //Hash the password
 const hashedPassword = await argon2.hash(password);
 
 //Create new User
 
-const newUser = new User({username, password:hashedPassword, role, email:encryptEmail, bio:encryptBio, displayName:defualtDisplay});
+const newUser = new User({username, password:hashedPassword, role, email:encryptEmail});
 //Put it somewhere
         await newUser.save();
         const token = jwt.sign(
@@ -59,7 +57,7 @@ const newUser = new User({username, password:hashedPassword, role, email:encrypt
 //Get form values from admin.ejs
 router.post('/login', async (req, res) =>{
         try{
-                const { username, password} = req.body;
+        const { username, password} = req.body;
         //Check if username exists
         const user = await User.findOne({ username });
         //error if !user
@@ -135,7 +133,7 @@ router.post('/logout', async (req, res) => {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production', // FYI: here to match our login route. 
          });
-        res.status(200).json({ message: 'Logged out successfully' });
+        res.render('/');
 });
 
 

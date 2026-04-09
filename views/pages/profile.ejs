@@ -20,8 +20,9 @@
       </div>
     </div>
 
-    <p><%= username %></p>
+    <p><%= user.username %></p>
     <p class="profileSubtext">ClickSafe Member</p>
+    <p><%= user.bio %></p>
 <!-----------------------------Left: profile stuff-->
     <div class="profileStats">
       <div class="profileStat">
@@ -43,7 +44,7 @@
   <section class="profileDetails">
     <h2>Account Details</h2>
 
-    <form id="profileForm">
+    <form id="profileForm" method="POST">
       <div class="full">
         <label for="displayName">Display Name</label>
         <input type="text" id="displayName" class="input" name="displayName" value="<%=
@@ -53,14 +54,14 @@
 
       <div class="full">
         <label for="email">Email Address</label>
-        <input type="email" id="email" class="input"   name="email" placeholder="email@company.com">
+        <input type="email" id="email" class="input" name="email" placeholder="<%= 
+        user.email ? user.email: "Add Email"
+        %>">
       </div>
 
       <div class="full">
         <label for="department">Bio</label>
-        <textarea type="text" id="bio" class="input" name="bio" value="<%=
-        user.bio ? user.bio: 'Add a bio'
-        %>"></textarea>
+        <textarea type="text" id="bio" class="input" name="bio" placeholder="Change Bio"></textarea>
       </div>
 
       <!------------------Admin-only: role display -->
@@ -98,9 +99,9 @@
 
 <%- include('../includes/footer') %>
 
-<script src="/js/backbutton">
+<script src="/js/backbutton.js">
 //-------------------- back button → make include later
 </script>
-<script src="js/profileUpdate"></script>
+<script src="js/updateProfile.js"></script>
 </body>
 </html>

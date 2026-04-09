@@ -46,7 +46,8 @@ form.addEventListener('submit', async (e) => {
     });
 
     const data = await res.json();
-
+    console.log("status:", res.status); // what status is coming back
+    console.log("data:", data); 
     if (res.ok) {
       // No localStorage needed. token is in httpOnly cookie
       window.location.href = '/profile'; // 

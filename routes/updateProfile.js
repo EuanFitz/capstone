@@ -2,6 +2,7 @@ const express = require('express');
 const authorize = require("../middleware/authorization");
 const authMiddleware = require("../middleware/auth");
 const router = express.Router();
+const User = require("../model/User");
 
 const { encrypt, decrypt } = require("../middleware/encryption");
 // =============================
@@ -12,12 +13,12 @@ router.post('/update', async (req, res) =>{
 //Get form values from profile form 
 try{
 const { displayName, email, bio } = req.body;
+const updates ={}
+        if(displayName) updates.displayName = displayName;
+        if(email) updates.email = encrypt(email);
+        if(bio) updates.bio = encrypt(bio);
 
-        await User.findByIdAndUpdate(req.user._id,{
-                displayName: displayName ? displayName: null,
-                email: email ? encrypt(email): null,
-                bio: bio ? encrypt(bio): null
-        });
+        await User.findByIdAndUpdate(req.user.id, updates, {new: true});
 
         //Send status when it works
         res.status(201).json({ message: 'Update successful'}); 
@@ -26,6 +27,7 @@ const { displayName, email, bio } = req.body;
 
 }catch (error) { 
         //if it goes wrong log the error to the server 
+        console.error("Error Updating:", error);
         res.status(500).json({ error: error.message });
   }
 });

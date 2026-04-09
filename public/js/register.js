@@ -19,8 +19,7 @@ const goBackLink = document.querySelector(".backButton");
         username: e.target.username.value,
         email: e.target.email.value,
         password: e.target.password.value,
-        role: e.target.role.value,
-        bio: "No Bio"
+        role: e.target.role.value
       }),
     });
 

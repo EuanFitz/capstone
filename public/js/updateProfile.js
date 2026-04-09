@@ -1,4 +1,5 @@
-const form = document.getElementById('update');
+
+const form = document.getElementById('profileForm');
 
 const escapeHTML = (str) => str.replace(/[&<>"']/g, 
   tag => ({
@@ -13,12 +14,12 @@ const escapeHTML = (str) => str.replace(/[&<>"']/g,
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const displayName = escapeHTML(document.getElementById('display').value);
+  const displayName = escapeHTML(document.getElementById('displayName').value);
   const email = escapeHTML(document.getElementById('email').value);
   const bio = escapeHTML(document.getElementById('bio').value);
-
+  
   try {
-    const res = await fetch('/api/auth/update', { 
+    const res = await fetch('/api/updateProfile/update', { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ displayName, email, bio })
