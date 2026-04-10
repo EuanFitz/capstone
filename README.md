@@ -69,12 +69,16 @@ npm install
 ```npm install passport passport-google-oauth20```
 - use a third-party manager like **Chocolatey** or **Brew** to install Open SSL
 ```    brew install openssl```
+- Express-Validator
+```npm install express-validator```
+
 
 <br><br>
-- **Note:** <br>We are also utilizing functionality froom ***Crypto***, which is native to **node.js**.
+ **Note:** <br>We are also utilizing functionality froom ***Crypto***, which is native to **node.js**.
 <br>
 <br>
 
+---
 **2. Keys & Certificates** <br>Next, create both a private **key** and **certificate** by typing the following text into your commandline/terminal:
 <br>
     - **Key**: ```openssl genrsa -out private-key.pem 2048```
@@ -140,36 +144,61 @@ Cheers,
 <br>
 
 Test for vulnerabilities like XSS and SQL injection by attempting to inject malicious inputs. 
+<br>
+### Note: **Failed** = we were ***NOT*** hacked/hack *failed* to work.
 
 | Breach Type | Snippet | Target | Success/Fail | Reasoning | 
 |---|---|---|---|---|
 | SQL Injection | ```' OR true-- ```| Login Page > Username Field | Failed | These for fields are sanitized where common language tags are changed to their string character counterparts. localhost:3443 says ***' OR 1=1 -- not found***. no info/insight gained.  |
 | SQL Injection | ```{"$ne": null}``` | Login Page > Username Field | Failed | flagged as *'invalid credentials'*. |
 | SQL: RegEx | ```?user[$regex]=^a``` | Login Page > Username Field | Failed | Trying to see any usernames that begin with *"a"*. localhost:3443 says ?user[$regex]=^a. no info/insight gained |
-| XSS | Profile Page > All form inputs | ```<script>alert(xss)</script>``` | Failed | inputs sanitized, shows up in profilecard and db as string. no commands executed.|
-| XSS | Profile Page > All form inputs | ```<iframe src="javascript:alert(`xss`)">``` | Failed | Same as above |
+| XSS | ```<script>alert(xss)</script>``` | Profile Page > All form inputs | Failed | inputs sanitized, shows up in profilecard and db as string. no commands executed.|
+| XSS | ```<iframe src="javascript:alert(`xss`)">``` | Profile Page > All form inputs | Failed | Same as above |
 | Dev Tool inspection | inspect> source> look for main type of js doc, ctrl+f to find sensitive info.| Entire site, Data exposure | Failed | There are few visible .js documents users can see, and the ones that are visible have no sensative or critical information. No insight/information about users, the database, or login credentials can be found through this  |
-| Manual URL manipulation | altering URL with "/" then adding admin-only/priveledged locations | Entire Site, Access control | Failed | session cookie is added once logged in, and cleared when logged out. Users are redirected to login page if URL is adjuted to go to paths they arent logged in for or have credentials for. If logged in as *"User"* and the URL is adjusted to go to admin-only page (Ex. \emailTemplate) user is given error message page containing *"{"message":"Access Denied"}"*
+| Manual URL manipulation | altering URL with ```/``` then adding admin-only/priveledged locations | Entire Site, Access control | Failed | session cookie is added once logged in, and cleared when logged out. Users are redirected to login page if URL is adjuted to go to paths they arent logged in for or have credentials for. If logged in as *"User"* and the URL is adjusted to go to admin-only page (Ex. ```\emailTemplate```) user is given error message page containing *"{"message":"Access Denied"}"*
 | a | a | a | a | a |
 | a | a | a | a | a |
 
+**General Testing Notes:**
+- Profile Bio updates on profile card display area, adding it again clears the old one and only shows new.<br><br>
+- sign-out puts you back to login page and clears session cookie. Attempting to immediately access profile page via URL alteration ```/profile``` →  diverted to login page.<br><br>
+- Used the update form on Profile Page to change password and email.<br> Both showed up an enncrypted in the DB, so not at risk of being scraped/read as plain-text. *"Display Name"* shows in plain text, so a warning to users that whatever they put there will eb visible may be warrented, idk.<br><br>
+- Euan, put more here if needed.
+
+---
 ### Input Validation Techniques - 
 
 All user input fields have been sanitized and validated by replacing all tag/command characters with their string counterparts.
 <br>
 
-
+---
 ### Output encoding methods -
 
 Node's *Crypto* has been used to encrupt and decrypt inputs/outputs to further strengthen our security and making sure that little-to-no sensative data is plain-text readible.
-<br> hex has been used to return affected data as a hexadecimal-encoded string.
+<br>
+ hex has been used to return affected data as a hexadecimal-encoded string.
 
+---
 ### Encryption techniques used -
 
 Both Argon2 and Crypto are used to hash and encrypt the user info, so even if (*somehow*) the Databse user credentials are scraped in plain-text, they are useless to the bad actors as the hashing makes the actual credentials indistinguishable from the hash.
 
-### Third-party libraries dependency management -
 ---
+### Third-party libraries dependency management -
+GitHub Action: **audit-for-vulnerabilities**
+<br>
+    A GitHub action has been set to do the following:
+- Install Dependancies
+<br>
+```npm ci```
+- Display Vilnerabilities
+<br>
+```npm audit || true```
+- Fix depreciated and/or vulnerable packages/dependencies
+<br>
+```npm audit fix```
+
+<br><br>
 
 # AI Tool Use
 <br>
@@ -177,7 +206,7 @@ Which AI tools you used, for which tasks, and how you verified the output.
 
 | Name | AI Tool Used | Purpose | Validation | Notes (optional) | 
 |---|---|---|---|---|
-| Rachel | Claude | To check and see if having Github actions running on a branch other than **Main** (at the time was on sub-branch: Phase-2) was the reason GitHub was not recognizing the workflow. Read documentation and did troubleshooting before utilising AI tool | Verified by searching GitHub dumentation (ctrl + F) witht the terms AI tool used. verified that, yes, Github actions are only recognized when on main or default branch.  | *I really just didn't want to wade through all the documentation for such a common platform. Assumed correctly that the AI's dataset would contain such documentation* -RP |
+| Rachel | Claude | To check and see if having Github actions running on a branch other than **Main** (at the time was on sub-branch: Phase-2) was the reason GitHub was not recognizing the workflow. Read a lot of documentation and did troubleshooting before utilising AI tool | Verified by searching GitHub dumentation (ctrl + F) witht the terms AI tool used. verified that, yes, Github actions are only recognized when on main or default branch.  | *I really just didn't want to wade through all the documentation for such a common platform. Assumed correctly that the AI's dataset would contain such documentation/ info scraped from the documentation* -RP |
 | name | tool name | for what purpose | how did you verify it was correct | optional notes if needed. Copy/past this on a new line for another entry btw -RP |
 
 
@@ -186,15 +215,25 @@ Which AI tools you used, for which tasks, and how you verified the output.
 
 # Lessons Learned - 
 
-**- Title**: Name <br>
-    Blurb Here
+### YML Syntax and Whitespace: - **Rachel** 
+---
+YML is easy to read and understand, but quite challenging to write when you're used to languages that are incredibly forgiving when it somes to tabbing over, whitespace, and alignment. 
+<br><br>
+I found the troubleshooting a bit hard to get the hang of at first because I am not used to looking for accidental whitespace and, ergo, fail repeatedly to recognize the errors in my yml document.
+<br><br>
+    I also found it difficult to adjust my writing habits for YML and realized several quirks in my code style. When in other languages, I tend to give myself large gaps between distinct lines, add extra blank lines in-between sections,a and use whitespace as an organizational tool. This really came to bite me when debugging the GitHub actions code.
+    <br><br>
+    It did not help that a lot of the issues I had was due to working on an off-main branch (*lol*), but I can say I now know a lot more about Github's organization and action-launch priorities.
+<br><br>
+### Title: - **Name** <br>
+---
+Blurb Here 
 
-**- Title**: Name <br>
-    Blurb Here 
-
-**- Title**: Name <br>
-    Blurb Here
-
+<br><br>
+### Title: - **Name** <br>
+---
+Blurb Here
+<br><br>
 
 
 
