@@ -74,7 +74,7 @@ npm install
 
 
 <br><br>
- **Note:** <br>We are also utilizing functionality froom ***Crypto***, which is native to **node.js**.
+ **Note:** <br>We are also utilizing functionality from ***Crypto***, which is native to **node.js**.
 <br>
 <br>
 
