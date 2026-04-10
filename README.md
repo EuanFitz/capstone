@@ -228,8 +228,10 @@ I found the troubleshooting a bit hard to get the hang of at first because I am 
 <br><br>
 ### Sanitization & ecnryption Troubleshooting: - **Euan** <br>
 ---
-I started trying to get to the profile page before my decryption/encryption was even working and had it set to rerout to /login if an error occurred. I was stuck here for a couple hours and thought is was something wrong with my routes and couldn't figure it out for the life of me. I had to take a step back and figure out what was actually happening so I set a lot of console logs at each step to figure out where things were going wrong and it was my decryption/encryption which I thought I had perfect.
-<br>
+I started trying to get to the profile page before my decryption/encryption was even working and had it set to rerout to /login if an error occurred. I was stuck here for a couple hours and thought is was something wrong with my routes and couldn't figure it out for the life of me. 
+<br><br>
+I had to take a step back and figure out what was actually happening so I set a lot of console logs at each step to figure out where things were going wrong and it was my decryption/encryption which I thought I had perfect.
+<br><br>
 I learned that sanitization is important and is easy to overlook when setting up a quick function. There are three main points to sanitize a form. Through html attributes like "pattern" and "maxlength" then the next level is in the js form handler by escaping potentially malicious characters like ```< >```. And finally in the backend before putting that data into the database it can be sanitized further. 
 
 <br><br>
