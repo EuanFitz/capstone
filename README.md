@@ -226,7 +226,7 @@ I found the troubleshooting a bit hard to get the hang of at first because I am 
     <br><br>
     It did not help that a lot of the issues I had was due to working on an off-main branch (*lol*), but I can say I now know a lot more about Github's organization and action-launch priorities.
 <br><br>
-### Sanitization & ecnryption Troubleshooting: - **Euan** <br>
+### Sanitization & Encryption Troubleshooting: - **Euan** <br>
 ---
 I started trying to get to the profile page before my decryption/encryption was even working and had it set to rerout to /login if an error occurred. I was stuck here for a couple hours and thought is was something wrong with my routes and couldn't figure it out for the life of me. 
 <br><br>
