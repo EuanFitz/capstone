@@ -6,7 +6,6 @@ const User = require("../model/User");
 const argon2 = require("argon2");
 const { encrypt } = require("../middleware/encryption");
 
-
 // =============================
 // ========== UPDATE INFO ======
 // =============================
@@ -17,7 +16,7 @@ try{
 const { displayName, email, bio } = req.body;
 
 //Check if the value exists before updating profile
-const updates ={}
+const updates = {}
         if(displayName) updates.displayName = displayName;
         if(email) updates.email = encrypt(email);
         if(bio) updates.bio = encrypt(bio);

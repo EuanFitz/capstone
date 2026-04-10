@@ -10,7 +10,11 @@
   padding: 0 2rem;
   color: #fff;
 }
+.profileMain .displayBio {
+  max-width: 300px;
+  overflow-wrap: break-word;
 
+}
 /* ---- Profile Card ---- */
 .profileCard {
   background: var(--SideMenu);

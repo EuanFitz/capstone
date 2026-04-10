@@ -22,7 +22,7 @@
 
     <p><%= user.displayName ? user.displayName: user.username %></p>
     <p class="profileSubtext"><%= user.username %></p>
-    <p><%= user.bio %></p>
+    <p class="displayBio"><%= user.bio %></p>
 <!-----------------------------Left: profile stuff-->
     <div class="profileStats">
       <div class="profileStat">
@@ -56,7 +56,7 @@
         <label for="email">Email Address</label>
         <input type="email" id="email" class="input" name="email" placeholder="<%= 
         user.email ? user.email: "Add Email"
-        %>">
+        %>" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i">
       </div>
 
       <div class="full bio">
