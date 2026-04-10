@@ -149,13 +149,13 @@ Test for vulnerabilities like XSS and SQL injection by attempting to inject mali
 
 | Breach Type | Snippet | Target | Success/Fail | Reasoning | 
 |---|---|---|---|---|
-| SQL Injection | ```' OR true-- ```| Login Page > Username Field | Failed | These for fields are sanitized where common language tags are changed to their string character counterparts. localhost:3443 says ***' OR 1=1 -- not found***. no info/insight gained.  |
-| SQL Injection | ```{"$ne": null}``` | Login Page > Username Field | Failed | flagged as *'invalid credentials'*. |
-| SQL: RegEx | ```?user[$regex]=^a``` | Login Page > Username Field | Failed | Trying to see any usernames that begin with *"a"*. localhost:3443 says ?user[$regex]=^a. no info/insight gained |
-| XSS | ```<script>alert(xss)</script>``` | Profile Page > All form inputs | Failed | inputs sanitized, shows up in profilecard and db as string. no commands executed.|
+| SQL Injection | ```' OR true-- ```| Login Page > Username Field | Failed | These fields are sanitized where common language tags are changed to their string character counterparts. <br>localhost:3443 says *' OR 1=1 -- not found*. no info/details displayed.  |
+| SQL Injection | ```{"$ne": null}``` | Login Page > Username Field | Failed | Trying to find usernames that aren't "null".<br>flagged as *'invalid credentials'*. no info/details displayed. |
+| SQL: RegEx | ```?user[$regex]=^a``` | Login Page > Username Field | Failed | Trying to see any usernames that begin with *"a"*. <br> localhost:3443 says *?user[$regex]=^a not found*. no info/details displayed. |
+| XSS | ```<script>alert(xss)</script>``` | Profile Page > All form inputs | Failed | Inputs have been sanitized, shows up in both profilecard and db as string. no commands executed.|
 | XSS | ```<iframe src="javascript:alert(`xss`)">``` | Profile Page > All form inputs | Failed | Same as above |
-| Dev Tool inspection | inspect> source> look for main type of js doc, ctrl+f to find sensitive info.| Entire site, Data exposure | Failed | There are few visible .js documents users can see, and the ones that are visible have no sensative or critical information. No insight/information about users, the database, or login credentials can be found through this  |
-| Manual URL manipulation | altering URL with ```/``` then adding admin-only/priveledged locations | Entire Site, Access control | Failed | session cookie is added once logged in, and cleared when logged out. Users are redirected to login page if URL is adjuted to go to paths they arent logged in for or have credentials for. If logged in as *"User"* and the URL is adjusted to go to admin-only page (Ex. ```\emailTemplate```) user is given error message page containing *"{"message":"Access Denied"}"*
+| Dev Tool inspection | inspect> source> look for main/important type of .js doc.<br> ctrl+f to find sensitive info.| Entire site, Data exposure | Failed | There are few visible .js documents users can see, and the ones that are visible have no sensative or critical information. No insight/information about users, the database, or login credentials can be found through this method.  |
+| Manual URL manipulation | altering URL with ```/``` then adding admin-only/priveledged locations | Entire Site, Access control | Failed | session cookie is added once logged in, and cleared when logged out. Users are redirected to login page if URL is adjusted to go to paths they arent logged in for or have credentials for. If logged in as *"User"* and the URL is adjusted to go to admin-only page (Ex. ```\emailTemplate```) user is given error message page containing *"{"message":"Access Denied"}"* This does let hackers know/suspect the language because of the message format as it currently displays. TO-DO: change later on.
 | a | a | a | a | a |
 | a | a | a | a | a |
 
