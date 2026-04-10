@@ -64,11 +64,11 @@ h2 {
 
 #signup a {
     text-decoration: none;
-    color: #486284;
+    color: var(--PrimaryLightPurple);
     margin-left: 4px;
 }
 
 #signup a:hover {
     text-decoration: underline;
-    color: #36506a;
+    color: #fff;    
 }
