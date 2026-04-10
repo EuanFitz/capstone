@@ -186,12 +186,15 @@ Both Argon2 and Crypto are used to hash and encrypt the user info, so even if (*
 GitHub Action: **audit-for-vulnerabilities**
 <br>
     A GitHub action has been set to do the following:
+    
 - Install Dependancies
 <br>
 ```npm ci```
-- Display Vilnerabilities
+
+- Display Vulnerabilities
 <br>
 ```npm audit || true```
+
 - Fix depreciated and/or vulnerable packages/dependencies
 <br>
 ```npm audit fix```
