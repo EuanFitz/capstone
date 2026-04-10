@@ -156,14 +156,12 @@ Test for vulnerabilities like XSS and SQL injection by attempting to inject mali
 | XSS | ```<iframe src="javascript:alert(`xss`)">``` | Profile Page > All form inputs | Failed | Same as above |
 | Dev Tool inspection | inspect> source> look for main/important type of .js doc.<br> ctrl+f to find sensitive info.| Entire site, Data exposure | Failed | There are few visible .js documents users can see, and the ones that are visible have no sensative or critical information. No insight/information about users, the database, or login credentials can be found through this method.  |
 | Manual URL manipulation | altering URL with ```/``` then adding admin-only/priveledged locations | Entire Site, Access control | Failed | session cookie is added once logged in, and cleared when logged out. Users are redirected to login page if URL is adjusted to go to paths they arent logged in for or have credentials for. If logged in as *"User"* and the URL is adjusted to go to admin-only page (Ex. ```\emailTemplate```) user is given error message page containing *"{"message":"Access Denied"}"* This does let hackers know/suspect the language because of the message format as it currently displays. TO-DO: change later on.
-| a | a | a | a | a |
-| a | a | a | a | a |
 
 **General Testing Notes:**
 - Profile Bio updates on profile card display area, adding it again clears the old one and only shows new.<br><br>
 - sign-out puts you back to login page and clears session cookie. Attempting to immediately access profile page via URL alteration ```/profile``` →  diverted to login page.<br><br>
 - Used the update form on Profile Page to change password and email.<br> Both showed up an enncrypted in the DB, so not at risk of being scraped/read as plain-text. *"Display Name"* shows in plain text, so a warning to users that whatever they put there will eb visible may be warrented, idk.<br><br>
-- Euan, put more here if needed.
+
 
 ---
 ### Input Validation Techniques - 
@@ -207,7 +205,7 @@ Which AI tools you used, for which tasks, and how you verified the output.
 | Name | AI Tool Used | Purpose | Validation | Notes (optional) | 
 |---|---|---|---|---|
 | Rachel | Claude | To check and see if having Github actions running on a branch other than **Main** (at the time was on sub-branch: Phase-2) was the reason GitHub was not recognizing the workflow. Read a lot of documentation and did troubleshooting before utilising AI tool | Verified by searching GitHub dumentation (ctrl + F) witht the terms AI tool used. verified that, yes, Github actions are only recognized when on main or default branch.  | *I really just didn't want to wade through all the documentation for such a common platform. Assumed correctly that the AI's dataset would contain such documentation/ info scraped from the documentation* -RP |
-| name | tool name | for what purpose | how did you verify it was correct | optional notes if needed. Copy/past this on a new line for another entry btw -RP |
+| Euan | Claud | Debugging Tool | N/A - AI showed basic coding rules & syntax | (hope this is fine) I used Claude in this as a debugger.  Helping me find spelling mistakes mainly. It showed me that I forgot to use async and await when setting up the /profile route and using  User.findById. It helped me understand why my encryption and decryption wasn't working by showing me that I spelled crypto as "cyrpto".  It showed me where to put console.logs which helped me a lot in the debugging. Never copying code specifically though.  |
 
 
 
@@ -225,14 +223,23 @@ I found the troubleshooting a bit hard to get the hang of at first because I am 
     <br><br>
     It did not help that a lot of the issues I had was due to working on an off-main branch (*lol*), but I can say I now know a lot more about Github's organization and action-launch priorities.
 <br><br>
-### Title: - **Name** <br>
+### Sanitization & ecnryption Troubleshooting: - **Euan** <br>
 ---
-Blurb Here 
+I started trying to get to the profile page before my decryption/encryption was even working and had it set to rerout to /login if an error occurred. I was stuck here for a couple hours and thought is was something wrong with my routes and couldn't figure it out for the life of me. I had to take a step back and figure out what was actually happening so I set a lot of console logs at each step to figure out where things were going wrong and it was my decryption/encryption which I thought I had perfect.
+<br>
+I learned that sanitization is important and is easy to overlook when setting up a quick function. There are three main points to sanitize a form. Through html attributes like "pattern" and "maxlength" then the next level is in the js form handler by escaping potentially malicious characters like ```< >```. And finally in the backend before putting that data into the database it can be sanitized further. 
 
 <br><br>
-### Title: - **Name** <br>
----
-Blurb Here
+## Reflection Checkpoint - 
+
+- What types of vulnerabilities can arise from improper input validation? 
+- How does output encoding prevent XSS attacks?
+- What challenges did you encounter with encryption, and how did you resolve them?
+
+There are a few vulnerabilities that can arise in this section from improper input.<br> 
+First the information is sensitive so if someone somehow got access to the database we'd want important information to be encrypted. But encryption also ensures that no malicious code is actually saved to the database because what ever is saved gets encrypted before actually reaching the database.<br><br>
+Another vulnerability arises when you print something on the page that a user has input themselves. Such as their bio, or displayName if they had used HTML tags or other XXS it would display regardless of encryption so this needs to be sanitized. <br>
+DisplayName doesn’t need to be encrypted because its not sensitive information and its basically a waste of time and resources so this information has to be sanitized for SQL injection before being saved into the database.
 <br><br>
 
 
