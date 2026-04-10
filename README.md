@@ -159,7 +159,7 @@ Test for vulnerabilities like XSS and SQL injection by attempting to inject mali
 
 **General Testing Notes:**
 - Profile Bio updates on profile card display area, adding it again clears the old one and only shows new.<br><br>
-- sign-out puts you back to login page and clears session cookie. Attempting to immediately access profile page via URL alteration ```/profile``` →  diverted to login page.<br><br>
+- sign-out puts you back to login page and clears session cookie.<br><br>
 - Used the update form on Profile Page to change password and email.<br> Both showed up an enncrypted in the DB, so not at risk of being scraped/read as plain-text. *"Display Name"* shows in plain text, so a warning to users that whatever they put there will eb visible may be warrented, idk.<br><br>
 
 
