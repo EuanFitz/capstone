@@ -21,7 +21,7 @@ function encrypt(text){
 }
 
 function decrypt(encryption){                   
-                                        
+                            
     const parts = encryption.split(':');     
     //if somethings not encrypted it wont have 2 parts therefore just return the item
     if (parts.length !== 2) return encryption;  
