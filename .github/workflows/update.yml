@@ -5,15 +5,7 @@ name: audit-for-vulnerabilities
 run-name: ${{ github.actor }} is auditing packages
 # based on previous action outline and ashlyn's reccommendations/examples.
 
-on:
-  push:
-    paths:
-      - 'package.json'
-      - 'package-lock.json'
-
-permissions:
-  contents: write
-
+on: [push]
 jobs:
   audit-and-fix:
     runs-on: ubuntu-latest
