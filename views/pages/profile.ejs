@@ -49,7 +49,7 @@
         <label for="displayName">Display Name</label>
         <input type="text" id="displayName" class="input" name="displayName" value="<%=
        user.displayName ? user.displayName: user.username
-          %>">
+          %>" minlength="3" maxlength="50">
       </div>
 
       <div class="full">
