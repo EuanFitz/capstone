@@ -28,9 +28,9 @@ const escapeHTML = (str) => str.replace(/[&<>"']/g,
       headers: { "Content-Type": "application/json" },
 
       body: JSON.stringify({
-        username: e.target.username.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
+        username: escapeHTML(e.target.username.value),
+        email: escapeHTML(e.target.email.value),
+        password: escapeHTML(e.target.password.value),
         role: e.target.role.value
       }),
     });
