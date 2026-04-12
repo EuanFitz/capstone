@@ -90,8 +90,8 @@ router.get("/profile", authMiddleware, authorize("admin","user"), async (req, re
         role: user.role,
         username: user.username,  
         displayName: user.displayName ? user.displayName: '', 
-        email: user.email ? decrypt(user.email) : '',
-        bio: user.bio ? decrypt(user.bio) : 'no bio'
+        email: user.email ? decrypt(user.email): '',
+        bio: user.bio ? decrypt(user.bio): "no bio"
       }
     });
   } catch(error){

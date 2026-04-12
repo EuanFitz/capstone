@@ -1,15 +1,15 @@
 
 const profileForm = document.getElementById('profileForm');
 const passwordForm = document.getElementById('passwordForm');
-// const escapeHTML = (str) => str.replace(/[&<>"']/g, 
-//   tag => ({
-//     '&': '&amp;',
-//     '<': '&lt;',
-//     '>': '&gt;',
-//     '"': '&quot;',
-//     "'": '&#39;'
-//   }[tag] || tag)
-// );
+const escapeHTML = (str) => str.replace(/[&<>"']/g, 
+  tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[tag] || tag)
+);
 
 //======================================
 //===========UPDATE PROFILE=============
@@ -17,13 +17,13 @@ const passwordForm = document.getElementById('passwordForm');
 profileForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // const displayName = escapeHTML(e.target.displayName.value);
-  // const email = escapeHTML(e.target.email.value);
-  // const bio = escapeHTML(e.target.bio.value);
+  const displayName = escapeHTML(e.target.displayName.value);
+  const email = escapeHTML(e.target.email.value);
+  const bio = escapeHTML(e.target.bio.value);
 
-  const displayName = (e.target.displayName.value);
-  const email = (e.target.email.value);
-  const bio = (e.target.bio.value);
+  // const displayName = (e.target.displayName.value));
+  // const email = (e.target.email.value);
+  // const bio = (e.target.bio.value);
   
   try {
     const res = await fetch('/api/updateProfile/update', { 
