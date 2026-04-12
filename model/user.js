@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
     bio: {
         type: String,
         maxLength: 500,
-        defualt: null
+        default: null
     }
 });
 
