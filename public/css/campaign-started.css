@@ -54,3 +54,19 @@ main div a:hover{
     background: #a083f0;
 }
 
+#loading {
+    text-align:center; 
+    opacity:0.6;
+}
+
+#progOne {
+   width:72% 
+}
+
+#progTwo {
+    width:45%
+}
+
+#progThree {
+    width:100%;
+}
