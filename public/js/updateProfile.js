@@ -16,6 +16,7 @@ const escapeHTML = (str) => str.replace(/[&<>"']/g,
 //======================================
 profileForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const { csrfToken } = await fetch('/csrf-token').then(r => r.json());
 
   const displayName = escapeHTML(e.target.displayName.value);
   const email = escapeHTML(e.target.email.value);
@@ -28,7 +29,10 @@ profileForm.addEventListener('submit', async (e) => {
   try {
     const res = await fetch('/api/updateProfile/update', { 
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json', 
+        'x-csrf-token': csrfToken 
+      },
       body: JSON.stringify({ displayName, email, bio })
     });
 

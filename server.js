@@ -53,7 +53,7 @@ app.set("views", path.join(__dirname, "views"));
 
 //-----------------------------Route------------------------
 
-
+const { doubleCsrfProtection, generateToken } = require('./middleware/csrf');
 const homeRoute = require("./routes/home");
 const adminRoute = require("./routes/admin");
 const authRoute = require("./routes/auth");
@@ -62,6 +62,17 @@ const cookieParser = require('cookie-parser'); // added for cookie use - RP
 
 
 app.use(cookieParser()); // Do cookie things! -RP
+
+
+// =============================
+// ======== CREATE TOKEN =======
+// =============================
+app.get("/csrf-token", (req, res) => {
+  const token = generateToken(req, res);
+  res.json({ csrfToken: token });
+});
+
+app.use(doubleCsrfProtection); 
 app.use('/', homeRoute);
 app.use('/api/admin', adminRoute); // should be admin only!
 app.use('/api/auth', authRoute);

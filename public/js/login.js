@@ -1,39 +1,12 @@
 
-// const form = document.querySelector('#login');
 
-// form.addEventListener('submit', async (e) =>{
-//     e.preventDefault();
-//       try {
-//     // perform a POST fetch on the /api/auth/register route
-//     const res = await fetch("/api/auth/login", {
-//       method: "POST",
-//       // send application/json type header
-//       headers: { "Content-Type": "application/json" },
-
-//       body: JSON.stringify({
-//         username: e.target.username.value,
-//         password: e.target.password.value,
-//       }),
-//     });
-
-//     const data = await res.json();
-
-//     //If the respone is good status 200-299
-//     if (res.ok) {
-//       window.location.href = '/faq';
-//     }else{
-//       console.error("Something went wrong", error);
-//     }
-//   } catch (error) {
-//     console.error("Something went wrong", error);
-//   }
-// });
 
 //rachel fucking around with this.
 const form = document.getElementById('login');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const { csrfToken } = await fetch('/csrf-token').then(r => r.json());
 
   const username = e.target.username.value;
   const password = e.target.password.value;
@@ -41,7 +14,10 @@ form.addEventListener('submit', async (e) => {
   try {
     const res = await fetch('/api/auth/login', { 
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-csrf-token': csrfToken 
+      },
       body: JSON.stringify({ username, password })
     });
 
