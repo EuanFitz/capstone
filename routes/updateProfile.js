@@ -30,7 +30,7 @@ const updates = {}
 }catch (error) { 
         //if it goes wrong log the error to the server 
         console.error("Error Updating:", error);
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -63,7 +63,7 @@ const { currentPassword, newPassword } = req.body;
 }catch (error) { 
         //if it goes wrong log the error to the server 
         console.error("Error Updating:", error);
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "Internal server error" });
   }
 });
 

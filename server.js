@@ -25,7 +25,7 @@ app.use(helmet({
       directives: {
         "defaultSrc": ["'self'"], 
         "scriptSrc": ["'self'", "https://cdn.jsdelivr.net"],
-        "scriptSrcAttr": ["'unsafe-inline'"],
+        "scriptSrcAttr": ["'none'"],
         "styleSrc": ["'self'",  "https://fonts.googleapis.com"], 
         "fontSrc": ["'self'", "https://fonts.gstatic.com"], 
         "imgSrc": ["'self'", "data:"], 
@@ -81,6 +81,12 @@ app.use(express.static(
         }
     }
 }));
+
+// -----------------------404 handling------------------
+app.use((req, res, next) => {
+    res.status(404).send('Page not found');
+    // This was done to fix OWASP ZAP CSP warning. Express's 404 handler runs outside our helmet setup unless we fix/customize it ourselves. - RP
+});
 
 //======MONGODB Connection===========//
 

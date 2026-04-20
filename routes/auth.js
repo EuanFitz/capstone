@@ -54,7 +54,7 @@ const newUser = new User(user);
 }catch (error) { 
         console.error("Registration Error:", error);
         //if it goes wrong log the error to the server 
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -96,7 +96,7 @@ router.post('/login', async (req, res) =>{
     res.status(200).json({ message: `${username} Login Successful` });
  
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
