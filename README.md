@@ -247,5 +247,124 @@ Another vulnerability arises when you print something on the page that a user ha
 DisplayName doesn’t need to be encrypted because its not sensitive information and its basically a waste of time and resources so this information has to be sanitized for SQL injection before being saved into the database.
 <br><br>
 
+# Phase 4 - Security Testing and Ethical/Legal Considerations
+Final Assignment of 2026!
+## Ethical and Legal Considerations in Web Security
+ 
+Our approach when securing ClickSafe was, and continues to be strongly aligned with all ethical and legal guidelines associated with web security professionalism. All threat testing was conducted amongst the three web-developers assigned to this project, and the methods utilized were agreed to by all stakeholders. None of the actions taken could end up causing reputational damage to SAIT, penalties due to non-compliance with data regulations, nor criminal charges for the involved developers.
+ 
+When executing common attack vectors such as SQL injections and XSS attacks, we ensured that the attacks were carried out in a locally-served environment (HTTPS://localhost:####/). These tests were carried out exclusively on the ClickSafe application (which we had permission to conduct tests on).
+ 
+### Legal frameworks pertaining to ClickSafe:
+ 
+#### Alberta Private-sector Privacy Law
+ 
+##### Personal Information Privacy Act
+ 
+- We operate in Alberta  
+
+- We are a private group  
+
+- We collect personally identifiable user information  
+ 
+This requires us to:
+ 
+- Notify users on what data we are collecting and why we are collecting it  
+
+- Only collect data we actually need  
+
+- Apply reasonable safeguards to protect all user data we are storing  
+
+- Allow users access to their data  
+ 
+If a breach occurs, we are required by law to provide a report on the details of the compromised data.
+ 
+#### Federal Law
+ 
+##### Personal Information Protection and Electronic Documents Act
+ 
+- We use Google OAuth  
+ 
+This requires us to:
+ 
+- Disclose any international data transfer that may occur on Google’s end  
+
+- Disclose in our privacy policy that we use Google’s services processes some of our data  
+ 
+If Google mishandles our data, we are legally responsible to our affected users.
+ 
+## Document the Security Process
 
 
+**Security Testing:** Provide a step-by-step guide how you tested the application for vulnerabilities, including manual and automated testing processes.
+<br><br>
+
+**Overview:**
+<br>
+Security testing was conducted using a combination of automated scanning and manual penetration testing techniques. The goal was to identify common web application vulnerabilities including injection attacks, cross-site scripting, broken access control, and sensitive data exposure.
+
+### Automated Testing:  OWASP ZAP
+
+**Tool**: OWASP ZAP (Zed Attack Proxy) via Docker
+<br>
+**Target**: https://localhost:3443
+<br>
+Two scan types were executed:
+<br>
+- Baseline scan:
+<br>performed a passive spider of the application to discover all accessible endpoints and flagged issues without actively attacking the app.
+
+- Full scan:
+<br>extended the baseline with active attack payloads across all discovered endpoints, testing for common vulnerabilities including injection, misconfigured headers, and insecure cookies.
+
+
+Findings addressed from ZAP output:
+
+- CSP style-src unsafe-inline — resolved by migrating inline styles to external CSS files and removing the unsafe-inline allowance from the Helmet configuration
+
+- CSP failure to define directives with no fallback — resolved by explicitly adding form-action, frame-ancestors, object-src, and base-uri to the Content Security Policy.
+
+### Manual Testing: 
+All manual tests were performed against the live local instance. The table below documents each test case, the payload used, the target, and the result. "Failed" indicates the attack did not succeed
+<br>
+**Target**: https://localhost:3443
+| Breach Type | Snippet | Target | Success/Fail | Reasoning | 
+|---|---|---|---|---|
+| SQL Injection | ```' OR true-- ```| Login Page > Username Field | Failed | These fields are sanitized where common language tags are changed to their string character counterparts. <br>localhost:3443 says *' OR 1=1 -- not found*. no info/details displayed.  |
+| SQL Injection | ```{"$ne": null}``` | Login Page > Username Field | Failed | Trying to find usernames that aren't "null".<br>flagged as *'invalid credentials'*. no info/details displayed. |
+| SQL: RegEx | ```?user[$regex]=^a``` | Login Page > Username Field | Failed | Trying to see any usernames that begin with *"a"*. <br> localhost:3443 says *?user[$regex]=^a not found*. no info/details displayed. |
+| XSS | ```<script>alert(xss)</script>``` | Profile Page > All form inputs | Failed | Inputs have been sanitized, shows up in both profilecard and db as string. no commands executed.|
+| XSS | ```<iframe src="javascript:alert(`xss`)">``` | Profile Page > All form inputs | Failed | Same as above |
+| Dev Tool inspection | inspect> source> look for main/important type of .js doc.<br> ctrl+f to find sensitive info.| Entire site, Data exposure | Failed | There are few visible .js documents users can see, and the ones that are visible have no sensative or critical information. No insight/information about users, the database, or login credentials can be found through this method.  |
+| Manual URL manipulation | altering URL with ```/``` then adding admin-only/priveledged locations | Entire Site, Access control | Failed | session cookie is added once logged in, and cleared when logged out. Users are redirected to login page if URL is adjusted to go to paths they arent logged in for or have credentials for. If logged in as *"User"* and the URL is adjusted to go to admin-only page (Ex. ```\emailTemplate```) user is given error message page containing *"{"message":"Access Denied"}"* This does let hackers know/suspect the language because of the message format as it currently displays. TO-DO: change later on.
+
+
+
+These were noted during general testing and confirm expected secure behavior:
+
+- **Session management**
+<br> logging out clears the session cookie and redirects to the login page; navigating to protected routes without a valid session redirects to login
+- **Password and email storage** 
+<br>both fields confirmed to be stored encrypted in MongoDB; not readable as plaintext if the database were accessed directly
+- **Profile updates** 
+<br>submitting the profile update form replaces existing data correctly; no residual data persists from previous entries
+- **Display name** 
+<br>stored and rendered in plaintext by design; a user-facing notice that this field is publicly visible is recommended
+
+**Testing Tools:** List all the tools you used throughout the security testing process, such as those used for threat modelling, static and dynamic testing, vulnerability scanning and manual testing. Explain the purpose of each tool and how it contributed to the security evaluation and enhancement of the application.
+<br><br>
+- **Figma**: Creating the threat model and organizing our project
+<br> ```https://www.figma.com/board/m9FqkTlecmv9jeicRL13AQ/Capstone-Brainstorm?node-id=653-3373&t=CJiGbHovZsI2Jfu4-1```
+- **Claud AI**: Generating the STRIDE Table (though much of it was of poor quality, so we did not use the majority of it)
+- **OWASP ZAP**: Running basic and full scans of the application
+- **VS Code**: For manual testing
+- **Our incredible intellect**: for Manual testing
+- **Docker**: for running ZAP (Not all our systems would allow direct installation of OWASP ZAP)
+- **Redbull**: For gettig us through this last week of deadlines.
+
+
+**Lessons Learned:** Reflect on the key takeaways from the process. Highlight what worked well, challenges faced, and areas for improvement
+<br><br>
+- On the first try, OWASP ZAP is rather difficult to configure and utilize correctly. That being said, we quickly realized how useful ZAP is as a security vulnerability testing tool. Arguably the most important realization was how easy it might be to use tools like ZAP for the wrong reasons. - FO
+- Documentation is a lit easier when large sections are done all at once. revisiting code or tasks from days prior can make it challenging to get back in the flow of things. 
+<br> also, Docker isn't stat scary to operate now that we have more cmd line under our belts. I feel more comfortable implimenting Docker into my other projects now due to my novel familiarity! -RP
