@@ -30,6 +30,10 @@ app.use(helmet({
         "fontSrc": ["'self'", "https://fonts.gstatic.com"], 
         "imgSrc": ["'self'", "data:"], 
         "connectSrc": ["'self'"],
+        "formAction": ["'self'"], 
+        "frameAncestors": ["'none'"],
+        "objectSrc": ["'none'"],
+        "baseUri": ["'self'"],
         "upgradeInsecureRequests": []
 
       },
