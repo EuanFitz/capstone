@@ -360,11 +360,13 @@ These were noted during general testing and confirm expected secure behavior:
 - **VS Code**: For manual testing
 - **Our incredible intellect**: for Manual testing
 - **Docker**: for running ZAP (Not all our systems would allow direct installation of OWASP ZAP)
+- **csrf-csrf**: for creating csrf tokens.
 - **Redbull**: For gettig us through this last week of deadlines.
 
 
 **Lessons Learned:** Reflect on the key takeaways from the process. Highlight what worked well, challenges faced, and areas for improvement
 <br><br>
 - On the first try, OWASP ZAP is rather difficult to configure and utilize correctly. That being said, we quickly realized how useful ZAP is as a security vulnerability testing tool. Arguably the most important realization was how easy it might be to use tools like ZAP for the wrong reasons. - FO
+<br><br>
 - Documentation is a lit easier when large sections are done all at once. revisiting code or tasks from days prior can make it challenging to get back in the flow of things. 
 <br> also, Docker isn't stat scary to operate now that we have more cmd line under our belts. I feel more comfortable implimenting Docker into my other projects now due to my novel familiarity! -RP
