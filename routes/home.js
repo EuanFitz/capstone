@@ -62,6 +62,11 @@ router.get("/voice-setup", authMiddleware, authorize("admin"), (req,res) =>{
     });
 });
 
+router.get("/oops", (req, res) => {
+  res.set('Cache-Control', 'public, max-age=86400');
+  res.render('pages/oops', { title: "Oops!" });
+});
+
 // --------------Router: both roles allowed
 router.get("/dummydash", authMiddleware, authorize("admin", "user"), (req, res) => {
   res.set('Cache-Control', 'no-store');
