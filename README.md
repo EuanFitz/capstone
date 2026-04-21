@@ -249,7 +249,7 @@ DisplayName doesn’t need to be encrypted because its not sensitive information
 
 # Phase 4 - Security Testing and Ethical/Legal Considerations
 Final Assignment of 2026!
-## Ethical and Legal Considerations in Web Security
+## D: Ethical and Legal Considerations in Web Security
  
 Our approach when securing ClickSafe was, and continues to be strongly aligned with all ethical and legal guidelines associated with web security professionalism. All threat testing was conducted amongst the three web-developers assigned to this project, and the methods utilized were agreed to by all stakeholders. None of the actions taken could end up causing reputational damage to SAIT, penalties due to non-compliance with data regulations, nor criminal charges for the involved developers.
  
@@ -293,7 +293,7 @@ This requires us to:
  
 If Google mishandles our data, we are legally responsible to our affected users.
  
-## Document the Security Process
+## E: Document the Security Process
 
 
 **Security Testing:** Provide a step-by-step guide how you tested the application for vulnerabilities, including manual and automated testing processes.
