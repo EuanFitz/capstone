@@ -59,12 +59,19 @@ router.get("/setup-success", authMiddleware, authorize("admin"), (req,res) =>{
     });
 });
  
-router.get("/voice-setup", authMiddleware, authorize("admin"), (req,res) =>{
-    res.set('Cache-Control', "max-age=60,"); 
-    res.render("pages/vishing-setup", {
-        title: "New Voice",
-        user: req.user
-    });
+router.get("/voice-setup", authMiddleware, authorize("admin"), async (req,res) =>{
+    try {
+        const users = await User.find({}, 'displayName username email voiceCloneId');
+        res.set('Cache-Control', 'no-store');
+        res.render("pages/vishing-setup", {
+            title: "New Voice",
+            user: req.user,
+            users
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Failed to load vishing page');
+    }
 });
 
 router.get("/oops", (req, res) => {

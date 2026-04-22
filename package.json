@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/EuanFitz/capstone#index.html",
   "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.44.0",
     "argon2": "^0.44.0",
     "body-parser": "^2.2.2",
     "cookie-parser": "^1.4.7",
@@ -36,7 +37,9 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.3.1",
+    "multer": "^2.1.1",
     "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "twilio": "^6.0.0"
   }
 }
