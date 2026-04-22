@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         maxLength: 500,
         default: null
+    },
+    voiceCloneId: {
+    type: String,
+    default: null
     }
 });
 

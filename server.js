@@ -12,6 +12,7 @@ const passport = require('./routes/passport');
 const PORT_HTTPS = process.env.PORT || 3443; 
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //--------------Helmet setup and stipulations-----------
 
@@ -29,7 +30,7 @@ app.use(helmet({
         "styleSrc": ["'self'",  "https://fonts.googleapis.com"], 
         "fontSrc": ["'self'", "https://fonts.gstatic.com"], 
         "imgSrc": ["'self'", "data:"], 
-        "connectSrc": ["'self'"],
+        "connectSrc": ["'self'", 'https://api.elevenlabs.io'],//vishing route test
         "formAction": ["'self'"], 
         "frameAncestors": ["'none'"],
         "objectSrc": ["'none'"],
@@ -58,6 +59,9 @@ const homeRoute = require("./routes/home");
 const adminRoute = require("./routes/admin");
 const authRoute = require("./routes/auth");
 const profileRoute = require("./routes/updateProfile");
+
+const vishingRoute = require('./routes/vishing');// vishing route test
+
 const cookieParser = require('cookie-parser'); // added for cookie use - RP
 
 
@@ -66,6 +70,9 @@ app.use('/', homeRoute);
 app.use('/api/admin', adminRoute); // should be admin only!
 app.use('/api/auth', authRoute);
 app.use('/api/updateProfile', profileRoute); // should be when anyone is logged in.
+
+app.use('/api/vishing', vishingRoute);// vishing route test
+app.use('/audio', express.static(path.join(__dirname, 'output')));// vishing route test
 
 
 app.use(express.static(
@@ -115,4 +122,10 @@ const httpsServer = https.createServer(options, app);
 httpsServer.listen(PORT_HTTPS, () => {
     connectDB();
     console.log(`HTTPS Server running at https://localhost:${PORT_HTTPS}`);
+});
+
+const http = require('http');
+const httpServer = http.createServer(app);
+httpServer.listen(3001, () => {
+    console.log('HTTP Server running at http://localhost:3001');
 });

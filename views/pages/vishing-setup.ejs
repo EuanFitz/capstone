@@ -6,27 +6,84 @@
 </head>
 <body class="sideNavPage">
     <%- include('../includes/sideNav') %>
-    <main>
-        <h1>Setup text to voice</h1>
-        <form action="">
-            <div class="options">
-            <input type="text" id="name" required placeholder="Template Name">
-            <select name="voice" id="voice">
-                <option value="">Choose voice</option>
-                <option value="A1">Admin 1</option>
-                <option value="A2">Admin 2</option>
-                <option value="F1">Female 1</option>
-                <option value="F2">Female 2</option>
-                <option value="M1">Male 1</option>
-                <option value="M2">Male 2</option>
-            </select>
+    <main class="vishing-main">
+        <h1>Vishing Campaign Setup</h1>
+
+        <!-- Step 1: Clone Voice + Write Script -->
+        <section class="vishing-card">
+            <h3>Step 1: Select Employee Voice & Write Script</h3>
+            <div class="form-group">
+                <label for="employeeSelect">Employee to clone</label>
+                <select id="employeeSelect">
+                    <option value="">-- Select an employee --</option>
+                    <% users.forEach(user => { %>
+                        <option 
+                            value="<%= user._id %>" 
+                            data-clone-id="<%= user.voiceCloneId || '' %>">
+                            <%= user.displayName || user.username %>
+                        </option>
+                    <% }) %>
+                </select>
             </div>
-            <div class="text-submit">
-            <textarea name="message" id="message" placeholder="Write your message here"></textarea>
-            <button type="submit" onclick="alert('Voice Message Saved to Templates');">Save Voice</button>
+
+            <div class="form-group" id="uploadGroup">
+                <label for="audioSample">Upload voice sample (MP3 or WAV)</label>
+                <input type="file" id="audioSample" accept=".mp3,.wav,.m4a" />
+                <p class="hint">Only required if this employee has not been cloned before.</p>
             </div>
-        </form>
+
+            <div class="form-group">
+                <label for="script">Voicemail script</label>
+                <textarea id="script" rows="5" placeholder="Write the voicemail message here..."></textarea>
+            </div>
+
+            <button class="btn-primary" id="generateBtn">Generate Voice Preview</button>
+            <p class="status-msg" id="generateStatus"></p>
+        </section>
+
+        <!-- Step 2: Preview Audio -->
+        <section class="vishing-card hidden" id="previewSection">
+            <h3>Step 2: Preview Audio</h3>
+            <audio id="audioPreview" controls></audio>
+            <p class="hint">If you are happy with the audio, proceed to step 3.</p>
+        </section>
+
+        <!-- Step 3: Select Targets & Send -->
+        <section class="vishing-card hidden" id="sendSection">
+            <h3>Step 3: Select Targets & Send</h3>
+
+            <div class="form-group">
+                <label for="employeeTargetSelect">Select employees from database</label>
+                <select id="employeeTargetSelect">
+                    <option value="">-- Select an employee --</option>
+                    <% users.forEach(user => { %>
+                        <option value="<%= user.phone || '' %>">
+                            <%= user.displayName || user.username %>
+                        </option>
+                    <% }) %>
+                </select>
+                <button class="btn-secondary" id="addFromDbBtn">Add</button>
+            </div>
+
+            <div class="form-group">
+                <label for="manualPhone">Or enter a phone number manually</label>
+                <div class="phone-input-row">
+                    <input type="tel" id="manualPhone" placeholder="+1XXXXXXXXXX" />
+                    <button class="btn-secondary" id="addManualBtn">Add</button>
+                </div>
+            </div>
+
+            <div id="targetList" class="target-list">
+                <p class="hint">No targets added yet.</p>
+            </div>
+
+            <button class="btn-danger" id="sendBtn">Send to Voicemail</button>
+            <p class="status-msg" id="sendStatus"></p>
+        </section>
     </main>
+
+    <script src="js/vishing.js"></script>
+
     <%- include('../includes/footer') %>
 </body>
 </html>
