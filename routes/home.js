@@ -20,6 +20,11 @@ router.get("/login", (req, res) => {
   res.render('pages/login', { title: "Login" });
 });
 
+router.get("/faq",(req, res) => {
+  res.set('Cache-Control', 'public, max-age=2592000');
+  res.render('pages/faq', {title: "Frequently Asked Questions"});
+});
+
 router.get("/register", (req, res) => {
   res.set('Cache-Control', 'no-store');
   res.render('pages/register', { title: "Register" });
@@ -71,10 +76,10 @@ router.get("/dummydash", authMiddleware, authorize("admin", "user"), (req, res) 
   });
 });
 
-router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
+router.get("/support", authMiddleware, authorize("admin","user"),(req, res) => {
   res.set('Cache-Control', 'public, max-age=2592000');
-  res.render('pages/faq', {
-    title: "Frequently Asked Questions",
+  res.render('pages/support', {
+    title: "Support",
     user: req.user
     });
 });
