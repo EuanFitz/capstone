@@ -307,7 +307,7 @@ h1 {
     background: transparent;
     border: none;
     border-bottom: 1px dashed rgba(182, 157, 248, 0.4);
-    color: #1641b866;
+    color: #85a2f2;
     font-family: var(--BodyFont);
     font-size: 0.88rem;
     outline: none;
@@ -324,13 +324,13 @@ h1 {
     font-family: var(--BodyFont);
     font-size: 0.78rem;
     color: var(--PrimaryDarkPurple);
-    opacity: 0.5;
+
 }
 
 .linkPreview a {
-    color: #1641b866;
+    color: #4f73d8;
     text-decoration: underline;
-    pointer-events: none; 
+
 }
 
 /* Signature */

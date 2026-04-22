@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/head') %>
+    <link rel="stylesheet" href="/css/oops.css">
+</head>
+<body>
+    <main>
+        <div class="headingLogo">
+            <svg width="80" height="80" viewBox="0 0 666 741" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M321.018 1.36035C328.623 -0.450833 336.546 -0.454047 344.152 1.35156L627.273 68.5645C635.047 70.4101 640.962 76.653 642.233 84.541C649.182 127.657 670.245 269.156 664.085 365.105C656.68 480.444 640.966 494.102 570.453 573.605C510.912 640.738 378.421 717.826 342.005 738.359C336.089 741.695 329.079 741.695 323.164 738.359C286.747 717.826 154.256 640.738 94.7157 573.605C24.203 494.102 8.4893 480.444 1.08484 365.105C-5.07932 269.087 16.721 127.454 23.8807 84.4482C25.1857 76.6107 31.0792 70.4161 38.8085 68.5752L321.018 1.36035ZM333.5 67.6055C274.129 67.6055 226 115.735 226 175.105V220.184H115.215V221.698H114.345C114.345 221.698 62.8078 389.733 101.238 475.029C145.995 574.364 320.026 666.539 320.086 666.57L332.771 673.064L345.461 666.571C345.867 666.356 519.595 574.266 564.307 475.03C602.727 389.756 551.227 221.787 551.2 221.699H550.239V220.184H441V175.105C441 115.735 392.87 67.6055 333.5 67.6055ZM226 256.978V257.605H441V256.978H522.83C535.551 306.802 558.58 398.34 531.747 457.896C496.296 536.577 379.739 610.764 332.773 638.229C285.808 610.764 169.25 536.576 133.799 457.895C106.966 398.339 129.994 306.803 142.715 256.978H226ZM334.349 345.714C299.387 345.714 271.044 374.057 271.044 409.02C271.044 437.385 289.7 461.393 315.412 469.443V497.215C315.412 507.375 323.648 515.611 333.808 515.611C343.969 515.611 352.205 507.375 352.205 497.215V469.771C378.473 462.062 397.656 437.782 397.656 409.02C397.656 374.057 369.312 345.714 334.349 345.714ZM334.349 370.923C355.389 370.923 372.446 387.98 372.446 409.02C372.446 430.059 355.389 447.115 334.349 447.115C313.31 447.115 296.254 430.059 296.254 409.02C296.254 387.98 313.31 370.923 334.349 370.923ZM333.5 104.605C372.436 104.606 404 136.169 404 175.105V220.184H263V175.105C263 136.169 294.564 104.606 333.5 104.605Z" fill="#B9A2F7"/>
+            </svg>
+            <h1>You Clicked a Simulated Phishing Link</h1>
+        </div>
+
+        <section>
+            <div class="sectionText">
+                <h2>Don't worry, your data is safe. This was a training exercise.</h2>
+                <p>You clicked on a simulated phishing link created by your organization as part of security awareness training. No harm was done, and no information was collected beyond training results.</p>
+                <p>Cybercriminals design phishing emails to look convincing and create urgency, curiosity, or trust. Many intelligent and experienced people click them every day.</p>
+                <p>What matters most is learning how to spot them more quickly next time.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>Why This Email May Have Looked Legitimate</h2>
+                <p>Phishing emails are designed to imitate normal business communication. They often use familiar branding, realistic formatting, and believable requests.</p>
+                <p>Common tactics include:</p>
+                <ul>
+                    <li>Urgent deadlines ("Act now" / "Your account will be locked")</li>
+                    <li>Requests from leadership or IT staff</li>
+                    <li>Fake invoices or shared documents</li>
+                    <li>Security alerts or password reset notices</li>
+                    <li>Unexpected attachments or links</li>
+                    <li>Slightly altered sender addresses</li>
+                </ul>
+            </div>
+            <div class="comparing">
+                <img src="/media/microsoft-legitReasons.png"
+                    alt="A legitimate email from Microsoft">
+                <img src="/media/Microsoft_spoofReasons.png"
+                    alt="A phishing email mimicking Microsoft">
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>Warning Signs to Look For</h2>
+                <h3>Suspicious Sender Address</h3>
+                <p>The display name may look familiar, but the real email address is different.</p>
+                <p>Example: IT Support &lt;support-companysecure.com&gt; instead of your real company domain.</p>
+            </div>
+            <div class="example">
+                <img src="/media/google-spoofReasons.png"
+                    alt="Example of a spoofed sender address">
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>Urgent or Emotional Language</h2>
+                <p>Phishing messages often pressure you to act immediately.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li>"Your account will expire today."</li>
+                    <li>"Immediate action required."</li>
+                    <li>"Final warning."</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>Unexpected Links or Attachments</h2>
+                <p>If you were not expecting a file, invoice, shared document, or login request, be cautious.</p>
+            </div>
+            <div class="example">
+                <img src="/media/sharedDoc-spoofReasons.png"
+                    alt="Example of a suspicious shared document email">
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>Hovering Shows a Different Link</h2>
+                <p>A button may say one thing but lead somewhere else. Always hover over links before clicking.</p>
+            </div>
+            <div class="example">
+                <img src="/media/sharedDoc-spoofReasons.png"
+                    alt="Example showing hover reveals different link destination">
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>What To Do Before Clicking</h2>
+                <p>Use the <strong>Pause – Inspect – Verify</strong> method.</p>
+                <h3>1. Pause</h3>
+                <p>Take a moment before reacting to urgency.</p>
+                <h3>2. Inspect</h3>
+                <ul>
+                    <li>Sender address</li>
+                    <li>Spelling and grammar</li>
+                    <li>Link destination</li>
+                    <li>Whether the request is expected</li>
+                </ul>
+                <h3>3. Verify</h3>
+                <p>If unsure, contact the sender through a trusted method such as Teams, phone, or the official company directory.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>What To Do If You Click a Real Suspicious Link</h2>
+                <p>If this had been a real phishing attempt:</p>
+                <ul>
+                    <li>Close the page immediately</li>
+                    <li>Do not enter credentials</li>
+                    <li>Disconnect from suspicious downloads</li>
+                    <li>Report the email to IT / Security</li>
+                    <li>Change your password if credentials were entered</li>
+                    <li>Follow your organization's reporting process</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="sectionText">
+                <h2>Quick Habits That Prevent Most Phishing</h2>
+                <ul>
+                    <li>Slow down when an email feels urgent</li>
+                    <li>Double-check sender addresses</li>
+                    <li>Hover before clicking links</li>
+                    <li>Be cautious with attachments</li>
+                    <li>Verify unusual requests through another channel</li>
+                    <li>Report suspicious emails promptly</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="finalSection">
+            <div class="sectionText">
+                <h2>Final Reminder</h2>
+                <p>Phishing attacks succeed because they are designed to exploit normal human behavior like trust, speed, and helpfulness. With practice, recognizing them becomes faster and easier.</p>
+                <p>Thank you for helping keep your organization secure.</p>
+            </div>
+            <svg width="60" height="60" viewBox="0 0 666 741" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M321.018 1.36035C328.623 -0.450833 336.546 -0.454047 344.152 1.35156L627.273 68.5645C635.047 70.4101 640.962 76.653 642.233 84.541C649.182 127.657 670.245 269.156 664.085 365.105C656.68 480.444 640.966 494.102 570.453 573.605C510.912 640.738 378.421 717.826 342.005 738.359C336.089 741.695 329.079 741.695 323.164 738.359C286.747 717.826 154.256 640.738 94.7157 573.605C24.203 494.102 8.4893 480.444 1.08484 365.105C-5.07932 269.087 16.721 127.454 23.8807 84.4482C25.1857 76.6107 31.0792 70.4161 38.8085 68.5752L321.018 1.36035ZM333.5 67.6055C274.129 67.6055 226 115.735 226 175.105V220.184H115.215V221.698H114.345C114.345 221.698 62.8078 389.733 101.238 475.029C145.995 574.364 320.026 666.539 320.086 666.57L332.771 673.064L345.461 666.571C345.867 666.356 519.595 574.266 564.307 475.03C602.727 389.756 551.227 221.787 551.2 221.699H550.239V220.184H441V175.105C441 115.735 392.87 67.6055 333.5 67.6055ZM226 256.978V257.605H441V256.978H522.83C535.551 306.802 558.58 398.34 531.747 457.896C496.296 536.577 379.739 610.764 332.773 638.229C285.808 610.764 169.25 536.576 133.799 457.895C106.966 398.339 129.994 306.803 142.715 256.978H226ZM334.349 345.714C299.387 345.714 271.044 374.057 271.044 409.02C271.044 437.385 289.7 461.393 315.412 469.443V497.215C315.412 507.375 323.648 515.611 333.808 515.611C343.969 515.611 352.205 507.375 352.205 497.215V469.771C378.473 462.062 397.656 437.782 397.656 409.02C397.656 374.057 369.312 345.714 334.349 345.714ZM334.349 370.923C355.389 370.923 372.446 387.98 372.446 409.02C372.446 430.059 355.389 447.115 334.349 447.115C313.31 447.115 296.254 430.059 296.254 409.02C296.254 387.98 313.31 370.923 334.349 370.923ZM333.5 104.605C372.436 104.606 404 136.169 404 175.105V220.184H263V175.105C263 136.169 294.564 104.606 333.5 104.605Z" fill="#B9A2F7"/>
+            </svg>
+        </section>
+
+    </main>
+</body>
+</html>
