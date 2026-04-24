@@ -20,6 +20,11 @@ router.get("/login", (req, res) => {
   res.render('pages/login', { title: "Login" });
 });
 
+router.get("/faq",(req, res) => {
+  res.set('Cache-Control', 'public, max-age=2592000');
+  res.render('pages/faq', {title: "Frequently Asked Questions"});
+});
+
 router.get("/register", (req, res) => {
   res.set('Cache-Control', 'no-store');
   res.render('pages/register', { title: "Register" });
@@ -57,7 +62,7 @@ router.get("/setup-success", authMiddleware, authorize("admin"), (req,res) =>{
 router.get("/voice-setup", authMiddleware, authorize("admin"), async (req,res) =>{
     try {
         const users = await User.find({}, 'displayName username email voiceCloneId');
-        res.set('Cache-Control', 'no-store'); 
+        res.set('Cache-Control', 'no-store');
         res.render("pages/vishing-setup", {
             title: "New Voice",
             user: req.user,
@@ -69,6 +74,11 @@ router.get("/voice-setup", authMiddleware, authorize("admin"), async (req,res) =
     }
 });
 
+router.get("/oops", (req, res) => {
+  res.set('Cache-Control', 'public, max-age=86400');
+  res.render('pages/oops', { title: "Oops!" });
+});
+
 // --------------Router: both roles allowed
 router.get("/dummydash", authMiddleware, authorize("admin", "user"), (req, res) => {
   res.set('Cache-Control', 'no-store');
@@ -78,10 +88,10 @@ router.get("/dummydash", authMiddleware, authorize("admin", "user"), (req, res) 
   });
 });
 
-router.get("/faq", authMiddleware, authorize("admin","user"),(req, res) => {
+router.get("/support", authMiddleware, authorize("admin","user"),(req, res) => {
   res.set('Cache-Control', 'public, max-age=2592000');
-  res.render('pages/faq', {
-    title: "Frequently Asked Questions",
+  res.render('pages/support', {
+    title: "Support",
     user: req.user
     });
 });
