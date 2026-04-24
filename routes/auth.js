@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const passport = require('./passport');
 const { encrypt, decrypt } = require("../middleware/encryption");
-    
+
+
     // =============================
     // ==========REGISTER===========
     // =============================

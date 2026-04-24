@@ -1,10 +1,11 @@
-const goBackLink = document.querySelector(".backButton");
-  goBackLink.addEventListener("click", (event) => {
-    event.preventDefault(); 
-    history.back();
-  });
 
-  const form = document.querySelector('#register');
+const goBackLink = document.querySelector(".backButton");
+goBackLink.addEventListener("click", (event) => {
+  event.preventDefault(); 
+  history.back();
+});
+
+const form = document.querySelector('#register');
 
 
 const escapeHTML = (str) => str.replace(/[&<>"']/g, 
@@ -18,14 +19,20 @@ const escapeHTML = (str) => str.replace(/[&<>"']/g,
 );
 
 
-  form.addEventListener('submit', async (e) =>{
-    e.preventDefault();
+form.addEventListener('submit', async (e) =>{
+  e.preventDefault();
+
+  const { csrfToken } = await fetch('/csrf-token').then(r => r.json());
+
       try {
     // perform a POST fetch on the /api/auth/register route
     const res = await fetch("/api/auth/register", {
       method: "POST",
       // send application/json type header
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "x-csrf-token": csrfToken 
+      },
 
       body: JSON.stringify({
         username: escapeHTML(e.target.username.value),

@@ -64,6 +64,7 @@ body {
   background: none;
   border: none;
   font-size: large;
+  cursor: pointer;
 }
 
 nav {
