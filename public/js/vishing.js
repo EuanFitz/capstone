@@ -1,4 +1,4 @@
-        const generateBtn = document.getElementById('generateBtn');
+                const generateBtn = document.getElementById('generateBtn');
         const sendBtn = document.getElementById('sendBtn');
         const addManualBtn = document.getElementById('addManualBtn');
         const addFromDbBtn = document.getElementById('addFromDbBtn');
@@ -11,6 +11,16 @@
 
         let targets = [];
         let currentAudioUrl = null;
+
+        let csrfToken = null;
+
+        async function getCsrfToken() {
+            if (csrfToken) return csrfToken;
+            const res = await fetch('/csrf-token');
+            const data = await res.json();
+            csrfToken = data.csrfToken;
+            return csrfToken;
+}
 
         // ── Generate voice preview ────────────────────────────────────────────
         generateBtn.addEventListener('click', async () => {
@@ -42,6 +52,9 @@
 
                     const cloneRes = await fetch('/api/vishing/clone', {
                         method: 'POST',
+                        headers: {
+                            'x-csrf-token': await getCsrfToken()
+                        },
                         body: formData
                     });
                     const cloneData = await cloneRes.json();
@@ -53,7 +66,10 @@
                 // Generate audio
                 const genRes = await fetch('/api/vishing/generate', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json', 
+                        'x-csrf-token': await getCsrfToken()
+                    },
                     body: JSON.stringify({ voiceCloneId, script })
                 });
                 const genData = await genRes.json();
@@ -131,7 +147,10 @@
             try {
                 const res = await fetch('/api/vishing/send', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'x-csrf-token': await getCsrfToken()
+                    },
                     body: JSON.stringify({ targets, audioUrl: currentAudioUrl })
                 });
                 const data = await res.json();

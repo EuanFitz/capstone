@@ -76,13 +76,17 @@ app.get("/csrf-token", (req, res) => {
   res.json({ csrfToken: token });
 });
 
-app.use(doubleCsrfProtection); 
+// Twilio callbacks bypass CSRF (external service, can't send tokens)
+app.use((req, res, next) => {
+    const twilioRoutes = ['/api/vishing/twiml', '/api/vishing/twiml-wait', '/api/vishing/amd-callback'];
+    if (twilioRoutes.includes(req.path)) return next();
+    return doubleCsrfProtection(req, res, next);
+});
 app.use('/', homeRoute);
-app.use('/api/admin', adminRoute); // should be admin only!
+app.use('/api/admin', adminRoute);
 app.use('/api/auth', authRoute);
-app.use('/api/updateProfile', profileRoute); // should be when anyone is logged in.
-
-app.use('/api/vishing', vishingRoute);// vishing route test
+app.use('/api/updateProfile', profileRoute);
+app.use('/api/vishing', vishingRoute); // CSRF-protected endpoints (frontend calls)
 app.use('/audio', express.static(path.join(__dirname, 'output')));// vishing route test
 
 
